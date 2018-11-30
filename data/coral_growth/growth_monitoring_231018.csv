@@ -1,0 +1,22 @@
+metadata;;;;;
+sample;coral_growth;;;;
+sample_date;23/10/18 14:00;;;;
+author;madeleine;;;;
+comment;monitoring_boutures_premanip;;;;
+;;;;;
+units;;;;;
+weight;salinity;temperature;;;
+g;PSU;øC;;;
+;;;;;
+dataset;;;;;
+localisation;species;id;weight;salinity;temperature
+B0;s.hystrix;1;2.069;32.9;25.3
+B0;s.hystrix;2;3.448;32.9;25.3
+B0;s.hystrix;3;4.133;32.9;25.3
+B0;s.hystrix;4;1.846;32.9;25.3
+B0;s.hystrix;5;3.425;32.9;25.3
+B0;s.hystrix;6;1.536;32.9;25.3
+B0;s.hystrix;7;1.530;32.9;25.3
+B0;s.hystrix;8;1.276;32.9;25.3
+B0;s.hystrix;9;1.078;32.9;25.3
+B0;s.hystrix;10;1.015;32.9;25.3
