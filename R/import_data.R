@@ -64,7 +64,7 @@ convert_coral <- function(file_list) {
     sapply(metadata_list, `[[`, 1) -> names(metadata_list)
 
     # metadata
-    dplyr::tibble(sample = metadata_list$sample[[2]],
+    dplyr::tibble(projet = metadata_list$sample[[2]],
                   date = lubridate::dmy_hm(paste(metadata_list$sample_date[[2]],
                                                  metadata_list$sample_date[[3]],
                                                  sep = " ")),
@@ -133,7 +133,7 @@ convert_coral(file_list) -> growth
 
 file_list[!stringr::str_detect(file_list, "221018")] -> file_list2
 
-convert_coral(file_list2) -> obj
+convert_coral(file_list2) -> growth
 
 # Fonction coral_growth
 coral_growth <- function(obj) {
@@ -142,12 +142,12 @@ coral_growth <- function(obj) {
     as.data.frame(.) %>.%
     dplyr::mutate(., row_num = seq(1, to = nrow(.))) %>.%
     dplyr::select(., row_num, localisation, species, id, weight, salinity,
-                  temperature, date) %>.%
+                  temperature, sample_date) %>.%
     dplyr::mutate(., skel_weight = skeleton_weight(.$weight,
                                                    .$salinity,
                                                    .$temperature)) %>.%
     dplyr::group_by(., localisation, species, id) %>.%
-    dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(date - date[1],
+    dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(sample_date - sample_date[1],
                                                                      units = "day"),
                                             digits = 0)),
                   day_lag = dplyr::lag(day),
@@ -173,7 +173,7 @@ coral_growth <- function(obj) {
                                 sep = "/")
   }
 
-  ggplot(obj, aes(x = day, y = growth_ln, col = id)) +
+  ggplot(obj, aes(x = day, y = growth_ln, col = as.factor(id))) +
     #geom_line() +
     geom_point() +
     geom_smooth(method = "lm", se = FALSE, size = 0.5) +
@@ -188,59 +188,89 @@ coral_growth <- function(obj) {
 }
 
 coral_growth(growth) -> test
-attr(test, "regression")$"B0/s.hystrix/9"
-summary(attr(test, "regression")$"B0/s.hystrix/9")
+
+###################
+
+googlesheets_as_csv <- "https://docs.google.com/spreadsheets/d/{id}/export?format=csv"
+coral_id <- "1iMH4YXh80SxG0Rg6miMVABglIB7fnH42cYenml9WsRM"
+coral_url <- glue::glue(googlesheets_as_csv, id = coral_id)
+
+coral <- read.csv(coral_url, dec = ',')
+
+coral2 <- coral[1:271,1:7]
+visdat::vis_dat(coral2)
+coral2$sample_date <- lubridate::dmy_hm(coral2$sample_date)
+visdat::vis_dat(coral2)
+
+coral_growth(coral2) -> test
+test[test$id == 11,]
+
+coral_growth2(coral2)
+
+###################
+
+coral_growth2 <- function(obj) {
+
+  arrange(obj, sample_date)[1, "sample_date"] -> start_date
+  obj$id <- as.factor(obj$id)
+
+  obj %>.%
+    as.data.frame(.) %>.%
+    dplyr::mutate(., row_num = seq(1, to = nrow(.))) %>.%
+    dplyr::select(., row_num, localisation, species, id, weight, salinity,
+                  temperature, sample_date) %>.%
+    dplyr::mutate(., skel_weight = skeleton_weight(.$weight,
+                                                   .$salinity,
+                                                   .$temperature),
+                     day_graphe = as.numeric(round(lubridate::make_difftime(sample_date - start_date,
+                                                                         units = "day"),
+                                                digits = 0))) %>.%
+    dplyr::group_by(., localisation, species, id) %>.%
+    dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(sample_date - sample_date[1],
+                                                                     units = "day"),
+                                            digits = 0)),
+                  day_lag = dplyr::lag(day),
+                  n_day = day - day_lag,
+                  growth = skel_weight/skel_weight[1],
+                  growth_ln = ln(growth)) %>.%
+    as.data.frame(.) -> obj
+
+
+  # Identification des numeros de lignes pour la régression
+  obj %>.%
+    group_by(., localisation, species, id) %>.%
+    summarize(., row = list(row_num)) -> model_infos
+
+  mod_list <- list()
+  for (i in 1:nrow(model_infos)) {
+    obj %>.%
+      .[model_infos$row[[i]],] %>.%
+      # lm(data = ., formula = growth_ln ~ 0 + day) -> mod_list[[i]]
+      lm(data = ., formula = growth_ln ~ day) -> mod_list[[i]]
+    names(mod_list)[i] <- paste(model_infos$localisation[i],
+                                model_infos$species[i],
+                                model_infos$id[i],
+                                sep = "/")
+  }
+
+  ggplot(obj, aes(x = day_graphe, y = growth_ln, col = id)) +
+    #geom_line() +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE, size = 0.5) +
+    theme_bw() -> reg_plot
+  print(reg_plot)
+
+  stargazer::stargazer(mod_list, type = "text", column.labels = names(mod_list))
+
+  attr(obj, "regression") <- mod_list
+  return(obj)
+
+}
 
 
 
 
-obj[which(obj$id == 5),] %>.%
-  .[-c(1:4),] %>.%
-  dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(date - date[1],
-                                                                   units = "day"),
-                                          digits = 0)),
-                day_lag = dplyr::lag(day),
-                n_day = day - day_lag,
-                growth = skel_weight/skel_weight[1],
-                growth_ln = ln(growth)) -> obj_test
-
-ggplot(obj_test, aes(x = day, y = growth_ln, col = id)) +
-  #geom_line() +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  theme_bw()
-
-stargazer::stargazer(lm(data = obj_test, formula = growth_ln ~ day), type = "text")
-
-
-obj[which(obj$id == 6),] %>.%
-  .[-c(1:5),] %>.%
-  dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(date - date[1],
-                                                                   units = "day"),
-                                          digits = 0)),
-                day_lag = dplyr::lag(day),
-                n_day = day - day_lag,
-                growth = skel_weight/skel_weight[1],
-                growth_ln = ln(growth)) -> obj_test
-
-ggplot(obj_test, aes(x = day, y = growth_ln, col = id)) +
-  #geom_line() +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE, size = 0.5) +
-  theme_bw()
-
-stargazer::stargazer(lm(data = obj_test, formula = growth_ln ~ day), type = "text")
-
-
-
-
-
-
-
-
-
-
-
+###################
 
 # Add skel_weight with skeleton_weight
 growth %>.%
