@@ -25,16 +25,27 @@ shinyServer(function(input, output) {
     coral <- coral_import(coral_url)
     coral <- coral_growth(coral)
 
-
+  # PARTIE DATASET
+  # Création du choix des variables pour DATA - Renvoie vers le fichier ui.R
   output$choixvar <- renderUI({
-    checkboxGroupInput("var","Choix des variables a afficher :",
-                       names(coral)[-c(1, 10:17)], names(coral)[-c(1, 7:17)])
+    dropdown(label = "Choix des variables pour Data :",
+             checkboxGroupInput("var", NULL,
+                       names(coral)[-c(1, 10:26)], names(coral)[-c(1, 7:26)]))
+  })
+  # Création du choix des variables pour DATA - Renvoie vers le fichier ui.R
+  output$choixvar2 <- renderUI({
+    dropdown(label = "Choix des variables pour Growth :",
+             checkboxGroupInput("var2", NULL,
+                                names(coral)[c(2:6, 12, 13, 16:23)],
+                                names(coral)[c(2:6, 12, 13, 16)]))
   })
 
+  # Création du choix des ID - Renvoie vers le fichier ui.R
   output$ID <- renderUI({
     selectInput("id","Choix de l'ID a afficher :", choices = c("head", "All",levels(coral$id)))
   })
 
+  # Création du range de date - Renvoie vers le fichier ui.R
   output$date_ <- renderUI({
     dateRangeInput("daterange","Date range :",
                    start = min(lubridate::date(coral$date), na.rm = TRUE),
@@ -43,7 +54,8 @@ shinyServer(function(input, output) {
                    max = max(lubridate::date(coral$date), na.rm = TRUE))
   })
 
-  output$tableau <- renderTable({
+  # Tableau pour la sortie Dataset/Data
+  output$tableau <- DT::renderDataTable({
     if ("head" %in% input$id) {
       head(coral[,input$var], n = 5 )
     } else if ("All" %in% input$id) {
@@ -54,54 +66,79 @@ shinyServer(function(input, output) {
     }
   })
 
-  output$tableauGrowth <- renderTable({
-    variables <- c("localisation", "species", "id", "sample_date",
-                   "skel_weight", "day", "growth", "growth_ln")
+  # Tableau pour la sortie Dataset/Growth
+  output$tableauGrowth <- DT::renderDataTable({
     if ("head" %in% input$id) {
-      head(coral[,variables], n = 5 )
+      head(coral[,input$var2], n = 5)
     } else if ("All" %in% input$id) {
       coral[coral$datefilter >= input$daterange[1] &
-              coral$datefilter <= input$daterange[2],variables] %>% na.omit()
+              coral$datefilter <= input$daterange[2],input$var2] %>% na.omit()
     } else {
-      coral[coral$id %in% input$id,variables]
+      coral[coral$id %in% input$id,input$var2]
     }
   })
 
-  #### PLOT ####
+  # PARTIE PLOT
+  # Création des ID - Renvoie vers le fichier ui.R
   output$ID2 <- renderUI({
-    dropdown(label = "Choix des ID a afficher",
+    dropdown(label = "Choix des ID a afficher", # permet le menu déroulant
              checkboxGroupInput("id2",NULL,
                                 choices = levels(coral$id),
                                 selected = levels(coral$id)))
   })
-
-  selectedData <- reactive({
-    coral[coral$id %in% input$id2,]
+  # Création d'un range pour la date
+  output$date_2 <- renderUI({
+    dateRangeInput("date_range","Date range :",
+                   start = min(lubridate::date(coral$date), na.rm = TRUE),
+                   end = max(lubridate::date(coral$date), na.rm = TRUE),
+                   min = min(lubridate::date(coral$date), na.rm = TRUE),
+                   max = max(lubridate::date(coral$date), na.rm = TRUE))
   })
 
-  output$coralplot <- renderPlot({
+  # Fonction de recalcul permettant d'utiliser les ids sélectionnées
+  selectedData <- reactive({
+    coral[coral$id %in% input$id2 &
+            coral$datefilter >= input$date_range[1] &
+            coral$datefilter <= input$date_range[2],]
+  })
+
+  # Création du graphique
+  output$coralplot2 <- renderPlot({
+    # Définition de la variable y (yvar) pour le graphe
+    if("log" %in% input$lin_log){
+      if("growth_diff" %in% input$calc){
+        yvar <- "log_growth_diff"
+      } else if ("growth_ratio" %in% input$calc){
+        yvar <- "log_growth_ratio"
+      } else if ("sp_growth_ratio" %in% input$calc){
+        yvar <- "log_sp_growth_ratio"
+      }
+    } else {
+      yvar <- input$calc
+    }
+
+    # Graphe avec option du calcul de la régression
     if("non" %in% input$reg){
-      coral_plot(obj = selectedData(), x = input$day, y = input$ln) -> coralplot
+      coral_plot(obj = selectedData(), x = input$day_date, y = yvar) -> coralplot
       coralplot +
         geom_line() -> coralplot
     } else {
-      coral_plot(obj = selectedData(), x = input$day, y = input$ln) -> coralplot
+      coral_plot(obj = selectedData(), x = input$day_date, y = yvar) -> coralplot
       coralplot +
         geom_smooth(method = "lm", se = FALSE, size = 0.5) -> coralplot
     }
     coralplot
   })
 
-
-  output$distPlot <- renderPlot({
-
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
+  # Sortie Texte : Description du calcul pour la variable y
+  output$expli <- renderText({
+    if("growth_diff" %in% input$calc){
+      "growth_diff : poids du squelette - poids du squelette initial"
+    } else if ("growth_ratio" %in% input$calc){
+      "growth_ratio : (poids du squelette - poids du squelette initial) / poids du squelette initial"
+    } else if ("sp_growth_ratio" %in% input$calc){
+      "sp_growth_ratio : (poids du squelette - poids précédant du squelette) / poids précédant du squelette"
+    }
   })
 
 })

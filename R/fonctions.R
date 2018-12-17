@@ -4,6 +4,8 @@ require(flow)
 require(dplyr)
 require(lubridate)
 
+
+# Conversion du poids immergé en poids squelettique
 skeleton_weight <- function(buoyant_weight, S, T, P = 0, rho_aragonite = 2930){
   x <- seacarb::rho(S = S, T = T, P = P)
   y <- buoyant_weight / (1 - (x / rho_aragonite))
@@ -11,7 +13,7 @@ skeleton_weight <- function(buoyant_weight, S, T, P = 0, rho_aragonite = 2930){
   y
 }
 
-
+# Importation et transformation des donnée a partir d'un url
 coral_import <- function(coral_url) {
 
   read.csv(coral_url, dec = ',') %>.%
@@ -22,15 +24,15 @@ coral_import <- function(coral_url) {
                      date = lubridate::dmy_hm(sample_date),
                      datefilter = lubridate::date(date),
                      id = as.factor(id)) %>.%
-    dplyr::select(., row_num, localisation, species, id, sample_date,
+    dplyr::select(., row_num, localisation, species, id, date,
                      skel_weight, weight, salinity, temperature,
-                     date, datefilter) %>.%
+                     datefilter) %>.%
     dplyr::arrange(., date, id) %>.%
     na.omit(.) -> obj
   return(obj)
 }
 
-
+# Calcul des differents paramettres de croissance
 coral_growth <- function(obj) {
 
   obj[1, "date"] -> start_date
@@ -40,31 +42,29 @@ coral_growth <- function(obj) {
                                                                         units = "day"),
                                                digits = 0))) %>.%
     dplyr::group_by(., localisation, species, id) %>.%
-    dplyr::mutate(., day = as.numeric(round(lubridate::make_difftime(date - date[1],
+    dplyr::mutate(., skel_lag = dplyr::lag(skel_weight),
+                     day = as.numeric(round(lubridate::make_difftime(date - date[1],
                                                                      units = "day"),
                                             digits = 0)),
                      day_lag = dplyr::lag(day),
                      n_day = day - day_lag,
-                     growth = skel_weight/skel_weight[1],
-                     growth_ln = ln(growth)) %>.%
+                     growth_diff = skel_weight - skel_weight[1],
+                     growth_ratio = growth_diff/skel_weight[1],
+                     sp_growth_ratio = (skel_weight - skel_lag)/skel_lag,
+                     logskel = log(skel_weight),
+                     logskel_lag = dplyr::lag(logskel),
+                     log_growth_diff = logskel - logskel[1],
+                     log_growth_ratio = log_growth_diff/logskel[1],
+                     log_sp_growth_ratio = (logskel - logskel_lag)/logskel_lag) %>.%
     as.data.frame(.) -> obj
 }
 
+# Fonction graphique
 coral_plot <- function(obj, x, y) {
 
   chart(obj, as.formula(paste(y, "~", x, "%col=% id"))) +
   # ggplot(obj, aes(x = day, y = growth, col = id)) +
     geom_point() +
-    theme_bw() -> graphe
-
-  return(graphe)
-}
-
-coral_plot_ln <- function(obj) {
-  ggplot(obj, aes(x = day, y = growth_ln, col = id)) +
-    geom_line() +
-    geom_point() +
-    geom_smooth(method = "lm", se = FALSE, size = 0.5) +
     theme_bw() -> graphe
 
   return(graphe)
