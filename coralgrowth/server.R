@@ -121,11 +121,11 @@ shinyServer(function(input, output) {
     if("non" %in% input$reg){
       coral_plot(obj = selectedData(), x = input$day_date, y = yvar) -> coralplot
       coralplot +
-        geom_line() -> coralplot
+        ggplot2::geom_line() -> coralplot
     } else {
       coral_plot(obj = selectedData(), x = input$day_date, y = yvar) -> coralplot
       coralplot +
-        geom_smooth(method = "lm", se = FALSE, size = 0.5) -> coralplot
+        ggplot2::geom_smooth(method = "lm", se = FALSE, size = 0.5) -> coralplot
     }
     coralplot
   })

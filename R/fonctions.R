@@ -62,10 +62,10 @@ coral_growth <- function(obj) {
 # Fonction graphique
 coral_plot <- function(obj, x, y) {
 
-  chart(obj, as.formula(paste(y, "~", x, "%col=% id"))) +
+  chart::chart(obj, as.formula(paste(y, "~", x, "%col=% id"))) +
   # ggplot(obj, aes(x = day, y = growth, col = id)) +
-    geom_point() +
-    theme_bw() -> graphe
+    ggplot2::geom_point() +
+    ggplot2::theme_bw() -> graphe
 
   return(graphe)
 }
