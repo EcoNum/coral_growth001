@@ -1,11 +1,22 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Coral Growth - Study de growth rate of the coral's nubbins
-==========================================================
+Suivi de la croissance des coraux au sein d'un mésocosme - Study de growth rate of the coral's nubbins
+======================================================================================================
 
-Guyliann Engels & madeleine Gilles
-----------------------------------
+Auteurs / Authors
+-----------------
 
-Overview
---------
+-   [Guyliann Engels](https://github.com/GuyliannEngels)
+-   Madeleine Gilles
+-   [Raphael Conotte](https://github.com/RConotte)
+-   [Jordan Benrezkallah](https://github.com/Jack177)
+-   Antoine Batigny
 
-The objectives for the project is the monitoring of a growth of *Seriatopora hystrix* (Dana 1846).
+Supervisor
+----------
+
+-   [Philippe Grosjean](https://github.com/phgrosjean)
+
+Résumé
+------
+
+L'objectif premier de ce projet est de mettre au point des outils, des routines, des applications web afin de monitorer efficacement la croissance des coraux du service d'écologie numérique des milieux aquatiques de l'Université de Mons dont l'espèce principale est *Seriatopora hystrix* (Dana 1846).
