@@ -6,7 +6,7 @@ library(tidyverse)
 library(dplyr)
 library(plotly)
 
-
+source(file = "server.R")
 
 
 #Determination du nombre de ligne de tableau a utiliser
