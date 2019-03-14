@@ -1,0 +1,23 @@
+---
+title: "Encodage des données d'encodage"
+output: html_notebook
+---
+
+Plusieurs méthodes d'encodage ont été employé afin d'en retirer l'information.
+
+# encodage d'un fichier de type xlsx ou csv.
+
+Un seule et unique fichier est employé afin de monitorer la croissance d'organisme dans un aquarium 
+
+```{r}
+growth_monitoring_plateau <- read_delim("../data/raw/growth_monitoring_plateau.csv",
+                                        ";", escape_double = FALSE, trim_ws = TRUE,
+                                        skip = 11)
+```
+
+# Encodage depuis un ensemble de fichier
+
+# Encodage depuis un google sheets
+
+# Conclusion
+

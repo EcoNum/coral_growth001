@@ -49,12 +49,12 @@ coral_growth <- function(obj) {
                      day_lag = dplyr::lag(day),
                      n_day = day - day_lag,
                      growth_diff = skel_weight - skel_weight[1],
-                     growth_ratio = growth_diff/skel_weight[1],
+                     growth_ratio = (growth_diff/skel_weight[1]),
                      sp_growth_ratio = (skel_weight - skel_lag)/skel_lag,
                      logskel = log(skel_weight),
                      logskel_lag = dplyr::lag(logskel),
                      log_growth_diff = logskel - logskel[1],
-                     log_growth_ratio = log_growth_diff/logskel[1],
+                     log_growth_ratio = (log_growth_diff/logskel[1]),
                      log_sp_growth_ratio = (logskel - logskel_lag)/logskel_lag) %>.%
     as.data.frame(.) -> obj
 }
