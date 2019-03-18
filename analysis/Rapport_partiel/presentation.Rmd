@@ -18,24 +18,17 @@ output: pdf_document
 Mon stage de fin d'études, se déroule dans à l'université de l'UMons dans le service d'Écologie Numérique des Milieux Aquatiques (abrégé en EcoNum) du département de Biologie.
 
 
-L’Université de Mons (UMONS), est une université francophone implantée en Belgique, dans la province du Hainaut. Elle est constituée de 2 Ecoles et de 7 Facultés, dont la faculté des Sciences.
+L’Université de Mons (UMONS), est une université francophone implantée en Belgique, dans la province du Hainaut. Elle est constituée de 2 écoles et de 7 facultés, dont la faculté des Sciences.
 
 Le Département de biologie de la faculté des Sciences est impliqué dans la formation des étudiants et dans la recherche.
 
-Le service d'Écologie Numérique des Milieux Aquatiques travaille dans l'enseignement des biostatistiques et de l'écologie aquatique à l'Université de Mons.
+Le département de biologie de la faculté des Sciences comprend 5 services dont le service d'Écologie Numérique des Milieux Aquatiques. Ce dernier étudie les écosystèmes aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
 
-Le laboratoire EcoNum étudie les systèmes biologiques aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
-
-Le laboratoire développe aussi des outils de traitement statistique, y compris dans le domaine du data mining, des big data, et de la recherche reproductible. Il participe à des études sur les logiciels Open Source et développe des chémostats.
+Le Service développe également des outils en science des données, y compris dans le domaine du data mining, des big data, et de la recherche reproductible. Il participe à des études sur les logiciels Open Source.
 
 Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (voir figure 1.1) dans le pentagone (1) (voir figure 1.2).
 
-
-
-
 ![Carte de la ville de Mons](../image/plan-campus.png)
-
-
 
 ![Carte du campus de la plaine de Nimy](../image/plaine-Nimy.jpg)
 
@@ -50,11 +43,11 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (voir 
 \end{figure}
 
 
-Mon maître de stage est Monsieur Philippe Grosjean, il enseigne les biostatistiques, l'écologie aquatique, l'écophysiologie et l'océanographie générale aux étudiants biologistes.
+Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs projets de recherches sur l'identification automatique du plancton par des algorithmes de *machine learning*, sur l'écophysiologie des scléractiniaires et sur le développement de logiciel pour l'écologie.
 
-Il travaille également dans le domaine de la recherche sur plusieurs projets, dont l'identification automatique du plancton par photographie, des algorithmes de *machine learning*, développement de logiciel pour l'écologie.
+Il enseigne également la science des données biologiques, l'écologie marine, l'écophysiologie et l'océanographie générale aux étudiants en biologie.
 
-Il développe des outils Open Source comme la *SciViews Box*, qui est une machine virtuelle contenant une suite de logiciel pré-configuré pour l'utilisation de ses étudiants.
+Il développe des outils Open Source comme la *SciViews Box*, qui est une machine virtuelle contenant une suite de logiciel pré-configuré pour l'utilisation de ses étudiants et des chercheurs.
 
 Il encadre 1 doctorant et 2 étudiants en masters.
 
@@ -67,10 +60,9 @@ Il encadre 1 doctorant et 2 étudiants en masters.
 \end{figure}
 
 
-Guyliann Engels est chercheur et professeur-assistant, il effectue sa thèse sur l'écophysiologie du corail, où il utilise un mésocosme pour étudier les stress des coraux engendrés par la modification de leurs nutriments essentiels. Il utilise fréquemment les outils de statistiques R et RStudio (avec R Markdown, R Notebook).
+Guyliann Engels est chercheur et assistant au sein du service. Il effectue sa thèse sur l'écophysiologie du corail, où il utilise un mésocosme pour étudier les stress des coraux engendrés par la modification de leurs nutriments essentiels (composés azotés et phosphorés). Il utilise fréquemment les outils de statistiques R et RStudio (avec R Markdown, R Notebook).
 
 Il encadre mon travail.
-
 
 ## Antoine Batigny
 
@@ -79,7 +71,7 @@ Il encadre mon travail.
 \caption{Technicien du service d'EcoNum.}
 \end{figure}
 
-Antoine Batigny est technicien, c'est lui qui s'occupe de gérer les mésocosmes et de l'auto-analyseur.
+Antoine Batigny est le technicien du service. Il s'occupe principalement de gérer les mésocosmes. 
 
 ## Rémy Dugauquier
 
@@ -88,7 +80,7 @@ Antoine Batigny est technicien, c'est lui qui s'occupe de gérer les mésocosmes
 \caption{Etudiant en master}
 \end{figure}
 
-Rémy Dugauquier est en dernière année de master et fait son TFE sur le plancton. **à développer**
+Rémy Dugauquier est en dernière année du master en biologie des organismes et écologie. Il réalise son T.F.E. sur l'écologie des organismes planctoniques en baie de Calvi, France. 
 
 
 ## Madeleine Gille
@@ -98,4 +90,4 @@ Rémy Dugauquier est en dernière année de master et fait son TFE sur le planct
 \caption{Etudiante en master}
 \end{figure}
 
-Madeleine Gille est en dernière année de master et fait son TFE sur le corail. **à développer**
+Madeleine Gille est étudiante en dernière année du master en biologie des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un stress salins (hyper et hyposalin) sur *Seriatopora hystrix* (Dana, 1815). 
