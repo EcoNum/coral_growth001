@@ -70,7 +70,9 @@ SciViews::R
 #correction a faire : chemin relatif
 #tablo <- gdata::read.xls("~/shared/Github/coral_growth001/data/raw/monBordel/tablo.xlsx")
 
+
 tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tabloexcel.csv", header = TRUE, sep = ";", dec = ",")
+
 
 # GOOGLE SHEETS#
 # tablo <- gs_title("tablo")
