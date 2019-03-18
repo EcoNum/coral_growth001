@@ -152,7 +152,7 @@ tablo %>.%
   group_by(., ID) %>.%
   arrange(., date) %>.%
   mutate(., delta_date = difftime(date, date[1], units = "days" ),
-         ratio = (skw - skw[1]) / skw[1] / as.double(delta_date)) -> tablo1
+         ratio = round((skw - skw[1]) / skw[1] / as.double(delta_date), digits = 5)) -> tablo1
 # a cause du group_by je ne peux pas modifier directement "tablo"
 tablo <- mutate(tablo, ratio = tablo1$ratio)
 

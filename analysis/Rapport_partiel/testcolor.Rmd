@@ -1,0 +1,12 @@
+---
+title: "Untitled"
+author: "Jordan"
+date: "3/16/2019"
+output:
+  pdf_document:
+    latex_engine: xelatex
+
+header-includes: \usepackage {xcolor}
+---
+
+\textcolor{red}{red}

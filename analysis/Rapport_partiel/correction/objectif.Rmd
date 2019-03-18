@@ -1,0 +1,43 @@
+## Objectifs
+
+Les objectifs du stage sont :
+
+* Apprendre le langage de programmation R et son environnement RStudio.
+
+* Créer une application web Shiny, surveillant la croissance (monitoring) des coraux *S. hystrix*.
+
+* Faire un relever régulier de la croissance des coraux.
+
+## Outils utilisés
+
+Les outils utilisés sont :
+
+* La machine virtuelle *SciViews Box*, contenant un Linux (Xubuntu), R, RStudio et tous les paquets pré-installés.
+
+* Les languages de programmations : R et R Markdown (Latex).
+
+* Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
+
+
+## Objectifs réalisés
+
+Les objectifs réalisés sont : [ce serait bien de détailler, mettre des geaphiques et aussi des copies d'écrans pour tes applications]
+
+* Bouturer les coraux et relever leurs masses immergées.
+
+* Créer un tableau Excel contenant les données nécessaires.
+
+* Créer une application web à l'aide du paquet Shiny.
+
+## Planning de travail
+
+Les horaires de stages sont flexible, on peut arriver entre 7 et 9 heure et prester au moins 8 heures par jour.
+
+[Tu peux aussi dure que le stage se déroule en 2 phase: une partie apprentissage et une partie implémentation des outils pour le monitoring de la croissance des coraux]
+
+
+
+
+
+
+

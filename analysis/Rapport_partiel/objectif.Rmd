@@ -1,0 +1,167 @@
+---
+output: pdf_document
+---
+
+# But
+
+Le but du stage est de créer une application Shiny, qui suit l'évolution des coraux situés dans les mésocosmes. Les coraux seront utilisés dans des expériences par le laboratoire, il est donc nécessaire de visualiser leur croissance.
+L'application doit pouvoir être utilisée facilement par d'autres personnes à *posteriori*, il faut donc l'automatiser et anticiper les problèmes à venir.
+
+
+
+Le stage se déroule en 2 parties, la première est une phase d'apprentissage, la deuxième est la création de l'application et l'implémentation d'outils pour le monitoring de la croissance des coraux.
+
+La phase d'apprentissage comprend :
+
+* Apprentissage du langage de programmation R, de ses paquets et de l'environnement RStudio.
+
+
+La phase de création d'outils comprend :
+
+* Un relevé régulier de la croissance des coraux.
+
+* La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
+
+
+## Outils monitorings
+
+### Masse immergée et masse squelettique
+<!-- MASSE -->
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Après avoir mesuré la température et la salinité on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous :
+
+\begin{equation}
+\large
+  m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
+\end{equation}
+
+$\rho_{eau}$ est déterminé via l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
+Le $\rho_{squelettique}$ est la densité de l'aragonite(CaCO3) <!-- # \chemform{CaCO_3} -->du squelette du corail.
+
+
+
+### Tableur
+
+Pour fonctionner, l'application doit recevoir un tableau de donnée. Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que n'importe qui, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
+
+Afin d'éviter au maximum des erreurs d'encodages, j'ai utilisé des règles pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données.
+
+
+\begin{figure}[h!]
+\includegraphics[]{../image/excel3.PNG}
+\caption{Mise en forme conditionnelle d'Excel}
+\end{figure}
+
+
+
+Le tableau de donnée contient 7 colonnes :
+
+* ID : corresponds à l'identifiant de la bouture.
+
+* weight : corresponds à la masse immergée de la bouture.
+
+* temp : corresponds à la température de l'eau de mer.
+
+* salinity : corresponds à la salinité de l'eau de mer
+
+* date : corresponds à la date et heure du relevé.
+
+* commentaire : donne quelques annotations.
+
+
+\begin{figure}[h!]
+\includegraphics[]{../image/excel1.PNG}
+\caption{Tableau de donnée}
+\end{figure}
+
+### Application Shiny
+
+L'application est divisée en deux éléments, une partie "ui" (User Interface), c'est la partie qui affiche les éléments graphiques de l'interface Shiny à l'utilisateur, et une partie "server", qui contient toutes les commandes R qui s'opère côté serveur.
+
+Il est possible mettre l'intégralité du code dans un seul fichier app.R, mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et server.R (voir page annexe).
+
+Mon application présente 2 onglets, le premier créer un graphique interactif.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny1.PNG}
+\caption{Application Shiny : légende}
+\end{figure}
+
+Par défaut, le graphique montre l'évolution de la masse squelettique en fonction du temps.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny2.PNG}
+\caption{Application Shiny : masse squelettique}
+\end{figure}
+
+On peut sélectionner le taux de croissance en fonction du temps.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny3.PNG}
+\caption{Application Shiny : taux de croissance}
+\end{figure}
+
+Il est possible de sélectionner les ID dans un menu déroulant ou de directement cliquer à droite du graphique sur les ID triés par couleur. 
+
+Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny4.PNG}
+\caption{Application Shiny : menu déroulant}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny5.PNG}
+\caption{Application Shiny : affichage intéractif}
+\end{figure}
+
+En passant le curseur sur les points du graphique, on peut obtenir quelques informations.
+
+Sous le graphique, des informations supplémentaires : le nombre de boutures mortes, leur ID et le taux de mortalité sont calculés.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny7.PNG}
+\caption{Application Shiny : informations supplémentaires}
+\end{figure}
+
+Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont été calculées, il y a l'ajout de la masse squelettique et du "ratio" qui correspond au taux de croissance.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny8.PNG}
+\caption{Application Shiny : tableau de donnée}
+\end{figure}
+
+
+
+## Outils utilisés
+
+Les outils utilisés sont :
+
+* La machine virtuelle *SciViews Box*, contenant un linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
+
+* Les langages de programmation : R et R Markdown (LatTex).
+
+* Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
+
+
+## Objectifs réalisés
+
+Les objectifs réalisés sont :
+
+* Bouturer les coraux et relever leurs masses immergées.
+
+* Créer un tableau Excel contenant les données nécessaires.
+
+* Créer un prototype d'application web à l'aide du paquet Shiny.
+
+## Planning de travail
+
+Les horaires de stages sont flexibles, on peut arriver entre 7 et 9 heure et il faut prester au moins 8 heures par jour.
+
+
+
+
+
+
+
+
+

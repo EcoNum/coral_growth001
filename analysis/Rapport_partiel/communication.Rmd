@@ -1,0 +1,31 @@
+
+
+# Communications interpersonnelles 
+
+## Difficultés rencontrées
+
+### R vs python
+
+La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*.
+Ce sont tous les deux des langages de programmation interprétés qui ont leur façon de faire.
+*python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens.
+Tandis que, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
+
+Dans le domaine du *data scientist*, *R* et *python* se valent, chacun ayant ses avantages et inconvénients.
+C'est dans leur syntaxe et leur philosophie qu'ils divergent fortement.
+
+
+### Shiny communication entre ui.R et server.R
+
+Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
+Celui-ci est ensuite appelé dans server.R sous la forme input$ma_variable, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
+
+Le souci vient du fait que Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie le travail avec R.
+Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
+Dans certaines situations cela peut lourdement compliquer le travail.
+
+
+### Apport au sein de l'entreprise
+
+...
+
