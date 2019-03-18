@@ -4,21 +4,18 @@ output: pdf_document
 
 # But
 
-Le but du stage est de créer une application Shiny, qui suit l'évolution des coraux situés dans les mésocosmes. Les coraux seront utilisés dans des expériences par le laboratoire, il est donc nécessaire de visualiser leur croissance.
+Le but du stage est de créer une application web via le package Shiny dévelopé par RStudio sur R, qui suit l'évolution des coraux dans les mésocosmes. Les coraux seront utilisés dans des expériences par le laboratoire, il est donc nécessaire de visualiser leur croissance.
 L'application doit pouvoir être utilisée facilement par d'autres personnes à *posteriori*, il faut donc l'automatiser et anticiper les problèmes à venir.
-
-
 
 Le stage se déroule en 2 parties, la première est une phase d'apprentissage, la deuxième est la création de l'application et l'implémentation d'outils pour le monitoring de la croissance des coraux.
 
 La phase d'apprentissage comprend :
 
-* Apprentissage du langage de programmation R, de ses paquets et de l'environnement RStudio.
-
+* Apprentissage du langage de programmation R, de ses packages et de l'environnement RStudio.
 
 La phase de création d'outils comprend :
 
-* Un relevé régulier de la croissance des coraux.
+* L'acquisition des données de croissance régulière des coraux.
 
 * La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
 
@@ -27,7 +24,7 @@ La phase de création d'outils comprend :
 
 ### Masse immergée et masse squelettique
 <!-- MASSE -->
-Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Après avoir mesuré la température et la salinité on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous :
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Cette méthodde de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
 
 \begin{equation}
 \large
@@ -37,21 +34,18 @@ Pour évaluer la croissance des boutures de coraux, on utilise la masse squelett
 $\rho_{eau}$ est déterminé via l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
 Le $\rho_{squelettique}$ est la densité de l'aragonite(CaCO3) <!-- # \chemform{CaCO_3} -->du squelette du corail.
 
-
-
 ### Tableur
 
-Pour fonctionner, l'application doit recevoir un tableau de donnée. Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que n'importe qui, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
+Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont encodé dans un tableau de données.
+
+Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que n'importe qui, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
 
 Afin d'éviter au maximum des erreurs d'encodages, j'ai utilisé des règles pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données.
-
 
 \begin{figure}[h!]
 \includegraphics[]{../image/excel3.PNG}
 \caption{Mise en forme conditionnelle d'Excel}
 \end{figure}
-
-
 
 Le tableau de donnée contient 7 colonnes :
 
@@ -95,6 +89,8 @@ Par défaut, le graphique montre l'évolution de la masse squelettique en foncti
 
 On peut sélectionner le taux de croissance en fonction du temps.
 
+<!-- ajouter les formules de calcul du taux de croissance -->
+
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny3.PNG}
 \caption{Application Shiny : taux de croissance}
@@ -118,6 +114,8 @@ En passant le curseur sur les points du graphique, on peut obtenir quelques info
 
 Sous le graphique, des informations supplémentaires : le nombre de boutures mortes, leur ID et le taux de mortalité sont calculés.
 
+<!-- Attention que l'information : ma dernière ligne en va pas vraiment intéressé les utilisateurs de l'app. Est ce que cette info est nécessaire ?  -->
+
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny7.PNG}
 \caption{Application Shiny : informations supplémentaires}
@@ -138,7 +136,7 @@ Les outils utilisés sont :
 
 * La machine virtuelle *SciViews Box*, contenant un linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
 
-* Les langages de programmation : R et R Markdown (LatTex).
+* Les langages de programmation : R.
 
 * Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
 

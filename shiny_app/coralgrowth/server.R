@@ -71,7 +71,9 @@ SciViews::R
 #tablo <- gdata::read.xls("~/shared/Github/coral_growth001/data/raw/monBordel/tablo.xlsx")
 
 tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tablogs.csv", header = TRUE, sep = ";", dec = ",")
-
+# tablo <- read.table("../../data/my_data/tablogs.csv", header = TRUE, sep = ";", dec = ",")
+# tablo <- read.table("data/my_data/tablogs.csv", header = TRUE, sep = ";", dec = ",")
+#
 # GOOGLE SHEETS#
 # tablo <- gs_title("tablo")
 # tablo <- gs_read(tablo)
