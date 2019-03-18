@@ -70,7 +70,7 @@ SciViews::R
 #correction a faire : chemin relatif
 #tablo <- gdata::read.xls("~/shared/Github/coral_growth001/data/raw/monBordel/tablo.xlsx")
 
-tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tablogs.csv", header = TRUE, sep = ";", dec = ",")
+tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tabloexcel.csv", header = TRUE, sep = ";", dec = ",")
 
 # GOOGLE SHEETS#
 # tablo <- gs_title("tablo")
@@ -126,6 +126,19 @@ tablo$date <- as_datetime(tablo$date)
 # Nombre de ID different
 nbr_ID <- unique(tablo$ID)
 
+# Taux de croissance
+tablo %>.%
+  group_by(., ID) %>.%
+  arrange(., date) %>.%
+  mutate(., delta_date = difftime(date[1], date, units = "days" ),
+         ratio = round(((skw[1] - skw) / skw / as.double(delta_date)) * 100, digits = 5)) -> tablo1
+
+#          ratio = round((skw - skw[1]) / skw[1] / as.double(delta_date), digits = 5)) -> tablo1
+
+# a cause du group_by je ne peux pas modifier directement "tablo"
+tablo <- mutate(tablo, ratio = tablo1$ratio)
+
+
 #Je fais une copie pour pouvoir travailler dessus sans creer de probleme d'affichage
 cp_tablo <- tablo
 botablo <- tablo
@@ -140,21 +153,16 @@ botablo[16, 2] <- "a rejeter"
 botablo[is.na(botablo)] <- "Bouture morte"
 
 #Tableau a afficher sur l'app Shiny :
+#Renommer les en-tetes
 botablo <- transmute(botablo,
                      ID = botablo$ID,
                      "Masse immerge (g)" = botablo$weight,
                      "Masse squelettique (g)" = skeleton_weight(),
                      "Temperature (c)" = botablo$temp,
                      "Salinite (g/L)" = botablo$salinity,
-                     Date = botablo$date)
-# Taux de croissance
-tablo %>.%
-  group_by(., ID) %>.%
-  arrange(., date) %>.%
-  mutate(., delta_date = difftime(date, date[1], units = "days" ),
-         ratio = round((skw - skw[1]) / skw[1] / as.double(delta_date), digits = 5)) -> tablo1
-# a cause du group_by je ne peux pas modifier directement "tablo"
-tablo <- mutate(tablo, ratio = tablo1$ratio)
+                     Date = botablo$date,
+                     "Taux de croissance" = tablo$ratio)
+
 
 #tablo$ratio[is.nan(tablo$ratio)] <-  "HOHOH"
 
@@ -177,9 +185,9 @@ shinyServer(function(input, output, session) {
   })
 
   #----------------------Choix taux de croissance-----------------------------
-  output$Ratio <- renderUI({
-      radioButtons(inputId = "choix_ratio", label = NULL,
-                         choices = c("Masse squelettique", "Taux de croissance"),
+  output$choice_plot <- renderUI({
+      radioButtons(inputId = "choix_graph", label = NULL,
+                         choices = c("Masse squelettique", "Masse immerge", "Taux de croissance"),
                          selected = "Taux de croissance")
   })
 
@@ -207,16 +215,24 @@ shinyServer(function(input, output, session) {
     }
 
     # Choix du taux de croissance
-    if ("Taux de croissance" %in% input$choix_ratio) {
-      #tutu <- filter(tutu, tutu$ID %in% input$choix_id)
+    if ("Taux de croissance" %in% input$choix_graph) {
       yvar = tablo$ratio
       y_nom_axe <- "Taux de croissance"
     }
 
+    #Choix de la masse immerge
+    if ("Masse immerge" %in% input$choix_graph) {
+      yvar = tablo$weight
+      y_nom_axe <- "Masse immerge"
+    }
+
     # Tableau
-    p <- ggplot(tablo, aes(x = tablo$date, y = yvar, colour = tablo$ID)) +
+    tablo %>.%
+      arrange(., desc(date)) %>.%
+      filter(., ratio >= input$choice_gr) %>.%
+      ggplot(., aes(x = date, y = ratio, colour = ID)) +
       geom_point(size = 2, show.legend = FALSE) + geom_line(show.legend = F) +
-      xlab("Date") + ylab(y_nom_axe)
+      xlab("Date") + ylab(y_nom_axe) -> p
     #+ theme( axis.line = element_line(color = "darkgray", size = 2, linetype = "solid"))
 
     #p + scale_x_date(labels = date_format("%d-%m-%y"))
@@ -253,15 +269,43 @@ shinyServer(function(input, output, session) {
     #Taux de mortalite :
     Taux_mort <- round((nbr_bouture_morte / length(as.numeric(unique(cp_tablo$ID)))) * 100, digits = 1)
 
+    if ("Taux de croissance" %in% input$choix_graph) {
+      formule <- "Taux de croissance = ( (masse_squelettique_n - masse_squelettique_n-1) / masse_squelettique_n-1 ) / (temps_n - temps_n-1) * 100"
+    }
 
+    if ("Masse immerge" %in% input$choix_graph) {
+      formule <- "Masse immerge brute"
+    }
 
-    cat("Nombre de bouture morte : ", nbr_bouture_morte, "\nma_derniere_ligne() :",
+    else {
+      formule <- "Masse squelettique"
+    }
+    var = input$choice_var
+    cat(formule, "\n\nNombre de bouture morte : ", nbr_bouture_morte, "\nma_derniere_ligne() :",
         ma_derniere_ligne(), "\n","\n", "\nTaux de mortalite : ",
-        Taux_mort, "%", "\nID bouture morte : ", paste(ID_NA, collapse = ", "))
+        Taux_mort, "%", "\nID bouture morte : ", paste(ID_NA, collapse = ", "), "var", var)
   })
 
-  # -----------------------------Tableau----------------------------------------
-  output$tableau <- DT::renderDataTable({DT::datatable(tablo)
+  # -------------------------Onglet tableau-------------------------------------
+  # Choix de la valeur de la variable
+  # output$var_weight <- renderUI({
+  #   numericInput(inputId = choice_var, label = "Masse squelettique supérieur à :", value = 2)
+  # })
+  output$var_txt <- renderPrint({
+    var = input$choice_var
+    cat("var :", var)
+  })
+
+  output$tableau <- DT::renderDataTable({
+    var = input$choice_var
+
+    tablo %>.%
+      filter(., tablo$weight > var)%>.%
+      group_by(., ID)%>.%
+      arrange(., weight)-> tablo
+
+
+    DT::datatable(tablo)
   })
 
 })

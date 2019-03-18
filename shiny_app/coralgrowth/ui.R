@@ -12,7 +12,10 @@ shinyUI(
              # Sidebar : volet de gauche - Input
              sidebarPanel(
                uiOutput(outputId = "ID"),# Selection des ID a afficher
-               uiOutput(outputId = "Ratio")
+               uiOutput(outputId = "choice_plot"),
+               numericInput(
+                 inputId = "choice_gr", label = "Taux de croissance superieur a :", value = 0)
+
              ),
 
              # mainPanel : Volet de droite - Output
@@ -29,6 +32,10 @@ shinyUI(
     tabPanel("Tableau de donnee", # Onglet principal 2
              # sidebar : volet de gauche - Input
              sidebarPanel(
+               #uiOutput(outputId = "var_weight") # Choix du filtre à appliquer
+               numericInput(
+                 inputId = "choice_var", label = "Masse squelettique supérieur à :", value = 2),
+               verbatimTextOutput(outputId = "var_txt")
              ),
              # mainPanel : Volet de droite - Output
              mainPanel(
