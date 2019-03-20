@@ -71,8 +71,9 @@ SciViews::R
 #tablo <- gdata::read.xls("~/shared/Github/coral_growth001/data/raw/monBordel/tablo.xlsx")
 
 
-tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tabloexcel.csv", header = TRUE, sep = ";", dec = ",")
+tablo <- read.table("~/shared/Github/coral_growth001/data/my_data/tablo.csv", header = TRUE, sep = ";", dec = ",")
 
+# tablo <- read.table("data/my_data/tabloexcel.csv", header = TRUE, sep = ";", dec = ",")
 
 # GOOGLE SHEETS#
 # tablo <- gs_title("tablo")
@@ -132,8 +133,8 @@ nbr_ID <- unique(tablo$ID)
 tablo %>.%
   group_by(., ID) %>.%
   arrange(., date) %>.%
-  mutate(., delta_date = difftime(date[1], date, units = "days" ),
-         ratio = round(((skw[1] - skw) / skw / as.double(delta_date)) * 100, digits = 5)) -> tablo1
+  mutate(., delta_date = difftime(date, date[1], units = "days" ),
+         ratio = round(((skw - skw[1]) / skw[1] / as.double(delta_date)) * 100, digits = 5)) -> tablo1
 
 #          ratio = round((skw - skw[1]) / skw[1] / as.double(delta_date), digits = 5)) -> tablo1
 
@@ -210,6 +211,7 @@ shinyServer(function(input, output, session) {
       )
     }
 
+    #Par defaut on calcule le poids squelettique
     else {
       tablo <- filter(tablo, tablo$ID %in% input$choix_id)
       yvar = tablo$skw
@@ -227,12 +229,12 @@ shinyServer(function(input, output, session) {
       yvar = tablo$weight
       y_nom_axe <- "Masse immerge"
     }
-
+    # tablo %>.%
+    #   arrange(., desc(date)) %>.%
+    #   filter(., ratio >= input$choice_gr) %>.%
     # Tableau
-    tablo %>.%
-      arrange(., desc(date)) %>.%
-      filter(., ratio >= input$choice_gr) %>.%
-      ggplot(., aes(x = date, y = ratio, colour = ID)) +
+
+      ggplot(tablo, aes(x = date, y = yvar, colour = ID)) +
       geom_point(size = 2, show.legend = FALSE) + geom_line(show.legend = F) +
       xlab("Date") + ylab(y_nom_axe) -> p
     #+ theme( axis.line = element_line(color = "darkgray", size = 2, linetype = "solid"))
@@ -271,21 +273,21 @@ shinyServer(function(input, output, session) {
     #Taux de mortalite :
     Taux_mort <- round((nbr_bouture_morte / length(as.numeric(unique(cp_tablo$ID)))) * 100, digits = 1)
 
+    #Affichage de la formule utilisé
     if ("Taux de croissance" %in% input$choix_graph) {
       formule <- "Taux de croissance = ( (masse_squelettique_n - masse_squelettique_n-1) / masse_squelettique_n-1 ) / (temps_n - temps_n-1) * 100"
     }
-
     if ("Masse immerge" %in% input$choix_graph) {
       formule <- "Masse immerge brute"
     }
-
-    else {
+    if ("Masse squelettique" %in% input$choix_graph) {
       formule <- "Masse squelettique"
     }
+
     var = input$choice_var
     cat(formule, "\n\nNombre de bouture morte : ", nbr_bouture_morte, "\nma_derniere_ligne() :",
         ma_derniere_ligne(), "\n","\n", "\nTaux de mortalite : ",
-        Taux_mort, "%", "\nID bouture morte : ", paste(ID_NA, collapse = ", "), "var", var)
+        Taux_mort, "%", "\nID bouture morte : ", paste(ID_NA, collapse = ", "))
   })
 
   # -------------------------Onglet tableau-------------------------------------
@@ -293,18 +295,56 @@ shinyServer(function(input, output, session) {
   # output$var_weight <- renderUI({
   #   numericInput(inputId = choice_var, label = "Masse squelettique supérieur à :", value = 2)
   # })
+
+  # Recuperation de l'ID du fichier ui.R
+  output$choice_table <- renderUI({
+    radioButtons(inputId = "choix_table", label = "Filtrer",
+                 choices = c("Yes", "No"),
+                 selected = "Yes")
+  })
+
+  output$subchoice_table <- renderUI({
+    dropdown(
+        radioButtons(inputId = "souschoix_table", label = "by",
+                           choices = c("skeleton weight", "growth rates"),
+                           selected = c("skeleton weight")),
+        width = "200px", size = "default", label = "Variable type",
+        tooltip = tooltipOptions(placement = "right", title = "Choice variable type")
+      )
+  })
+
+
   output$var_txt <- renderPrint({
     var = input$choice_var
-    cat("var :", var)
+    # cat("var :", var)
   })
 
   output$tableau <- DT::renderDataTable({
-    var = input$choice_var
 
-    tablo %>.%
-      filter(., tablo$weight > var)%>.%
-      group_by(., ID)%>.%
-      arrange(., weight)-> tablo
+    if ("Yes" %in% input$choix_table) {
+      updateRadioButtons(session, inputId = "choix_table2", label = "filtrer?",
+                               choices = input$choix_table , selected = input$choix_table)
+      var = input$choice_var
+
+      if ("skeleton weight" %in% input$souschoix_table) {
+        tablo %>.%
+          filter(., skw > var, date == max(tablo$date)) %>.%
+          arrange(., desc(skw)) %>.%
+          group_by(., ID) -> tablo
+      }
+      if ("growth rates" %in% input$souschoix_table) {
+        tablo %>.%
+          filter(., ratio > var, date == max(tablo$date)) %>.%
+          arrange(., desc(ratio)) %>.%
+          group_by(., ID) -> tablo
+      }
+    }
+
+    if ("No" %in% input$choix_table) {
+      updateRadioButtons(session, inputId = "choix_table2", label = "filtrer?",
+                         choices = input$choix_table , selected = NULL)
+    }
+
 
 
     DT::datatable(tablo)

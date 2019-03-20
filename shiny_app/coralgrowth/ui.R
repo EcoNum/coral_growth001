@@ -12,9 +12,9 @@ shinyUI(
              # Sidebar : volet de gauche - Input
              sidebarPanel(
                uiOutput(outputId = "ID"),# Selection des ID a afficher
-               uiOutput(outputId = "choice_plot"),
-               numericInput(
-                 inputId = "choice_gr", label = "Taux de croissance superieur a :", value = 0)
+               uiOutput(outputId = "choice_plot")
+               #numericInput(
+                # inputId = "choice_gr", label = "Taux de croissance superieur a :", value = 0)
 
              ),
 
@@ -33,6 +33,8 @@ shinyUI(
              # sidebar : volet de gauche - Input
              sidebarPanel(
                #uiOutput(outputId = "var_weight") # Choix du filtre à appliquer
+               uiOutput(outputId = "choice_table"),
+               uiOutput(outputId = "subchoice_table"),
                numericInput(
                  inputId = "choice_var", label = "Masse squelettique supérieur à :", value = 2),
                verbatimTextOutput(outputId = "var_txt")

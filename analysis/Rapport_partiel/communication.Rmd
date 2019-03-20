@@ -16,7 +16,7 @@ Dans le domaine du *data scientist*, *R* et *python* sont courament employé.
 Les application web géré par shiny utilise deux fonctions communiquant entre elles **ui** et le **server**
 
 Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
-Celui-ci est ensuite appelé dans server.R sous la forme input$ma_variable, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
+Celui-ci est appelé dans server.R sous la forme input$ma_variable, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
 
 Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie grandement le travail avec R.
 Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
@@ -25,5 +25,8 @@ Dans certaines situations cela complique le travail.
 
 ### Apport au sein de l'entreprise
 
-...
+Pour l'instant, la contribution à l'entreprise revient principalement aux relevés des boutures (monitoring) et l'encodage, ceci permet de libérer du temps au technicien.
+L'application qui est en développement est utilisé dans le travail de mémoire de Madeleine Gilles.
+
+
 

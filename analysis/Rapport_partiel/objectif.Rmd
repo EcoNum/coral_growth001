@@ -9,6 +9,8 @@ L'application doit pouvoir être utilisée facilement par d'autres personnes à 
 
 Le stage se déroule en 2 parties, la première est une phase d'apprentissage, la deuxième est la création de l'application et l'implémentation d'outils pour le monitoring de la croissance des coraux.
 
+## Stage
+
 La phase d'apprentissage comprend :
 
 * Apprentissage du langage de programmation R, de ses packages et de l'environnement RStudio.
@@ -19,6 +21,8 @@ La phase de création d'outils comprend :
 
 * La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
 
+
+#Analyse
 
 ## Outils monitorings
 
@@ -139,6 +143,8 @@ Les outils utilisés sont :
 * Les langages de programmation : R.
 
 * Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
+
+* Le service web GitHub.
 
 
 ## Objectifs réalisés
