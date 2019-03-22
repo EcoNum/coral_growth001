@@ -1,4 +1,3 @@
-
 library(shiny)
 library(ggplot2)
 library(lubridate)
@@ -6,55 +5,81 @@ library(tidyverse)
 library(dplyr)
 library(plotly)
 library(googlesheets)
+library(flow)
 SciViews::R
 
-#comment faire un retour a la ligne ci-dessous ?
-coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
-
-tablo <- read.csv(coral_url)
-
-### Calcul du poids squelettique :
-#a corriger : rho_aragonite
-#P = Pression hydrostatique, elle vaut 0 a la surface
-skeleton_weight <- function(S = tablo$salinity, T = tablo$temperature, P = 0,
-                            buoyant_weight = tablo$weight, rho_aragonite = 2930){
-
-  rho_water <- seacarb::rho(S = S, T = T , P = P)
-  skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
-  skl_wgt <- round(skl_wgt, digits = 3)
-  return(skl_wgt)
-}
-
-#Ajout de la colonne du poids squelettique
-tablo <- mutate(tablo, skw = skeleton_weight())
-
-# changer le type de l'ID de "int" a "factor"
-tablo$id <- factor(tablo$id)
-
-#changer le type (mode) de la date
-tablo$date <- ymd_hms(tablo$date)
-
-#parse_date_time(tablo$date, locale = locale("fr"), orders = "dmy HMS")
-tablo$date <- as_datetime(tablo$date)
-
-# Nombre de ID different
-nbr_id <- unique(tablo$id)
-
-# Taux de croissance
-tablo %>.%
-  group_by(., id) %>.%
-  arrange(., date) %>.%
-  mutate(., delta_date = difftime(date, date[1], units = "days" ),
-         ratio = round(((skw - skw[1]) / skw[1] / as.double(delta_date)) * 100, digits = 5)) -> tablo1
-
-# a cause du group_by je ne peux pas modifier directement "tablo"
-tablo <- mutate(tablo, ratio = tablo1$ratio)
 
 
+#if (interactive()) {
 ###--------------------------------------------------------------------------###
 ### ----------------------- Partie logique du serveur ---------------------- ###
 shinyServer(function(input, output, session) {
 
+  #comment faire un retour a la ligne ci-dessous ?
+   coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
+   tablo <- read.csv(coral_url)
+
+   output$dataset <- renderTable({datasetInput()})
+  datasetInput <- reactive({
+    switch(input$dataset,
+           "template" = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQSZmj5iLaK2jFEbF-zEFLEDdzJnh5e1qJHCrEsVMhowbfN_W11JVKNKtCqVXJgiGwsFsNZVSrFJ7Qg/pub?gid=0&single=true&output=csv"),
+           "plateau" = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"),
+           "jordan" = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"),
+           "victor" = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTRCuaoMOuoV_iQUscot1OqXLd0PZxFd2fz01LnEfVxuF3pUPj221CwslIThTUWWtPV1XAWFgZcAyfN/pub?gid=0&single=true&output=csv"),
+           "jessica" = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSAYHrkL4ZfJJMV_Y9dL9iT3jM5IT2MguLXl56fPqHuTDyO36Uazy9KJMhHWbp-eeu4O3LjGVdhngQ_/pub?gid=0&single=true&output=csv"))
+  })
+
+  # tablo <- datasetInput()
+  # observeEvent(eventExpr = input$button, {
+  #   cat("probleme", input$url)
+  # })
+  #
+  # eventReactive(eventExpr = input$button, {
+  #   coral_url <- input$url
+  #   cat("ok", coral_url)
+  # })
+
+
+
+
+  ### Calcul du poids squelettique :
+  #a corriger : rho_aragonite
+  #P = Pression hydrostatique, elle vaut 0 a la surface
+  skeleton_weight <- function(S = tablo$salinity, T = tablo$temperature, P = 0,
+                              buoyant_weight = tablo$weight, rho_aragonite = 2930){
+
+    rho_water <- seacarb::rho(S = S, T = T , P = P)
+    skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
+    skl_wgt <- round(skl_wgt, digits = 3)
+    return(skl_wgt)
+  }
+  #
+  # #Ajout de la colonne du poids squelettique
+  tablo <- mutate(tablo, skw = skeleton_weight())
+
+  # changer le type de l'ID de "int" a "factor"
+  tablo$id <- factor(tablo$id)
+
+  #changer le type (mode) de la date
+  tablo$date <- ymd_hms(tablo$date)
+
+  #parse_date_time(tablo$date, locale = locale("fr"), orders = "dmy HMS")
+  tablo$date <- as_datetime(tablo$date)
+
+  # Nombre de ID different
+  nbr_id <- unique(tablo$id)
+
+  # Taux de croissance
+  tablo %>.%
+    group_by(., id) %>.%
+    arrange(., date) %>.%
+    mutate(., delta_date = difftime(date, date[1], units = "days" ),
+           ratio = round(((skw - skw[1]) / skw[1] / as.double(delta_date)) * 100, digits = 5)) -> tablo1
+
+  # a cause du group_by je ne peux pas modifier directement "tablo"
+  tablo <- mutate(tablo, ratio = tablo1$ratio)
+
+#============================================================================
 # --------------------------Selection des ID---------------------------------
 
 # Recuperation de l'ID du fichier ui.R
@@ -78,6 +103,54 @@ shinyServer(function(input, output, session) {
 
   # --------------------------Output de mon graphique---------------------------
   output$monplot <- renderPlotly({
+    tablo <- datasetInput()
+    # observeEvent(eventExpr = input$button, {
+    #   cat("probleme", input$url)
+    # })
+    #
+    # eventReactive(eventExpr = input$button, {
+    #   coral_url <- input$url
+    #   cat("ok", coral_url)
+    # })
+
+    # tablo <- read.csv(coral_url)
+
+    ### Calcul du poids squelettique :
+    #a corriger : rho_aragonite
+    #P = Pression hydrostatique, elle vaut 0 a la surface
+    skeleton_weight <- function(S = tablo$salinity, T = tablo$temperature, P = 0,
+                                buoyant_weight = tablo$weight, rho_aragonite = 2930){
+
+      rho_water <- seacarb::rho(S = S, T = T , P = P)
+      skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
+      skl_wgt <- round(skl_wgt, digits = 3)
+      return(skl_wgt)
+    }
+
+    #Ajout de la colonne du poids squelettique
+    tablo <- mutate(tablo, skw = skeleton_weight())
+
+    # changer le type de l'ID de "int" a "factor"
+    tablo$id <- factor(tablo$id)
+
+    #changer le type (mode) de la date
+    tablo$date <- ymd_hms(tablo$date)
+
+    #parse_date_time(tablo$date, locale = locale("fr"), orders = "dmy HMS")
+    tablo$date <- as_datetime(tablo$date)
+
+    # Nombre de ID different
+    nbr_id <- unique(tablo$id)
+
+    # Taux de croissance
+    tablo %>.%
+      group_by(., id) %>.%
+      arrange(., date) %>.%
+      mutate(., delta_date = difftime(date, date[1], units = "days" ),
+             ratio = round(((skw - skw[1]) / skw[1] / as.double(delta_date)) * 100, digits = 5)) -> tablo1
+
+    # a cause du group_by je ne peux pas modifier directement "tablo"
+    tablo <- mutate(tablo, ratio = tablo1$ratio)
 
     #Filtrer les lignes par rapport a ce qui a ete selectionne
     if ("All" %in% input$choix_id) {
@@ -130,9 +203,10 @@ shinyServer(function(input, output, session) {
     if ("Masse squelettique" %in% input$choix_graph) {
       formule <- "Masse squelettique"
     }
+    url_txt <- input$url
 
     var = input$choice_var
-    cat(formule)
+    cat(formule, "\n\n", url_txt)
   })
 
   # -------------------------Onglet tableau-------------------------------------
@@ -188,3 +262,4 @@ shinyServer(function(input, output, session) {
   })
 
 })
+

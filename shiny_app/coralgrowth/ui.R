@@ -4,6 +4,7 @@ library(DT)
 library(plotly)
 library(shinythemes)
 
+#if (interactive()) {
 shinyUI(
   navbarPage(
     # theme = shinytheme("slate"),
@@ -12,11 +13,16 @@ shinyUI(
              # Sidebar : volet de gauche - Input
              sidebarPanel(
                uiOutput(outputId = "ID"),# Selection des ID a afficher
-               uiOutput(outputId = "choice_plot")
-               #numericInput(
-                # inputId = "choice_gr", label = "Taux de croissance superieur a :", value = 0)
+               uiOutput(outputId = "choice_plot"), #Selection du graphique
+               selectInput("dataset", "Dataset Choices", choices = c("template", "plateau", "jordan","victor", "jessica"), selected = "plateau")
+               # selectInput("dataset", "Dataset Choices",
+               #             choices = c("dt1", "dt2", "dt3"), selected = "dt1"))
 
-             ),
+               # textInput(inputId = "url", label = "Entrer l'url du tableur"),
+               #  actionButton("button", "Show")
+
+             #   verbatimTextOutput("value")
+              ),
 
              # mainPanel : Volet de droite - Output
              mainPanel(
@@ -48,3 +54,4 @@ shinyUI(
     )
   )
 )
+
