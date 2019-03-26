@@ -10,15 +10,13 @@ SciViews::R
 
 
 
-#if (interactive()) {
-###--------------------------------------------------------------------------###
 ### ----------------------- Partie logique du serveur ---------------------- ###
 shinyServer(function(input, output, session) {
 
   #comment faire un retour a la ligne ci-dessous ?
 
   # Madeleine :
-  #coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjlhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"
+  #coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"
 
   # Jordan :
   coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
@@ -33,7 +31,7 @@ shinyServer(function(input, output, session) {
            condition = factor(condition),
            species = factor(species),
            id = factor(id, levels = 1:length(unique(id))),
-           statut = factor(statut)
+           status = factor(status)
     ) -> tablo
 
   ### Calcul du poids squelettique :
@@ -49,7 +47,7 @@ shinyServer(function(input, output, session) {
     return(skl_wgt)
   }
 
-  # #Ajout de la colonne du poids squelettique
+  # Ajout de la colonne du poids squelettique
   tablo <- mutate(tablo,
                   skw = skeleton_weight(S = salinity,
                                         T = temperature,
@@ -57,6 +55,15 @@ shinyServer(function(input, output, session) {
 
   # Nombre de ID different
   nbr_id <- unique(tablo$id)
+
+  # Conditions
+  nbr_condition <- unique(tablo$condition)
+
+  #Projet
+  nbr_projet <- unique(tablo$project)
+
+  #Projet
+  nbr_statut <- unique(tablo$status)
 
   # Taux de croissance
   tablo %>.%
@@ -91,19 +98,39 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  #----------------------Choix taux de croissance-----------------------------
+  #----------------------Choix graphique (variable y)-----------------------------
   output$choice_plot <- renderUI({
     radioButtons(inputId = "choix_graph", label = NULL,
-                 choices = c("Masse squelettique",
-                             "Masse immerge",
-                             "Taux de croissance"),
-                 selected = "Masse immerge")
+                 choices = c("Skeleton mass",
+                             "Growth rate"),
+                 selected = "Skeleton mass")
   })
 
-  # --------------------------Output de mon graphique---------------------------
+  #--------------------------Choix projet--------------------------------
+  output$choice_project <- renderUI({
+    selectInput(inputId = "choix_projet", label = "Projet :", choices = nbr_projet, multiple = TRUE, selected = nbr_projet)
+  })
+
+  #--------------------------Choix condition-----------------------------
+  output$choice_condition <- renderUI({
+    selectInput(inputId = "choix_condition", label = "Condition :", choices = nbr_condition, multiple = TRUE, selected = nbr_condition)
+  })
+  #--------------------------Choix statut--------------------------------
+  output$choice_status <- renderUI({
+    selectInput(inputId = "choix_statut", label = "Statut :", choices = nbr_statut, multiple = TRUE, selected = nbr_statut)
+  })
+
+  #-------------------------Output de mon graphique----------------------
   output$monplot <- renderPlotly({
+
+    #updateSelectInput(session, inputId = "choix_condition", choices = nbr_condition, selected = if (input$select_allnone_condition) nbr_condition)
+
+    tablo <- filter(tablo, tablo$condition %in% input$choix_condition)
+    tablo <- filter(tablo, tablo$project %in% input$choix_projet)
+    tablo <- filter(tablo, tablo$status %in% input$choix_statut)
     tablo <- filter(tablo, date >= input$dateRange[1] & date <= input$dateRange[2])
-    tablo <- filter(tablo, tablo$id %in% input$choix_id)
+    tablo <- filter(tablo, id %in% input$choix_id)
+
     #Filtrer les lignes par rapport a ce qui a ete selectionne
     if ("All" %in% input$choix_id) {
       updateCheckboxGroupInput(session,
@@ -123,42 +150,34 @@ shinyServer(function(input, output, session) {
       )
     }
 
-    if ("Masse squelettique" %in% input$choix_graph) {
+    if ("Skeleton mass" %in% input$choix_graph) {
       yvar = tablo$skw
-      y_nom_axe <- "Masse squelettique (g)"
+      y_nom_axe <- "Skeleton mass (g)"
     }
 
     # Choix du taux de croissance
-    if ("Taux de croissance" %in% input$choix_graph) {
+    if ("Growth rate" %in% input$choix_graph) {
       yvar = tablo$ratio
-      y_nom_axe <- "Taux de croissance"
+      y_nom_axe <- "Growth rate"
     }
 
-    #Choix de la masse immerge
-    if ("Masse immerge" %in% input$choix_graph) {
-      yvar = tablo$weight
-      y_nom_axe <- "Masse immerge"
-    }
     ggplot(tablo, aes(x = date, y = yvar, colour = id)) +
       geom_point(size = 2, show.legend = FALSE) + geom_line(show.legend = F) +
       xlab("Date") + ylab(y_nom_axe) -> p
 
     #Pour remettre plotly, il faut changer : renderPlotly (server.R), plotlyOutput (ui.R) et decommenter la ligne d'en dessous :
-    p <- ggplotly(p)
+    p <- ggplotly(p, show.legend = FALSE)
   })
   #------------------------------Sortie console----------------------------------#
   output$boutures_mortes <- renderPrint({
     ### Cette partie sert a compter les boutures mortes
     #Affichage de la formule utilisé
     formule <- "ok"
-    if ("Taux de croissance" %in% input$choix_graph) {
-      formule <- "Taux de croissance = ( (masse_squelettique_n - masse_squelettique_n-1) / masse_squelettique_n-1 ) / (temps_n - temps_n-1) * 100"
+    if ("Growth rate" %in% input$choix_graph) {
+      formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
     }
-    if ("Masse immerge" %in% input$choix_graph) {
-      formule <- "Masse immerge brute"
-    }
-    if ("Masse squelettique" %in% input$choix_graph) {
-      formule <- "Masse squelettique"
+    if ("Skeleton mass" %in% input$choix_graph) {
+      formule <- "Skeleton mass"
     }
 
 
