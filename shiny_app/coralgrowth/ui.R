@@ -12,26 +12,26 @@ shinyUI(
     tabPanel("Plot", # Onglet principal 1
              # Sidebar : volet de gauche - Input
              sidebarPanel(
-               uiOutput(outputId = "ID"),# Selection des ID a afficher
-               uiOutput(outputId = "choice_plot"), #Selection du graphique
+               uiOutput(outputId = "u_id"),# Selection des ID a afficher
+               uiOutput(outputId = "u_choice_plot"), #Selection du graphique
 
                # checkboxInput(inputId = "select_allnone_condition",
                #               label = "Select All/None",
                #               value = TRUE),
-               uiOutput(outputId = "choice_project"),
-               uiOutput(outputId = "choice_condition"),
-               uiOutput(outputId = "choice_status"),
-               uiOutput(outputId = "choice_date")  #selection date
+               uiOutput(outputId = "u_choice_project"),
+               uiOutput(outputId = "u_choice_condition"),
+               uiOutput(outputId = "u_choice_status"),
+               uiOutput(outputId = "u_choice_date")  #selection date
              ),
 
              # mainPanel : Volet de droite - Output
              mainPanel(
                tabsetPanel( # Sous-onglet
-                 tabPanel("Main plot",
-                          plotlyOutput(outputId = "monplot"),
+                 tabPanel(title = "Main plot",
+                          plotlyOutput(outputId = "u_plot"),
                           #sortie console
-                          verbatimTextOutput(outputId = "boutures_mortes")),
-                 tabPanel("Test plot")
+                          verbatimTextOutput(outputId = "u_info")),
+                 tabPanel(title = "Test plot")
                )
              )
     ),
@@ -39,16 +39,16 @@ shinyUI(
              # sidebar : volet de gauche - Input
              sidebarPanel(
                #uiOutput(outputId = "var_weight") # Choix du filtre à appliquer
-               uiOutput(outputId = "choice_table"),
-               uiOutput(outputId = "subchoice_table"),
-               numericInput(
-                 inputId = "choice_var", label = "Skeleton mass higher than :", value = 2),
-               verbatimTextOutput(outputId = "var_txt")
+               uiOutput(outputId = "u_choice_table"),
+               uiOutput(outputId = "u_subchoice_table"),
+               numericInput(inputId = "ui_choice_var",
+                            label = "Skeleton mass higher than :",
+                            value = 2)
              ),
              # mainPanel : Volet de droite - Output
              mainPanel(
                tabsetPanel(
-                 tabPanel("Table", DT::dataTableOutput("tableau"))
+                 tabPanel(title = "Table", DT::dataTableOutput("u_table"))
                )
              )
     )

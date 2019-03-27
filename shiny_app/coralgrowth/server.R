@@ -13,8 +13,6 @@ SciViews::R
 ### ----------------------- Partie logique du serveur ---------------------- ###
 shinyServer(function(input, output, session) {
 
-  #comment faire un retour a la ligne ci-dessous ?
-
   # Madeleine :
   #coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"
 
@@ -32,7 +30,7 @@ shinyServer(function(input, output, session) {
            species = factor(species),
            id = factor(id, levels = 1:length(unique(id))),
            status = factor(status)
-    ) -> tablo
+    ) -> df
 
   ### Calcul du poids squelettique :
   #a corriger : rho_aragonite
@@ -48,200 +46,221 @@ shinyServer(function(input, output, session) {
   }
 
   # Ajout de la colonne du poids squelettique
-  tablo <- mutate(tablo,
+  df <- mutate(df,
                   skw = skeleton_weight(S = salinity,
                                         T = temperature,
                                         buoyant_weight = weight))
 
   # Nombre de ID different
-  nbr_id <- unique(tablo$id)
+  nbr_id <- unique(df$id)
 
   # Conditions
-  nbr_condition <- unique(tablo$condition)
+  nbr_condition <- unique(df$condition)
 
-  #Projet
-  nbr_projet <- unique(tablo$project)
+  # Projet
+  nbr_projet <- unique(df$project)
 
-  #Projet
-  nbr_statut <- unique(tablo$status)
+  # Statut
+  nbr_statut <- unique(df$status)
 
   # Taux de croissance
-  tablo %>.%
+  df %>.%
     group_by(., id) %>.%
     arrange(., date) %>.%
     mutate(., delta_date = as.numeric(difftime(date, date[1], units = "days")),
            ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5)) %>.%
-    ungroup(.) -> tablo
+    ungroup(.) -> df
 
 
-  #===========================__Fin du mainbloc__============================
+  #========================__Fin du mainbloc__===========================
 
- # --------------------------Selection des dates---------------------------
-  output$choice_date <- renderUI({
-    dateRangeInput(inputId = "dateRange",
+  # ----------------------- Selection des dates ---------------------------
+  output$u_choice_date <- renderUI({
+
+    dateRangeInput(inputId = "s_choice_date",
                    label = 'Date range input: yyyy-mm-dd',
-                   start = min(tablo$date), end = max(tablo$date)
+                   start = min(df$date), end = max(df$date)
     )
   })
-  # --------------------------Selection des ID---------------------------------
+  # ----------------------- Selection des ID -------------------------------
 
   # Recuperation de l'ID du fichier ui.R
-  output$ID <- renderUI({
+  output$u_id <- renderUI({
 
     #Menu deroulant
     dropdown(
-      checkboxGroupInput(inputId = "choix_id", label = NULL,
+      checkboxGroupInput(inputId = "s_id",
+                         label = NULL,
                          choices = c("All", "None", nbr_id),
                          selected = c("All")),
       width = "200px", size = "default", label = "ID",
-      tooltip = tooltipOptions(placement = "right", title = "Choix des ID")
+      tooltip = tooltipOptions(placement = "right", title = "Choose ID")
     )
   })
 
-  #----------------------Choix graphique (variable y)-----------------------------
-  output$choice_plot <- renderUI({
-    radioButtons(inputId = "choix_graph", label = NULL,
+  #----------------------Choix graphique (variable y)-----------------------
+  output$u_choice_plot <- renderUI({
+
+    radioButtons(inputId = "s_choice_plot", label = NULL,
                  choices = c("Skeleton mass",
                              "Growth rate"),
                  selected = "Skeleton mass")
   })
 
-  #--------------------------Choix projet--------------------------------
-  output$choice_project <- renderUI({
-    selectInput(inputId = "choix_projet", label = "Projet :", choices = nbr_projet, multiple = TRUE, selected = nbr_projet)
+  #--------------------------Choix projet----------------------------------
+  output$u_choice_project <- renderUI({
+
+    selectInput(inputId = "s_choice_project",
+                label = "Projet :",
+                choices = nbr_projet,
+                multiple = TRUE,
+                selected = nbr_projet)
   })
 
-  #--------------------------Choix condition-----------------------------
-  output$choice_condition <- renderUI({
-    selectInput(inputId = "choix_condition", label = "Condition :", choices = nbr_condition, multiple = TRUE, selected = nbr_condition)
+  #-------------------------Choix condition--------------------------------
+  output$u_choice_condition <- renderUI({
+
+    selectInput(inputId = "s_choice_condition",
+                label = "Condition :",
+                choices = nbr_condition,
+                multiple = TRUE,
+                selected = nbr_condition)
   })
-  #--------------------------Choix statut--------------------------------
-  output$choice_status <- renderUI({
-    selectInput(inputId = "choix_statut", label = "Statut :", choices = nbr_statut, multiple = TRUE, selected = nbr_statut)
+  #--------------------------Choix statut---------------------------------
+  output$u_choice_status <- renderUI({
+
+    selectInput(inputId = "s_choice_status",
+                label = "Statut :",
+                choices = nbr_statut,
+                multiple = TRUE,
+                selected = nbr_statut)
   })
 
   #-------------------------Output de mon graphique----------------------
-  output$monplot <- renderPlotly({
+  output$u_plot <- renderPlotly({
 
     #updateSelectInput(session, inputId = "choix_condition", choices = nbr_condition, selected = if (input$select_allnone_condition) nbr_condition)
+    df %>.%
+      filter(.,
+             project %in% input$s_choice_project,
+             condition %in% input$s_choice_condition,
+             status %in% input$s_choice_status,
+             date >= input$s_choice_date[1] & date <= input$s_choice_date[2],
+             id %in% input$s_id
+             ) -> df
 
-    tablo <- filter(tablo, tablo$condition %in% input$choix_condition)
-    tablo <- filter(tablo, tablo$project %in% input$choix_projet)
-    tablo <- filter(tablo, tablo$status %in% input$choix_statut)
-    tablo <- filter(tablo, date >= input$dateRange[1] & date <= input$dateRange[2])
-    tablo <- filter(tablo, id %in% input$choix_id)
+    # df <- filter(df, df$project %in% input$s_choice_project)
+    # df <- filter(df, df$condition %in% input$s_choice_condition)
+    # df <- filter(df, df$status %in% input$s_choice_status)
+    # df <- filter(df, date >= input$s_choice_date[1] & date <= input$s_choice_date[2])
+    # df <- filter(df, id %in% input$s_id)
 
     #Filtrer les lignes par rapport a ce qui a ete selectionne
-    if ("All" %in% input$choix_id) {
+    if ("All" %in% input$s_id) {
       updateCheckboxGroupInput(session,
-                               inputId = "choix_id",
+                               inputId = "s_id",
                                label = "select All",
                                choices = c("All", "None", nbr_id),
                                selected = c( nbr_id)
       )
     }
 
-    if ("None" %in% input$choix_id) {
+    if ("None" %in% input$s_id) {
       updateCheckboxGroupInput(session,
-                               inputId = "choix_id",
+                               inputId = "s_id",
                                label = "select All",
                                choices = c("All", nbr_id),
                                selected = NULL
       )
     }
 
-    if ("Skeleton mass" %in% input$choix_graph) {
-      yvar = tablo$skw
-      y_nom_axe <- "Skeleton mass (g)"
+    if ("Skeleton mass" %in% input$s_choice_plot) {
+      yvar = df$skw
+      y_axis_name <- "Skeleton mass (g)"
     }
 
     # Choix du taux de croissance
-    if ("Growth rate" %in% input$choix_graph) {
-      yvar = tablo$ratio
-      y_nom_axe <- "Growth rate"
+    if ("Growth rate" %in% input$s_choice_plot) {
+      yvar = df$ratio
+      y_axis_name <- "Growth rate"
     }
 
-    ggplot(tablo, aes(x = date, y = yvar, colour = id)) +
-      geom_point(size = 2, show.legend = FALSE) + geom_line(show.legend = F) +
-      xlab("Date") + ylab(y_nom_axe) -> p
+    ggplot(df, aes(x = date, y = yvar, colour = id)) +
+      geom_point(size = 2, show.legend = FALSE) +
+      geom_line(show.legend = FALSE) +
+      xlab("Date") + ylab(y_axis_name) -> p
 
     #Pour remettre plotly, il faut changer : renderPlotly (server.R), plotlyOutput (ui.R) et decommenter la ligne d'en dessous :
     p <- ggplotly(p, show.legend = FALSE)
   })
   #------------------------------Sortie console----------------------------------#
-  output$boutures_mortes <- renderPrint({
-    ### Cette partie sert a compter les boutures mortes
+  output$u_info <- renderPrint({
+
     #Affichage de la formule utilisé
-    formule <- "ok"
-    if ("Growth rate" %in% input$choix_graph) {
+
+    formule <- ""
+    if ("Growth rate" %in% input$s_choice_plot) {
       formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
     }
-    if ("Skeleton mass" %in% input$choix_graph) {
+    if ("Skeleton mass" %in% input$s_choice_plot) {
       formule <- "Skeleton mass"
     }
-
-
-
     cat(formule, "\n")
   })
 
   # -------------------------Onglet tableau-------------------------------------
   # Recuperation de l'ID du fichier ui.R
-  output$choice_table <- renderUI({
-    radioButtons(inputId = "choix_table", label = "Filtrer",
+  output$u_choice_table <- renderUI({
+
+    radioButtons(inputId = "s_choice_table", label = "Filtrer",
                  choices = c("Yes", "No"),
                  selected = "Yes")
   })
 
-  output$subchoice_table <- renderUI({
+  output$u_subchoice_table <- renderUI({
+
     dropdown(
-      radioButtons(inputId = "souschoix_table",
+      radioButtons(inputId = "s_subchoice_table",
                    label = "by",
                    choices = c("skeleton weight", "growth rates"),
                    selected = c("skeleton weight")),
-      width = "200px", size = "default", label = "Variable type",
+      width = "200px",
+      size = "default",
+      label = "Variable type",
       tooltip = tooltipOptions(placement = "right", title = "Choice variable type")
     )
   })
 
+  output$u_table <- DT::renderDataTable({
 
-  output$var_txt <- renderPrint({
-    var = input$choice_var
-    # cat("var :", var)
-  })
-
-  output$tableau <- DT::renderDataTable({
-
-    if ("Yes" %in% input$choix_table) {
+    if ("Yes" %in% input$s_choice_table) {
       updateRadioButtons(session,
-                         inputId = "choix_table2",
-                         label = "filtrer?",
-                         choices = input$choix_table ,
-                         selected = input$choix_table)
-      var = input$choice_var
-
-      if ("skeleton weight" %in% input$souschoix_table) {
-        tablo %>.%
-          filter(., skw > var, date == max(tablo$date)) %>.%
+                         inputId = "se_choice_filter",
+                         label = NULL,
+                         choices = input$s_choice_table ,
+                         selected = input$s_choice_table)
+      var = input$ui_choice_var
+      if ("skeleton weight" %in% input$s_subchoice_table) {
+        df %>.%
+          filter(., skw > var, date == max(df$date)) %>.%
           arrange(., desc(skw)) %>.%
-          group_by(., id) -> tablo
+          group_by(., id) -> df
       }
-      if ("growth rates" %in% input$souschoix_table) {
-        tablo %>.%
-          filter(., ratio > var, date == max(tablo$date)) %>.%
+      if ("growth rates" %in% input$s_subchoice_table) {
+        df %>.%
+          filter(., ratio > var, date == max(df$date)) %>.%
           arrange(., desc(ratio)) %>.%
-          group_by(., id) -> tablo
+          group_by(., id) -> df
       }
     }
 
-    if ("No" %in% input$choix_table) {
+    if ("No" %in% input$s_choice_table) {
       updateRadioButtons(session,
-                         inputId = "choix_table2",
-                         label = "filtrer?",
-                         choices = input$choix_table ,
+                         inputId = "se_choice_filter",
+                         label = NULL,
+                         choices = input$s_choice_table ,
                          selected = NULL)
     }
-    DT::datatable(tablo)
+    DT::datatable(df)
   })
-
 })
