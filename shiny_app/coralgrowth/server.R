@@ -24,7 +24,8 @@ shinyServer(function(input, output, session) {
                              weight = col_double(),
                              temperature = col_double(),
                              salinity = col_double() )) %>.%
-    mutate(., project = factor(project), author = factor(author),
+    mutate(.,
+           project = factor(project), author = factor(author),
            aqua = factor(aqua),
            condition = factor(condition),
            species = factor(species),
@@ -38,7 +39,6 @@ shinyServer(function(input, output, session) {
   skeleton_weight <- function(S, T, P = 0,
                               buoyant_weight,
                               rho_aragonite = 2930){
-
     rho_water <- seacarb::rho(S = S, T = T , P = P)
     skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
     skl_wgt <- round(skl_wgt, digits = 3)
@@ -61,7 +61,7 @@ shinyServer(function(input, output, session) {
   nbr_projet <- unique(df$project)
 
   # Statut
-  nbr_statut <- unique(df$status)
+  nbr_status <- unique(df$status)
 
   # Taux de croissance
   df %>.%
@@ -78,7 +78,7 @@ shinyServer(function(input, output, session) {
   output$u_choice_date <- renderUI({
 
     dateRangeInput(inputId = "s_choice_date",
-                   label = 'Date range input: yyyy-mm-dd',
+                   label = 'Date range input: ',
                    start = min(df$date), end = max(df$date)
     )
   })
@@ -130,10 +130,10 @@ shinyServer(function(input, output, session) {
   output$u_choice_status <- renderUI({
 
     selectInput(inputId = "s_choice_status",
-                label = "Statut :",
-                choices = nbr_statut,
+                label = "Status :",
+                choices = nbr_status,
                 multiple = TRUE,
-                selected = nbr_statut)
+                selected = nbr_status)
   })
 
   #-------------------------Output de mon graphique----------------------
@@ -193,7 +193,7 @@ shinyServer(function(input, output, session) {
     #Pour remettre plotly, il faut changer : renderPlotly (server.R), plotlyOutput (ui.R) et decommenter la ligne d'en dessous :
     p <- ggplotly(p, show.legend = FALSE)
   })
-  #------------------------------Sortie console----------------------------------#
+  #------------------------------Sortie console-------------------------------#
   output$u_info <- renderPrint({
 
     #Affichage de la formule utilisé
@@ -208,13 +208,13 @@ shinyServer(function(input, output, session) {
     cat(formule, "\n")
   })
 
-  # -------------------------Onglet tableau-------------------------------------
+  # -------------------------Onglet tableau-----------------------------------
   # Recuperation de l'ID du fichier ui.R
   output$u_choice_table <- renderUI({
 
     radioButtons(inputId = "s_choice_table", label = "Filtrer",
                  choices = c("Yes", "No"),
-                 selected = "Yes")
+                 selected = "No")
   })
 
   output$u_subchoice_table <- renderUI({
