@@ -1,0 +1,191 @@
+---
+title: "Comparaison du gain de poids"
+author: "Jordan"
+date: "3/27/2019"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+#package
+library(shiny)
+library(ggplot2)
+library(lubridate)
+library(tidyverse)
+library(dplyr)
+library(plotly)
+library(googlesheets)
+library(flow)
+library(chart)
+SciViews::R
+
+```
+
+
+
+```{r import_data}
+  #Jordan
+coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
+  read_csv(coral_url,
+           col_types = cols( .default = col_character(),
+                             date = col_datetime(),
+                             weight = col_double(),
+                             temperature = col_double(),
+                             salinity = col_double() )) %>.%
+    mutate(., project = factor(project), author = factor(author),
+           aqua = factor(aqua),
+           condition = factor(condition),
+           species = factor(species),
+           id = factor(id, levels = 1:length(unique(id))),
+           status = factor(status)
+    ) -> df1
+  
+  #Raphael
+  coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"
+  read_csv(coral_url,
+           col_types = cols( .default = col_character(),
+                             date = col_datetime(),
+                             weight = col_double(),
+                             temperature = col_double(),
+                             salinity = col_double() )) %>.%
+    mutate(., project = factor(project), author = factor(author),
+           aqua = factor(aqua),
+           condition = factor(condition),
+           species = factor(species),
+           id = factor(id, levels = 1:length(unique(id))),
+           status = factor(status)
+    ) -> df2
+```
+
+
+
+```{r wrangling}
+skeleton_weight <- function(S, T, P = 0,
+                              buoyant_weight,
+                              rho_aragonite = 2930){
+    
+    rho_water <- seacarb::rho(S = S, T = T , P = P)
+    skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
+    skl_wgt <- round(skl_wgt, digits = 3)
+    return(skl_wgt)
+  }
+  #### df1
+  # Ajout de la colonne du poids squelettique
+  df1 <- mutate(df1,
+               skw = skeleton_weight(S = salinity,
+                                     T = temperature,
+                                     buoyant_weight = weight))
+   # Taux de croissance
+  df1 %>.%
+    group_by(., id) %>.%
+    arrange(., date) %>.%
+    mutate(., delta_date = as.numeric(difftime(date, date[1], units = "days")),
+           ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5)) %>.%
+    ungroup(.) -> df1
+  
+  
+  df1 %>.%
+    group_by(., id) %>.%
+    arrange(., date) %>.%
+    mutate(., delta_skw = round((skw - skw[1]) / skw[1],digits = 2) ) %>.%
+    ungroup(.) -> df1
+  
+  #arrondir delta
+  df1$delta_date <- round(df1$delta_date, 0)
+  
+  #### df2
+  # Ajout de la colonne du poids squelettique
+  df2 <- mutate(df2,
+               skw = skeleton_weight(S = salinity,
+                                     T = temperature,
+                                     buoyant_weight = weight))
+   # Taux de croissance
+  df2 %>.%
+    group_by(., id) %>.%
+    arrange(., date) %>.%
+    mutate(., delta_date = as.numeric(difftime(date, date[1], units = "days")),
+           ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5)) %>.%
+    ungroup(.) -> df2
+  
+  
+  df2 %>.%
+    group_by(., id) %>.%
+    arrange(., date) %>.%
+    mutate(., delta_skw = round((skw - skw[1]) / skw[1],digits = 2) ) %>.%
+    ungroup(.) -> df2
+  
+  #arrondir delta
+  df2$delta_date <- round(df2$delta_date, 0)
+
+```
+
+### Poids squelettique jour 0
+```{r}
+ df1 %>.%
+    filter(., delta_date == 0) %>.%
+    ggplot(., aes(x = skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 2.6)) -> p1
+  
+ df2 %>.%
+    filter(., delta_date == 0) %>.%
+    ggplot(., aes(x = skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 2.6)) -> p2
+ 
+  chart::combine_charts(list(p1, p2))
+  
+```
+
+### Poids squelettique jour 35
+```{r}
+ df1 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 2.6)) -> p1
+  
+ df2 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 2.6)) -> p2
+ 
+  chart::combine_charts(list(p1, p2))
+  
+```
+### Delta poids squelettique jour 35
+```{r, echo=FALSE}
+ df1 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = delta_skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 0.7)) -> p1
+  
+ df2 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = delta_skw)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 0.7))  -> p2
+ 
+ chart::combine_charts(list(p1, p2))
+```
+
+### Taux de croissance jour 35
+```{r}
+df1 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = ratio)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 0.7)) -> p1
+  
+ df2 %>.%
+    filter(., delta_date == 35) %>.%
+    ggplot(., aes(x = ratio)) + 
+    geom_histogram() +
+  scale_x_continuous(c(0, 0.7)) -> p2
+ 
+
+ chart::combine_charts(list(p1, p2))
+```
+

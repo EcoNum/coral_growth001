@@ -6,11 +6,12 @@ library(dplyr)
 library(plotly)
 library(googlesheets)
 library(flow)
+library(shinyWidgets)
 SciViews::R
 
 
 
-### ----------------------- Partie logique du serveur ---------------------- ###
+### ----------------------__Partie logique du serveur__----------------------
 shinyServer(function(input, output, session) {
 
   # Madeleine :
@@ -18,6 +19,8 @@ shinyServer(function(input, output, session) {
 
   # Jordan :
   coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
+
+  #Importation et format des colonnes
   read_csv(coral_url,
            col_types = cols( .default = col_character(),
                              date = col_datetime(),
@@ -67,44 +70,58 @@ shinyServer(function(input, output, session) {
   df %>.%
     group_by(., id) %>.%
     arrange(., date) %>.%
-    mutate(., delta_date = as.numeric(difftime(date, date[1], units = "days")),
-           ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5)) %>.%
+    mutate(., delta_date = (as.numeric(difftime(date, date[1], units = "days"))),
+           ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5),
+           delta_date = round(delta_date, digits = 0)) %>.%
     ungroup(.) -> df
 
 
-  #========================__Fin du mainbloc__===========================
+  ### ------------------__Fin partie logique du serveur__ ------------------ ###
 
-  # ----------------------- Selection des dates ---------------------------
+  #============================================================================#
+
+  # --------------------- Selection des dates -------------------------
   output$u_choice_date <- renderUI({
 
     dateRangeInput(inputId = "s_choice_date",
                    label = 'Date range input: ',
-                   start = min(df$date), end = max(df$date)
+                   start = min(df$date), end = max(df$date),
+                   min = min(df$date), max = Sys.Date()
     )
   })
-  # ----------------------- Selection des ID -------------------------------
+  # ----------------------- Selection X var ---------------------------
+  output$u_choice_nbr_day <- renderUI({
 
-  # Recuperation de l'ID du fichier ui.R
-  output$u_id <- renderUI({
-
-    #Menu deroulant
-    dropdown(
-      checkboxGroupInput(inputId = "s_id",
-                         label = NULL,
-                         choices = c("All", "None", nbr_id),
-                         selected = c("All")),
-      width = "200px", size = "default", label = "ID",
-      tooltip = tooltipOptions(placement = "right", title = "Choose ID")
+    radioButtons(inputId = "s_choice_nbr_day",
+                 label = 'X var : ',
+                 choices = c("Date", "Number day"),
+                 selected = "Number day"
     )
   })
 
-  #----------------------Choix graphique (variable y)-----------------------
+  #--------------------------Choix id---------------------------------
+  output$u_choice_id <- renderUI({
+    pickerInput(inputId = "s_choice_id",
+                label = "Choice ID :",
+                choices = nbr_id,
+                options = list(`actions-box` = TRUE),
+                multiple = T,
+                selected = nbr_id)
+
+  })
+
+  # ----------------------- Selection des ID -----------------------------
+  observe({
+    print(input$s_choice_id)
+  })
+
+  #----------------------Choix graphique (variable y)---------------------
   output$u_choice_plot <- renderUI({
 
-    radioButtons(inputId = "s_choice_plot", label = NULL,
+    radioButtons(inputId = "s_choice_plot", label = "Y var :",
                  choices = c("Skeleton mass",
                              "Growth rate"),
-                 selected = "Skeleton mass")
+                 selected = "Growth rate")
   })
 
   #--------------------------Choix projet----------------------------------
@@ -126,6 +143,7 @@ shinyServer(function(input, output, session) {
                 multiple = TRUE,
                 selected = nbr_condition)
   })
+
   #--------------------------Choix statut---------------------------------
   output$u_choice_status <- renderUI({
 
@@ -136,44 +154,22 @@ shinyServer(function(input, output, session) {
                 selected = nbr_status)
   })
 
-  #-------------------------Output de mon graphique----------------------
+
+
+  ###-----------------------Output de mon graphique----------------------###
   output$u_plot <- renderPlotly({
 
-    #updateSelectInput(session, inputId = "choix_condition", choices = nbr_condition, selected = if (input$select_allnone_condition) nbr_condition)
+# Filtre en fonction des choix
     df %>.%
       filter(.,
              project %in% input$s_choice_project,
              condition %in% input$s_choice_condition,
              status %in% input$s_choice_status,
              date >= input$s_choice_date[1] & date <= input$s_choice_date[2],
-             id %in% input$s_id
+             id %in% input$s_choice_id
              ) -> df
 
-    # df <- filter(df, df$project %in% input$s_choice_project)
-    # df <- filter(df, df$condition %in% input$s_choice_condition)
-    # df <- filter(df, df$status %in% input$s_choice_status)
-    # df <- filter(df, date >= input$s_choice_date[1] & date <= input$s_choice_date[2])
-    # df <- filter(df, id %in% input$s_id)
-
-    #Filtrer les lignes par rapport a ce qui a ete selectionne
-    if ("All" %in% input$s_id) {
-      updateCheckboxGroupInput(session,
-                               inputId = "s_id",
-                               label = "select All",
-                               choices = c("All", "None", nbr_id),
-                               selected = c( nbr_id)
-      )
-    }
-
-    if ("None" %in% input$s_id) {
-      updateCheckboxGroupInput(session,
-                               inputId = "s_id",
-                               label = "select All",
-                               choices = c("All", nbr_id),
-                               selected = NULL
-      )
-    }
-
+    # Choix de la masse squelettique
     if ("Skeleton mass" %in% input$s_choice_plot) {
       yvar = df$skw
       y_axis_name <- "Skeleton mass (g)"
@@ -185,19 +181,29 @@ shinyServer(function(input, output, session) {
       y_axis_name <- "Growth rate"
     }
 
-    ggplot(df, aes(x = date, y = yvar, colour = id)) +
+    # Choix par nombre de jour
+    if ("Number day" %in% input$s_choice_nbr_day) {
+      xvar = df$delta_date
+    }
+
+    # Choix par date du jour
+    if ("Date" %in% input$s_choice_nbr_day) {
+      xvar = df$date
+    }
+
+    ggplot(df, aes(x = xvar, y = yvar, colour = id)) +
       geom_point(size = 2, show.legend = FALSE) +
       geom_line(show.legend = FALSE) +
       xlab("Date") + ylab(y_axis_name) -> p
 
-    #Pour remettre plotly, il faut changer : renderPlotly (server.R), plotlyOutput (ui.R) et decommenter la ligne d'en dessous :
     p <- ggplotly(p, show.legend = FALSE)
   })
-  #------------------------------Sortie console-------------------------------#
+
+
+  ###-----------------------------Sortie console-----------------------------###
   output$u_info <- renderPrint({
 
     #Affichage de la formule utilisé
-
     formule <- ""
     if ("Growth rate" %in% input$s_choice_plot) {
       formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
@@ -205,10 +211,22 @@ shinyServer(function(input, output, session) {
     if ("Skeleton mass" %in% input$s_choice_plot) {
       formule <- "Skeleton mass"
     }
-    cat(formule, "\n")
+
+    # Calculs boutures mortes
+    nbr_dead <- as.numeric(count(unique(subset(df, status == "dead",id))))
+    death_rate <- as.numeric(round((nbr_dead / length(levels(nbr_id))) * 100, digits = 2))
+    id_dead <- unique(subset(df, status == "dead",id))
+    id_dead <- id_dead$id
+
+    cat("Y var : ", formule, "\n", "\n",
+        "Species :", as.character(unique(df$species)), "\n", "\n",
+        "Number of dead cuttings :",  nbr_dead, "\n",
+        "ID dead cuttings : ", paste(id_dead, collapse = ", "), "\n",
+        "Death rate :", death_rate, "%")
   })
 
-  # -------------------------Onglet tableau-----------------------------------
+
+  # ---------------------------Onglet tableau----------------------------------#
   # Recuperation de l'ID du fichier ui.R
   output$u_choice_table <- renderUI({
 
@@ -227,8 +245,18 @@ shinyServer(function(input, output, session) {
       width = "200px",
       size = "default",
       label = "Variable type",
-      tooltip = tooltipOptions(placement = "right", title = "Choice variable type")
+      tooltip = tooltipOptions(placement = "right", title = "Choice variable type"),
+      up = TRUE
     )
+  })
+
+  output$u_choice_var <- renderUI({
+
+    numericInput(inputId = "s_choice_var",
+                 label = if (input$s_subchoice_table == "growth rates")
+                   {"Growth rates higher than :"}
+                 else {"Skeleton weight higher than :"},
+                 value = 1)
   })
 
   output$u_table <- DT::renderDataTable({
@@ -239,7 +267,7 @@ shinyServer(function(input, output, session) {
                          label = NULL,
                          choices = input$s_choice_table ,
                          selected = input$s_choice_table)
-      var = input$ui_choice_var
+      var = input$s_choice_var
       if ("skeleton weight" %in% input$s_subchoice_table) {
         df %>.%
           filter(., skw > var, date == max(df$date)) %>.%
@@ -261,6 +289,12 @@ shinyServer(function(input, output, session) {
                          choices = input$s_choice_table ,
                          selected = NULL)
     }
+
     DT::datatable(df)
   })
 })
+
+#Note : dateRange max (ojd)
+#       delta_date fait un arrondi
+#       higher than => la valeur par défaut écrase en changeant le filtre
+#
