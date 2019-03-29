@@ -70,8 +70,9 @@ shinyServer(function(input, output, session) {
   df %>.%
     group_by(., id) %>.%
     arrange(., date) %>.%
-    mutate(., delta_date = (as.numeric(difftime(date, date[1], units = "days"))),
-           ratio = round(((skw - skw[1]) / skw[1] / delta_date) * 100, digits = 5),
+    mutate(.,
+           delta_date = (as.numeric(difftime(date, date[1], units = "days"))),
+           ratio = round(((skw - skw[1]) / skw[1] / delta_date)*100, digits = 3),
            delta_date = round(delta_date, digits = 0)) %>.%
     ungroup(.) -> df
 
@@ -128,7 +129,7 @@ shinyServer(function(input, output, session) {
   output$u_choice_project <- renderUI({
 
     selectInput(inputId = "s_choice_project",
-                label = "Projet :",
+                label = "Project :",
                 choices = nbr_projet,
                 multiple = TRUE,
                 selected = nbr_projet)
@@ -227,7 +228,11 @@ shinyServer(function(input, output, session) {
 
 
   # ---------------------------Onglet tableau----------------------------------#
-  # Recuperation de l'ID du fichier ui.R
+  output$u_table <- renderDT({
+    datatable(df, filter = "top")
+  })
+
+   # Recuperation de l'ID du fichier ui.R
   output$u_choice_table <- renderUI({
 
     radioButtons(inputId = "s_choice_table", label = "Filtrer",
@@ -245,8 +250,7 @@ shinyServer(function(input, output, session) {
       width = "200px",
       size = "default",
       label = "Variable type",
-      tooltip = tooltipOptions(placement = "right", title = "Choice variable type"),
-      up = TRUE
+      tooltip = tooltipOptions(placement = "right", title = "Choice variable type")
     )
   })
 
@@ -257,40 +261,6 @@ shinyServer(function(input, output, session) {
                    {"Growth rates higher than :"}
                  else {"Skeleton weight higher than :"},
                  value = 1)
-  })
-
-  output$u_table <- DT::renderDataTable({
-
-    if ("Yes" %in% input$s_choice_table) {
-      updateRadioButtons(session,
-                         inputId = "se_choice_filter",
-                         label = NULL,
-                         choices = input$s_choice_table ,
-                         selected = input$s_choice_table)
-      var = input$s_choice_var
-      if ("skeleton weight" %in% input$s_subchoice_table) {
-        df %>.%
-          filter(., skw > var, date == max(df$date)) %>.%
-          arrange(., desc(skw)) %>.%
-          group_by(., id) -> df
-      }
-      if ("growth rates" %in% input$s_subchoice_table) {
-        df %>.%
-          filter(., ratio > var, date == max(df$date)) %>.%
-          arrange(., desc(ratio)) %>.%
-          group_by(., id) -> df
-      }
-    }
-
-    if ("No" %in% input$s_choice_table) {
-      updateRadioButtons(session,
-                         inputId = "se_choice_filter",
-                         label = NULL,
-                         choices = input$s_choice_table ,
-                         selected = NULL)
-    }
-
-    DT::datatable(df)
   })
 })
 

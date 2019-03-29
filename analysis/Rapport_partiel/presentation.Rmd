@@ -36,11 +36,11 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (voir 
 # Présentation de l'équipe
 
 ## Philippe Grosjean
-
-\begin{figure}[h!]
-\includegraphics[width=4cm]{../image/Grosjean2.jpg}
-\caption{Monsieur Philippe Grosjean, chef du service d'EcoNum.}
-\end{figure}
+![Monsieur Philippe Grosjean, chef du service d'EcoNum.](../image/Grosjean2.jpg){width=4cm}
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=4cm]{../image/Grosjean2.jpg} -->
+<!-- \caption{Monsieur Philippe Grosjean, chef du service d'EcoNum.} -->
+<!-- \end{figure} -->
 
 
 Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs projets de recherches sur l'identification automatique du plancton par des algorithmes de *machine learning*, sur l'écophysiologie des scléractiniaires et sur le développement de logiciel pour l'écologie.
@@ -54,10 +54,11 @@ Il encadre 1 doctorant et 2 étudiants en masters.
 
 ## Guyliann Engels
 
-\begin{figure}[h!]
-\includegraphics[width=4cm]{../image/Guyliann.jpg}
-\caption{Guyliann Engels, doctorant encadrant le stage.}
-\end{figure}
+![Guyliann Engels, doctorant encadrant le stage.](../image/Guyliann.jpg){width=4cm}
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=4cm]{../image/Guyliann.jpg} -->
+<!-- \caption{Guyliann Engels, doctorant encadrant le stage.} -->
+<!-- \end{figure} -->
 
 
 Guyliann Engels est chercheur et assistant au sein du service. Il effectue sa thèse sur l'écophysiologie du corail, où il utilise un mésocosme pour étudier les stress des coraux engendrés par la modification de leurs nutriments essentiels (composés azotés et phosphorés). Il utilise fréquemment les outils de statistiques R et RStudio (avec R Markdown, R Notebook).
@@ -66,28 +67,29 @@ Il encadre mon travail.
 
 ## Antoine Batigny
 
-\begin{figure}[h!]
-\includegraphics[width=4cm]{../image/antoine2.jpg}
-\caption{Technicien du service d'EcoNum.}
-\end{figure}
+![Technicien du service d'EcoNum.](../image/antoine2.jpg){width=4cm}
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=4cm]{../image/antoine2.jpg} -->
+<!-- \caption{Technicien du service d'EcoNum.} -->
+<!-- \end{figure} -->
 
 Antoine Batigny est le technicien du service. Il s'occupe principalement de gérer les mésocosmes. 
 
 ## Rémy Dugauquier
-
-\begin{figure}[h!]
-\includegraphics[width=4cm]{../image/remy.jpg}
-\caption{Etudiant en master}
-\end{figure}
+![Etudiant en master](../image/remy.jpg){width=4cm}
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=4cm]{../image/remy.jpg} -->
+<!-- \caption{Etudiant en master} -->
+<!-- \end{figure} -->
 
 Rémy Dugauquier est en dernière année du master en biologie des organismes et écologie. Il réalise son T.F.E. sur l'écologie des organismes planctoniques en baie de Calvi, France. 
 
 
 ## Madeleine Gille
-
-\begin{figure}[h!]
-\includegraphics[width=4cm]{../image/madeleine.jpg}
-\caption{Etudiante en master}
-\end{figure}
+![Etudiante en master](../image/madeleine.jpg){width=4cm}
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=4cm]{../image/madeleine.jpg} -->
+<!-- \caption{Etudiante en master} -->
+<!-- \end{figure} -->
 
 Madeleine Gille est étudiante en dernière année du master en biologie des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un stress salins (hyper et hyposalin) sur *Seriatopora hystrix* (Dana, 1815). 

@@ -8,7 +8,7 @@ library(shinyWidgets)
 
 shinyUI(
   navbarPage(
-    theme = shinytheme("slate"),
+    #theme = shinytheme("slate"),
     title = "Coral growth", # Titre onglet 1
     #### Onglet principal : Graphique
     tabPanel(title = "Plot",
@@ -27,25 +27,23 @@ shinyUI(
                tabsetPanel(
                  # Sous-onglet
                  tabPanel(title = "Main plot",
-                          plotlyOutput(outputId = "u_plot", height = "800px"),
+                          plotlyOutput(outputId = "u_plot", height = "500px"),
                           #sortie console
-                          verbatimTextOutput(outputId = "u_info")),
-                 tabPanel(title = "Test plot")
+                          verbatimTextOutput(outputId = "u_info"))
+                 #tabPanel(title = "Test plot")
                )
              )
     ),
     ### Onglet principal : Tableau de donnée
     tabPanel("Data table",
              # Sidebar : Volet de gauche - Input
-             sidebarPanel(
-               uiOutput(outputId = "u_choice_table"),
-               uiOutput(outputId = "u_subchoice_table"),
-               uiOutput(outputId = "u_choice_var")
-             ),
+             # sidebarPanel(
+             # ),
              # MainPanel : Volet de droite - Output
              mainPanel(
                tabsetPanel(
-                 tabPanel(title = "Table", DT::dataTableOutput(outputId = "u_table", width = "100%"))
+                 tabPanel(title = "Table", DTOutput(outputId = "u_table")
+                          )
                )
              )
     )
