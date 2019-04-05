@@ -4,7 +4,7 @@ library(lubridate)
 library(tidyverse)
 library(dplyr)
 library(plotly)
-library(googlesheets)
+
 library(flow)
 library(shinyWidgets)
 SciViews::R
@@ -77,7 +77,7 @@ shinyServer(function(input, output, session) {
     ungroup(.) -> df
 
 
-  ### ------------------__Fin partie logique du serveur__ ------------------ ###
+  ### ------------------__Fin traitement du tableau de données__ ------------------ ###
 
   #============================================================================#
 
@@ -120,9 +120,9 @@ shinyServer(function(input, output, session) {
   output$u_choice_plot <- renderUI({
 
     radioButtons(inputId = "s_choice_plot", label = "Y var :",
-                 choices = c("Skeleton mass",
+                 choices = c("Submerged mass", "Skeleton mass",
                              "Growth rate"),
-                 selected = "Growth rate")
+                 selected = "Submerged mass")
   })
 
   #--------------------------Choix projet----------------------------------
@@ -176,6 +176,12 @@ shinyServer(function(input, output, session) {
       y_axis_name <- "Skeleton mass (g)"
     }
 
+    # Choix de la masse immergée
+    if ("Submerged mass" %in% input$s_choice_plot) {
+      yvar = df$weight
+      y_axis_name <- "Submerged mass (g)"
+    }
+
     # Choix du taux de croissance
     if ("Growth rate" %in% input$s_choice_plot) {
       yvar = df$ratio
@@ -185,17 +191,19 @@ shinyServer(function(input, output, session) {
     # Choix par nombre de jour
     if ("Number day" %in% input$s_choice_nbr_day) {
       xvar = df$delta_date
+      xlabel = "Day"
     }
 
     # Choix par date du jour
     if ("Date" %in% input$s_choice_nbr_day) {
       xvar = df$date
+      xlabel = "Date"
     }
 
     ggplot(df, aes(x = xvar, y = yvar, colour = id)) +
-      geom_point(size = 2, show.legend = FALSE) +
-      geom_line(show.legend = FALSE) +
-      xlab("Date") + ylab(y_axis_name) -> p
+      geom_point(size = 2, show.legend = FALSE, na.rm = TRUE) +
+      geom_line(show.legend = FALSE, na.rm = TRUE) +
+      xlab(xlabel) + ylab(y_axis_name) -> p
 
     p <- ggplotly(p, show.legend = FALSE)
   })
@@ -206,12 +214,18 @@ shinyServer(function(input, output, session) {
 
     #Affichage de la formule utilisé
     formule <- ""
+
+
+    if ("Submerged mass" %in% input$s_choice_plot) {
+      formule <- "Submerged mass (g)"
+    }
+    if ("Skeleton mass" %in% input$s_choice_plot) {
+      formule <- "Skeleton mass (g)"
+    }
     if ("Growth rate" %in% input$s_choice_plot) {
       formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
     }
-    if ("Skeleton mass" %in% input$s_choice_plot) {
-      formule <- "Skeleton mass"
-    }
+
 
     # Calculs boutures mortes
     nbr_dead <- as.numeric(count(unique(subset(df, status == "dead",id))))
@@ -267,4 +281,5 @@ shinyServer(function(input, output, session) {
 #Note : dateRange max (ojd)
 #       delta_date fait un arrondi
 #       higher than => la valeur par défaut écrase en changeant le filtre
+#       les boutures 16, 81, 82, 83, 84 n'ont pas de ration
 #

@@ -27,7 +27,7 @@ shinyUI(
                tabsetPanel(
                  # Sous-onglet
                  tabPanel(title = "Main plot",
-                          plotlyOutput(outputId = "u_plot", height = "500px"),
+                          plotlyOutput(outputId = "u_plot"),
                           #sortie console
                           verbatimTextOutput(outputId = "u_info"))
                  #tabPanel(title = "Test plot")
