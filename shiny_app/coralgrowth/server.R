@@ -95,8 +95,8 @@ shinyServer(function(input, output, session) {
 
     radioButtons(inputId = "s_choice_nbr_day",
                  label = 'X var : ',
-                 choices = c("Date", "Number day"),
-                 selected = "Number day"
+                 choices = c("Date", "Number of days"),
+                 selected = "Number of days"
     )
   })
 
@@ -120,9 +120,9 @@ shinyServer(function(input, output, session) {
   output$u_choice_plot <- renderUI({
 
     radioButtons(inputId = "s_choice_plot", label = "Y var :",
-                 choices = c("Submerged mass", "Skeleton mass",
+                 choices = c("Buoyant mass", "Skeleton mass",
                              "Growth rate"),
-                 selected = "Submerged mass")
+                 selected = "Buoyant mass")
   })
 
   #--------------------------Choix projet----------------------------------
@@ -177,9 +177,9 @@ shinyServer(function(input, output, session) {
     }
 
     # Choix de la masse immergée
-    if ("Submerged mass" %in% input$s_choice_plot) {
+    if ("Buoyant mass" %in% input$s_choice_plot) {
       yvar = df$weight
-      y_axis_name <- "Submerged mass (g)"
+      y_axis_name <- "Buoyant mass (g)"
     }
 
     # Choix du taux de croissance
@@ -189,7 +189,7 @@ shinyServer(function(input, output, session) {
     }
 
     # Choix par nombre de jour
-    if ("Number day" %in% input$s_choice_nbr_day) {
+    if ("Number of days" %in% input$s_choice_nbr_day) {
       xvar = df$delta_date
       xlabel = "Day"
     }
@@ -216,8 +216,8 @@ shinyServer(function(input, output, session) {
     formule <- ""
 
 
-    if ("Submerged mass" %in% input$s_choice_plot) {
-      formule <- "Submerged mass (g)"
+    if ("Buoyant mass" %in% input$s_choice_plot) {
+      formule <- "Buoyant mass (g)"
     }
     if ("Skeleton mass" %in% input$s_choice_plot) {
       formule <- "Skeleton mass (g)"
@@ -235,7 +235,7 @@ shinyServer(function(input, output, session) {
 
     cat("Y var : ", formule, "\n", "\n",
         "Species :", as.character(unique(df$species)), "\n", "\n",
-        "Number of dead cuttings :",  nbr_dead, "\n",
+        "Number of deads cuttings :",  nbr_dead, "\n",
         "ID dead cuttings : ", paste(id_dead, collapse = ", "), "\n",
         "Death rate :", death_rate, "%")
   })
