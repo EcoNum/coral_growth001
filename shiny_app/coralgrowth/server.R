@@ -107,7 +107,7 @@ shinyServer(function(input, output, session) {
                 choices = nbr_id,
                 options = list(`actions-box` = TRUE),
                 multiple = T,
-                selected = nbr_id)
+                selected = c(8, 9, 55, 9))
 
   })
 
