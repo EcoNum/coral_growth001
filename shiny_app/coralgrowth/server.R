@@ -90,17 +90,17 @@ shinyServer(function(input, output, session) {
                    min = min(df$date), max = Sys.Date()
     )
   })
-  # ----------------------- Selection X var ---------------------------
+  # ----------------------- Selection Xvar ---------------------------
   output$u_choice_nbr_day <- renderUI({
 
     radioButtons(inputId = "s_choice_nbr_day",
-                 label = 'X var : ',
+                 label = 'Xvar : ',
                  choices = c("Date", "Number of days"),
                  selected = "Number of days"
     )
   })
 
-  #--------------------------Choix id---------------------------------
+  #--------------------------Selection id---------------------------------
   output$u_choice_id <- renderUI({
     pickerInput(inputId = "s_choice_id",
                 label = "Choice ID :",
@@ -111,7 +111,7 @@ shinyServer(function(input, output, session) {
 
   })
 
-  # ----------------------- Selection des ID -----------------------------
+  # ----------------------- Choix des ID -----------------------------
   observe({
     print(input$s_choice_id)
   })
@@ -119,7 +119,7 @@ shinyServer(function(input, output, session) {
   #----------------------Choix graphique (variable y)---------------------
   output$u_choice_plot <- renderUI({
 
-    radioButtons(inputId = "s_choice_plot", label = "Y var :",
+    radioButtons(inputId = "s_choice_plot", label = "Yvar :",
                  choices = c("Buoyant mass", "Skeleton mass",
                              "Growth rate"),
                  selected = "Buoyant mass")
@@ -233,7 +233,7 @@ shinyServer(function(input, output, session) {
     id_dead <- unique(subset(df, status == "dead",id))
     id_dead <- id_dead$id
 
-    cat("Y var : ", formule, "\n", "\n",
+    cat("Yvar : ", formule, "\n", "\n",
         "Species :", as.character(unique(df$species)), "\n", "\n",
         "Number of deads cuttings :",  nbr_dead, "\n",
         "ID dead cuttings : ", paste(id_dead, collapse = ", "), "\n",
@@ -278,8 +278,3 @@ shinyServer(function(input, output, session) {
   })
 })
 
-#Note : dateRange max (ojd)
-#       delta_date fait un arrondi
-#       higher than => la valeur par défaut écrase en changeant le filtre
-#       les boutures 16, 81, 82, 83, 84 n'ont pas de ration
-#

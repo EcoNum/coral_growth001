@@ -1,0 +1,74 @@
+---
+title: "Manuel de l'application Coral Growth"
+output: html_notebook
+---
+# Utilisateur
+
+
+
+# IT
+## Structure
+L'application est divisé en deux fichiers : ui.R et server.R .
+
+Le script ui.R contient tous les élèments à afficher à l'utilisateur.  <br/>
+Le script server.R contient toute la partie logique (importation du jeu 
+de donnée, transformation, calculs, ...) .
+
+Les noms des variables ont un sens pratique :
+
+
++ ui_nom_de_variable : variable seulement utilisé dans le script ui.R .
++ u_nom_de_variable : variable crée dans ui.R, utilisé dans server.R .
++ s_nom_de_variable : variable crée dans server.R, utilisé dans server.R .
+
+Les variables "*uiOutput*" sont un peu spéciales, elles sont crées dans ui.R, 
+pour être configuré dans server.R . <br/>
+L'intérêt est de pouvoir utilisé des 
+variables provenant du script server.R.<br/>
+Elles sont paramétrés dans server.R comme n'importe quelle 
+variable *nomInput* (inputId, label, ...).
+
+## server.R
+### Importation
+
+L'adresse URL est contenu dans la variable coral_url. 
+L'URL est générer via un fichier en ligne Google sheets. <br/> <br/>
+![Feuille Google Sheets](image/notebook-googlesheets0.png)
+<br/><br/>
+
+Pour cela il faut aller dans *Fichier > Publier sur le web*, puis choisir :
+*Intégrer > Valeurs séparées par des virgules (.csv)*. <br/><br/>
+![Chemin d'accès des options de publication](image/notebook-googlesheets1.png) 
+<br/> 
+_______________________________________________________________________________
+<br/>
+![Format du fichier partagé](image/notebook-googlesheets2.png)
+
+Le lien de partage au format csv contenu dans *coral_url* sera lu par la 
+fonction *read_csv*. Cette fonction va importer le tableau de donnée et les 
+mettre au bon format. 
+Une grande source d'erreur provient de l'importation,
+il est important de respecter le nom des colonnes, ne pas jouer avec le format
+des colonnes, surtout pour la date qui devient facilement un problème. <br/>
+Dans le tableau de donnée de base, la plupart des colonnes ont 
+le format "texte brute", seuls les colonnes 
+"id", "weight", "temperature" et "salinity" ont un format numérique.
+
+## À notifier
+
+### Colonne ratio
+La colonne *ratio* est calculé à partir de la première valeur encodée de 
+la masse squelettique avec la valeur suivante pour chacun des ID.
+
+Si certaines valeurs n'ont pas été rentrées lors de la première date, le ratio 
+ne peut être calculé.
+
+### Colonne delta_date
+La colonne *delta_date* est une valeur arrondis au jour près.  
+
+### Variable dateRangeInput
+La variable *dateRange* possède une plage minimum qui débute avec la date la 
+plus ancienne et maximum qui est la **date actuel** de l'ordinateur.
+
+
+
