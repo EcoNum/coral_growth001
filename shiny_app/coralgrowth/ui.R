@@ -46,6 +46,10 @@ shinyUI(
                           )
                )
              )
-    )
+    ),
+    ### Onglet principal : Aide
+    tabPanel(title = "Help",
+             fluidRow(includeHTML("../../analysis/Notebook/Notebook-Manuel.nb.html")))
   )
+
 )
