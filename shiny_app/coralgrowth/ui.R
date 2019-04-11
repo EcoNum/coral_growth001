@@ -9,7 +9,7 @@ library(shinyWidgets)
 shinyUI(
   navbarPage(
     #theme = shinytheme("slate"),
-    title = "Coral growth", # Titre onglet 1
+    title = "Coral growth",
     #### Onglet principal : Graphique
     tabPanel(title = "Plot",
              ## Sidebar : volet de gauche - Input
@@ -43,13 +43,15 @@ shinyUI(
              mainPanel(
                tabsetPanel(
                  tabPanel(title = "Table", DTOutput(outputId = "u_table")
-                          )
+                 )
                )
              )
     ),
     ### Onglet principal : Aide
     tabPanel(title = "Help",
-             fluidRow(includeHTML("../../analysis/Notebook/Notebook-Manuel.nb.html")))
+             fluidRow(
+               column(12, includeMarkdown("../../analysis/Notebook/Notebook-Manuel.Rmd"))
+             ))
   )
-
 )
+
