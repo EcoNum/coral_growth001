@@ -7,7 +7,7 @@ library(plotly)
 
 library(flow)
 library(shinyWidgets)
-SciViews::R
+
 
 
 
@@ -107,7 +107,7 @@ shinyServer(function(input, output, session) {
                 choices = nbr_id,
                 options = list(`actions-box` = TRUE),
                 multiple = T,
-                selected = c(8, 9, 55, 59))
+                selected = nbr_id)
 
   })
 
