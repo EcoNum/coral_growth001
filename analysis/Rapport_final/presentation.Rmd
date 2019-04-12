@@ -24,9 +24,13 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (Fig. 
 ![Carte du campus de la plaine de Nimy](../image/plaine-Nimy.jpg)
 
 
+
+
 ## Présentation de l'équipe
 
 ### Philippe Grosjean
+
+
 ![Monsieur Philippe Grosjean, chef du service d'EcoNum.](../image/Grosjean2.jpg){width=4cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/Grosjean2.jpg} -->

@@ -28,10 +28,10 @@ La phase de création d'outils comprend :
 
 ### Multiplication par bouturage
 
-Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Elles sont suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chaque bouture (Fig. ???).
+Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Elles sont au nombre de 84, toutes suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chaque bouture (Fig. ???).
 
-![]
-
+![](../image/regle.jpg)
+![](../image/boutures.jpg)
 
 ## Outils monitorings
 
@@ -47,57 +47,58 @@ Pour évaluer la croissance des boutures de coraux, on utilise la masse squelett
 $\rho_{eau}$ est déterminé via l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
 Le $\rho_{squelettique}$ est la densité de l'aragonite(CaCO3) <!-- # \chemform{CaCO_3} -->du squelette du corail.
 
-### Tableur
+### Tableur en ligne
 
-Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont encodé dans un tableau de données.
+Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire puis encodés dans un tableau de données.
 
-Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que n'importe qui, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
+Le tableur est en ligne cela permet à n'importe qui, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
 
-Afin d'éviter au maximum des erreurs d'encodages, j'ai utilisé des règles pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données.
+Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créé pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données.
 
-\begin{figure}[h!]
-\includegraphics[]{../image/excel3.PNG}
-\caption{Mise en forme conditionnelle d'Excel}
-\end{figure}
 
-Le tableau de donnée contient 7 colonnes :
+Le tableur est divisé en 12 colonnes :
 
-* ID : corresponds à l'identifiant de la bouture.
-
-* weight : corresponds à la masse immergée de la bouture.
-
-* temp : corresponds à la température de l'eau de mer.
-
-* salinity : corresponds à la salinité de l'eau de mer
-
-* date : corresponds à la date et heure du relevé.
-
-* commentaire : donne quelques annotations.
++ project : différencie chaque expérience réalisée, généralement on recréera un nouveau tableur pour chacune des expériences
++ date : date et heure à laquelle les relevés de mesures ont été pris
++ author : nom de la personne ayant encodé dans le tableur
++ aqua : nom du mésocosme où la bouture a été prélevé
++ condition : condition spécifique appliquée à la bouture (exemple : stress hypersalin)
++ species : nom de l'espèce mesurée
++ id : numéro de la bouture mesurée
++ weight : masse immergée mesurée
++ temperature : température de l'eau de mer
++ salinity : salinité de l'eau de mer
++ status : état de santé de la bouture
++ comment : commentaire
 
 
 \begin{figure}[h!]
-\includegraphics[]{../image/excel1.PNG}
-\caption{Tableau de donnée}
+\includegraphics[]{../image/tableur-gs.PNG}
+\caption{Tableur en ligne Google Sheets}
 \end{figure}
+
 
 ### Application Shiny
 
 L'application est divisée en deux éléments, une partie "ui" (User Interface), c'est la partie qui affiche les éléments graphiques de l'interface Shiny à l'utilisateur, et une partie "server", qui contient toutes les commandes R qui s'opère côté serveur.
 
-Il est possible mettre l'intégralité du code dans un seul fichier app.R, mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et server.R (voir page annexe).
+Il est possible mettre l'intégralité du code dans un seul fichier app.R, mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et server.R (voir partie annexe).
 
 Mon application présente 2 onglets, le premier créer un graphique interactif.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny1.PNG}
-\caption{Application Shiny : légende}
+\includegraphics[]{../image/notebook-plot1.PNG}
+\caption{Application Shiny : onglet "Plot"}
 \end{figure}
 
-Par défaut, le graphique montre l'évolution de la masse squelettique en fonction du temps.
+Par défaut, le graphique utilise en ordonné la masse immergée des boutures et en abscisse la date de la mesure.
+Les boutures sélectionnées sont peu nombreuse pour l'exemple mais il est possible de toutes les sélectionner.
+
+Différents paramètres peuvent modifier le graphique.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny2.PNG}
-\caption{Application Shiny : masse squelettique}
+\includegraphics[]{../image/notebook-plot2.PNG}
+\caption{Application Shiny : paramètres}
 \end{figure}
 
 On peut sélectionner le taux de croissance en fonction du temps.
@@ -162,13 +163,11 @@ Les objectifs réalisés sont :
 
 * Bouturer les coraux et relever leurs masses immergées.
 
-* Créer un tableau Excel contenant les données nécessaires.
+* Créer un tableau en ligne contenant les données nécessaires.
 
-* Créer un prototype d'application web à l'aide du paquet Shiny.
+* Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
 
-## Planning de travail
 
-Les horaires de stages sont flexibles, on peut arriver entre 7 et 9 heure et il faut prester au moins 8 heures par jour.
 
 
 
