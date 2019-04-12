@@ -1,6 +1,8 @@
 ---
 title: "Manuel de l'application Coral Growth"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 ## Utilisateur
 L'application *Coral Growth* permet de suivre l'évolution de la croissance de boutures de corail à partir de l'URL d'un Googlesheets.

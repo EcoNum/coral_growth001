@@ -46,6 +46,10 @@ shinyUI(
                           )
                )
              )
-    )
+    ),
+    ### Onglet principal : Aide
+    tabPanel(title = "Help",
+             fluidRow(column(12, includeMarkdown("../../analysis/Notebook/Notebook-Manuel.Rmd"))))
   )
+
 )
