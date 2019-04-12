@@ -17,7 +17,7 @@ Le département de biologie de la faculté des Sciences comprend 5 services dont
 
 Le Service développe également des outils en science des données, y compris dans le domaine du data mining, des big data, et de la recherche reproductible. Il participe à des études sur les logiciels Open Source.
 
-Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (voir figure 1.1) dans le pentagone (1) (voir figure 1.2).
+Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (Fig. 1.1) dans le pentagone (1) (Fig. 1.2).
 
 ![Carte de la ville de Mons](../image/plan-campus.png)
 
