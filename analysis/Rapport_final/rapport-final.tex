@@ -1,0 +1,1093 @@
+\documentclass[]{report}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{mdframed}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel} % use french to compile pdf
+\usepackage{geometry} % use to modify the margins
+\geometry{hmargin = 4cm, vmargin = 3cm}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{tocloft}
+\usepackage{float}
+\floatplacement{figure}{H}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+
+\begin{document}
+
+\begin{centering}
+
+\begin{figure}
+
+\includegraphics[width=3.5cm, height=6cm]{../image/technique-logo.jpg} 
+\includegraphics[width=5cm,height=7cm]{../image/UMONS-logo.jpg}
+\includegraphics[width=1.8cm,height=3.5cm]{../image/ECONUM-logo.pdf}
+
+\end{figure}
+
+\textcolor{white}{.}
+
+\vspace{2.5 cm}
+
+\Huge
+
+{\bf Rapport de stage partiel}
+
+\vspace{1 cm}
+
+\huge 
+{\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
+
+\vspace{1 cm}
+
+\Large
+
+Jordan Benrezkallah
+
+\vspace{2 cm}
+
+\normalsize
+Maître de stage : Philippe Grosjean
+
+Encadrant de stage : Guyliann Engels
+
+Promoteur : Aline Leonet et David Coornaert
+
+
+\vspace{3.5 cm}
+
+\normalsize
+HEH - Campus technique -
+Bloc 3 du cursus Bachelier en Biotechnique
+
+Année académique 2018-2019
+
+\end {centering}
+
+\newpage
+
+\null
+\newpage
+
+\begin{centering}
+
+
+
+\textcolor{white}{.}
+
+
+
+
+
+\vfill
+
+\huge 
+{\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
+
+\vfill
+
+
+\end {centering}
+
+\null
+\newpage
+
+\textcolor{white}{.}
+
+\Huge 
+{\bf Remerciements} \vspace{1 cm}
+
+\normalsize
+Je remercie le professeur Philippe Grosjean qui m'a accueillie dans son
+laboratoire afin d'effectuer ce stage et qui a permis la mise en oeuvre
+de celui-ci.
+
+Je voudrai également remercier les autres personnes du laboratoire
+d'Ecologie Numérique des Milieux Aquatiques. Tout d'abord, je remercie
+Guyliann Engels qui m'a suivie depuis le début, qui a répondu aux
+nombreuses questions que je pouvais avoir et qui m'a soutenu tout au
+long de ce stage dans son bureau. Je remercie Antoine, le technicien qui
+arrive à maintenir tout les mésocosmes en équilibre, qui m'a de
+nombreuses fois prit le temps de m'aider. Je remercie également les
+mémorants, Madeleine et Rémy pour tout les échanges instructifs que j'ai
+pu avoir avec eux lors de ce stage. Je remercie aussi Nicolas pour les
+conseils qu'il m'a prodigué.
+
+Un dernier remerciement revient à Raphael qui a créé l'application sur
+laquelle je me suis basé pour commencer la mienne. \vfill
+\null
+\newpage
+
+\textcolor{white}{.}
+
+\Huge 
+{\bf Résumé} \vspace{1 cm}
+
+\normalsize
+
+Depuis plusieurs années, les scientifiques et le grand public
+s'intéressent fortement aux effets du changement climatique sur les
+écosystèmes. Les coraux forment des écosystèmes marins complexes parmi
+les plus riches en biodiversité. Dans le service d'EcoNum, on étudie les
+effets du stress salin sur les coraux.
+
+Le but de ce stage est multiple, dans un premier temps il faudra
+acquérir des connaissances suffisantes du langage de programmation R et
+ensuite de développer des outils permettant le monitoring des coraux.
+Tout en faisant cela, des boutures de coraux devront être réalisées
+ainsi que des relevés réguliers de leurs masses.
+
+Un tableur contiendra l'ensemble des données des relevés. À partir de
+cela, l'application web génère plusieurs onglets dont une visualisation
+dynamique de la croissance des boutures, un tableau intéractif qui
+permet de trier par colonnes dans une plage donnée et dans le dernier
+onglet une aide est disponible.
+
+\vspace{2 cm}
+
+\Huge 
+{\bf Summary} \vspace{1 cm}
+
+\normalsize
+For several years, scientists and mainstream have been strongly
+interested in the effects of climate change on ecosystems. Corals form
+complex marine ecosystems that are among the richest in biodiversity. In
+the EcoNum department, we study the effects of salt stress on corals.
+
+The purpose of this internship is multiple, first it will be necessary
+to acquire sufficient knowledge of the R programming language and then
+to develop tools for coral monitoring. While doing this, coral cuttings
+should be carried out as well as regular surveys of their masses.
+
+A spreadsheet will contain all the data from the surveys. From this, the
+web application generates several tabs including a dynamic visualization
+of the growth of cuttings, an interactive table that allows you to sort
+by columns in a given range and in the last tab a help is available.
+
+\null
+\newpage
+
+\tableofcontents
+
+\null
+\newpage
+
+\textcolor{white}{.}
+
+\Huge 
+{\bf Lexique} \vspace{1 cm}
+
+\normalsize
+
+Symbiose : Association biologique, durable et réciproquement profitable,
+entre deux organismes vivants.
+
+Corail : animal de l'embranchement des Cnidaires.
+
+Cnidaire : groupe (embranchement) d'espèces animales spécifiques du
+milieu aquatique.
+
+EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
+
+UMons : Université de Mons.
+
+Carbonate de calcium : composant majeur du calcaire et constituant
+principal des coquilles d'animaux marins et du corail.
+
+Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le
+corail.
+
+Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+
+Scléractiniaire : ordre principal des coraux durs.
+
+Monitoring : suveillance, contrôle.
+
+\null
+\newpage
+
+\chapter{Présentation}\label{presentation}
+
+\section{Présentation de
+l'entreprise}\label{presentation-de-lentreprise}
+
+Mon stage de fin d'études, se déroule dans à l'université de l'UMons
+dans le service d'Écologie Numérique des Milieux Aquatiques (abrégé en
+EcoNum) du département de Biologie.
+
+L'Université de Mons (UMONS), est une université francophone implantée
+en Belgique, dans la province du Hainaut. Elle est constituée de 2
+écoles et de 7 facultés, dont la faculté des Sciences.
+
+Le Département de biologie de la faculté des Sciences est impliqué dans
+la formation des étudiants et dans la recherche.
+
+Le département de biologie de la faculté des Sciences comprend 5
+services dont le service d'Écologie Numérique des Milieux Aquatiques. Ce
+dernier étudie les écosystèmes aquatiques complexes, tels les
+communautés planctoniques et les récifs coralliens, face aux changements
+de leur environnement.
+
+Le Service développe également des outils en science des données, y
+compris dans le domaine du data mining, des big data, et de la recherche
+reproductible. Il participe à des études sur les logiciels Open Source.
+
+Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A)
+(voir figure 1.1) dans le pentagone (1) (voir figure 1.2).
+
+\begin{figure}
+\centering
+\includegraphics{../image/plan-campus.png}
+\caption{Carte de la ville de Mons}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{../image/plaine-Nimy.jpg}
+\caption{Carte du campus de la plaine de Nimy}
+\end{figure}
+
+\section{Présentation de l'équipe}\label{presentation-de-lequipe}
+
+\subsection{Philippe Grosjean}\label{philippe-grosjean}
+
+\includegraphics[width=4.00000cm]{../image/Grosjean2.jpg}
+
+Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs
+projets de recherches sur l'identification automatique du plancton par
+des algorithmes de \emph{machine learning}, sur l'écophysiologie des
+scléractiniaires et sur le développement de logiciel pour l'écologie.
+
+Il enseigne également la science des données biologiques, l'écologie
+marine, l'écophysiologie et l'océanographie générale aux étudiants en
+biologie.
+
+Il développe des outils Open Source comme la \emph{SciViews Box}, qui
+est une machine virtuelle contenant une suite de logiciel pré-configuré
+pour l'utilisation de ses étudiants et des chercheurs.
+
+Il encadre 1 doctorant et 2 étudiants en masters.
+
+\subsection{Guyliann Engels}\label{guyliann-engels}
+
+\includegraphics[width=4.00000cm]{../image/Guyliann.jpg}
+
+Guyliann Engels est chercheur et assistant au sein du service. Il
+effectue sa thèse sur l'écophysiologie du corail, où il utilise un
+mésocosme pour étudier les stress des coraux engendrés par la
+modification de leurs nutriments essentiels (composés azotés et
+phosphorés). Il utilise fréquemment les outils de statistiques R et
+RStudio (avec R Markdown, R Notebook).
+
+Il encadre mon travail.
+
+\subsection{Antoine Batigny}\label{antoine-batigny}
+
+\includegraphics[width=4.00000cm]{../image/antoine2.jpg}
+
+Antoine Batigny est le technicien du service. Il s'occupe principalement
+de gérer les mésocosmes.
+
+\subsection{Rémy Dugauquier}\label{remy-dugauquier}
+
+\includegraphics[width=4.00000cm]{../image/remy.jpg}
+
+Rémy Dugauquier est en dernière année du master en biologie des
+organismes et écologie. Il réalise son T.F.E. sur l'écologie des
+organismes planctoniques en baie de Calvi, France.
+
+\subsection{Madeleine Gille}\label{madeleine-gille}
+
+\includegraphics[width=4.00000cm]{../image/madeleine.jpg}
+
+Madeleine Gille est étudiante en dernière année du master en biologie
+des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un
+stress salins (hyper et hyposalin) sur \emph{Seriatopora hystrix} (Dana,
+1815).
+
+\chapter{Introduction}\label{introduction}
+
+Les coraux sont des animaux de l'embranchement des cnidaires. Les
+individus sont nommés « polypes », Au sein des cnidaires, 1609 espèces
+de coraux durs (scléractiniaire hermatypique) forment les récifs
+coralliens. Les coraux durs vivent en symbiose avec une microalgue
+unicellulaire les zooxanthelles qui fournit l'énergie nécessaire à la
+formation de leur squelette carbonate de calcium.
+
+Les récifs coralliens fournissent d'importantes niches écologiques à de
+nombreux animaux qui en sont dépendants. Il est donc crucial de les
+protéger.\\
+En situation de stress le corail, peu expulser ses zooxanthelles, ce qui
+ne laisse paraître seulement la coloration blanche de son squelette. Ce
+blanchissement affaiblis considérablement le corail. Divers facteurs
+peuvent stresser le corail : l'acidité, la salinité, la température, la
+pollution, etc..
+
+Le service d'écologie numérique des milieux aquatiques étudie en
+mésocosme les réponses écophysiologiques des coraux à divers stress sur
+Seriatopora hystrix Dana 1846 principalement.
+
+Le but du stage est de mettre à disposition des outils à partir du
+langage R permettant le monitoring des coraux tout en relevant
+régulièrement la croissance de ceux-ci.
+
+\chapter{But}\label{but}
+
+Le but du stage est de créer une application web via le package Shiny
+dévelopé par RStudio sur R, qui suit l'évolution des coraux dans les
+mésocosmes. Les coraux seront utilisés dans des expériences par le
+laboratoire, il est donc nécessaire de visualiser leur croissance.
+L'application doit pouvoir être utilisée facilement par d'autres
+personnes à \emph{posteriori}, il faut donc l'automatiser et anticiper
+les problèmes à venir.
+
+Le stage se déroule en 2 parties, la première est une phase
+d'apprentissage, la deuxième est la création de l'application et
+l'implémentation d'outils pour le monitoring de la croissance des
+coraux.
+
+\section{Stage}\label{stage}
+
+La phase d'apprentissage comprend :
+
+\begin{itemize}
+\tightlist
+\item
+  Apprentissage du langage de programmation R, de ses packages et de
+  l'environnement RStudio.
+\end{itemize}
+
+La phase de création d'outils comprend :
+
+\begin{itemize}
+\item
+  L'acquisition des données de croissance régulière des coraux.
+\item
+  La réalisation d'une application web Shiny, surveillant la croissance
+  (monitoring) des coraux de l'espèce \emph{S. hystrix}.
+\end{itemize}
+
+\chapter{Analyse}\label{analyse}
+
+\section{Acquisition de données
+réelles}\label{acquisition-de-donnees-reelles}
+
+\subsection{Multiplication par
+bouturage}\label{multiplication-par-bouturage}
+
+Dans le but d'acquérir des nouvelles données de croissance, on a
+utiliser une technique de multiplication asexuée : le bouturage. Cela
+consiste à séparer à l'aide d'une pince des branches de coraux. Elles
+sont suspendues dans l'eau à l'aide de fil de pêche sur une règle qui
+porte un numéro d'identification propre à chaque bouture.
+
+\section{Outils monitorings}\label{outils-monitorings}
+
+\subsection{Masse immergée et masse
+squelettique}\label{masse-immergee-et-masse-squelettique}
+
+Pour évaluer la croissance des boutures de coraux, on utilise la masse
+squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse
+immergée du corail dans l'eau de mer avec une balance munie d'un
+crochet. Cette méthodde de mesure est rapide et peu stressante pour les
+organismes. Après avoir mesuré la température et la salinité on peut
+convertir la masse immergée en masse squelettique à l'aide de la formule
+ci-dessous mise au point par Jokiel \emph{et al} (1978) :
+
+\begin{equation}
+\large
+  m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
+\end{equation}
+
+\(\rho_{eau}\) est déterminé via l'équation d'état de l'eau de mer grâce
+à la mesure de la salinité et de la température. Le
+\(\rho_{squelettique}\) est la densité de l'aragonite(CaCO3) du
+squelette du corail.
+
+\subsection{Tableur}\label{tableur}
+
+Les mesures effectuées sur les coraux et les paramètres de l'eau des
+mésocosmes sont encodé dans un tableau de données.
+
+Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la
+HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que
+n'importe qui, qui a besoin de remplir un tableau de donnée puisse le
+faire depuis n'importe quelle machine connectée à internet.
+
+Afin d'éviter au maximum des erreurs d'encodages, j'ai utilisé des
+règles pour mettre en évidence les cases non remplies, formater le type
+des cellules et mettre un dégradé de couleur suivant l'avancement des
+données.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/excel3.PNG}
+\caption{Mise en forme conditionnelle d'Excel}
+\end{figure}
+
+Le tableau de donnée contient 7 colonnes :
+
+\begin{itemize}
+\item
+  ID : corresponds à l'identifiant de la bouture.
+\item
+  weight : corresponds à la masse immergée de la bouture.
+\item
+  temp : corresponds à la température de l'eau de mer.
+\item
+  salinity : corresponds à la salinité de l'eau de mer
+\item
+  date : corresponds à la date et heure du relevé.
+\item
+  commentaire : donne quelques annotations.
+\end{itemize}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/excel1.PNG}
+\caption{Tableau de donnée}
+\end{figure}
+
+\subsection{Application Shiny}\label{application-shiny}
+
+L'application est divisée en deux éléments, une partie ``ui'' (User
+Interface), c'est la partie qui affiche les éléments graphiques de
+l'interface Shiny à l'utilisateur, et une partie ``server'', qui
+contient toutes les commandes R qui s'opère côté serveur.
+
+Il est possible mettre l'intégralité du code dans un seul fichier app.R,
+mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et
+server.R (voir page annexe).
+
+Mon application présente 2 onglets, le premier créer un graphique
+interactif.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny1.PNG}
+\caption{Application Shiny : légende}
+\end{figure}
+
+Par défaut, le graphique montre l'évolution de la masse squelettique en
+fonction du temps.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny2.PNG}
+\caption{Application Shiny : masse squelettique}
+\end{figure}
+
+On peut sélectionner le taux de croissance en fonction du temps.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny3.PNG}
+\caption{Application Shiny : taux de croissance}
+\end{figure}
+
+Il est possible de sélectionner les ID dans un menu déroulant ou de
+directement cliquer à droite du graphique sur les ID triés par couleur.
+
+Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny4.PNG}
+\caption{Application Shiny : menu déroulant}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny5.PNG}
+\caption{Application Shiny : affichage intéractif}
+\end{figure}
+
+En passant le curseur sur les points du graphique, on peut obtenir
+quelques informations.
+
+Sous le graphique, des informations supplémentaires : le nombre de
+boutures mortes, leur ID et le taux de mortalité sont calculés.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny7.PNG}
+\caption{Application Shiny : informations supplémentaires}
+\end{figure}
+
+Le deuxième onglet contient le tableau de donnée où de nouvelles
+colonnes ont été calculées, il y a l'ajout de la masse squelettique et
+du ``ratio'' qui correspond au taux de croissance.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny8.PNG}
+\caption{Application Shiny : tableau de donnée}
+\end{figure}
+
+\section{Outils utilisés}\label{outils-utilises}
+
+Les outils utilisés sont :
+
+\begin{itemize}
+\item
+  La machine virtuelle \emph{SciViews Box}, contenant un linux
+  (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
+\item
+  Les langages de programmation : R.
+\item
+  Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets,
+  ect.
+\item
+  Le service web GitHub.
+\end{itemize}
+
+\section{Objectifs réalisés}\label{objectifs-realises}
+
+Les objectifs réalisés sont :
+
+\begin{itemize}
+\item
+  Bouturer les coraux et relever leurs masses immergées.
+\item
+  Créer un tableau Excel contenant les données nécessaires.
+\item
+  Créer un prototype d'application web à l'aide du paquet Shiny.
+\end{itemize}
+
+\section{Planning de travail}\label{planning-de-travail}
+
+Les horaires de stages sont flexibles, on peut arriver entre 7 et 9
+heure et il faut prester au moins 8 heures par jour.
+
+\chapter{Communications
+interpersonnelles}\label{communications-interpersonnelles}
+
+\section{Difficultés rencontrées}\label{difficultes-rencontrees}
+
+\subsection{R vs python}\label{r-vs-python}
+
+La principale difficulté rencontrée au début est de passer de
+l'apprentissage du langage de programmation \emph{python} à \emph{R}. Ce
+sont tous les deux des langages de programmation interprétés.
+\emph{python} a été créé pour faire de la programmation informatique
+généraliste, il est utilisé dans de larges domaines par des
+informaticiens. A l'inverse, R est dédié aux analyses statistiques,
+plutôt utilisées par des spécialistes ou des scientifiques.
+
+Dans le domaine du \emph{data scientist}, \emph{R} et \emph{python} sont
+courament employé.
+
+\subsection{Shiny communication entre ui.R et
+server.R}\label{shiny-communication-entre-ui.r-et-server.r}
+
+Les application web géré par shiny utilise deux fonctions communiquant
+entre elles \textbf{ui} et le \textbf{server}
+
+Le schéma de communication basique entre les deux scripts commence par
+la déclaration d'une variable \emph{inputId = ma\_variable} dans ui.R.
+Celui-ci est appelé dans server.R sous la forme input\$ma\_variable,
+cette variable sera ensuite traitée dans un bloc de code délimiter par
+des crochets.
+
+Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur
+sous une couche de code masqué, cette couche simplifie grandement le
+travail avec R. Si on sort du cadre de l'utilisation prévu par Shiny, on
+se heurte à de grands soucis de codage. Shiny restreint donc, la
+communication entre les différents blocs de code. Dans certaines
+situations cela complique le travail.
+
+\subsection{Apport au sein de
+l'entreprise}\label{apport-au-sein-de-lentreprise}
+
+Pour l'instant, la contribution à l'entreprise revient principalement
+aux relevés des boutures (monitoring) et l'encodage, ceci permet de
+libérer du temps au technicien. L'application qui est en développement
+est utilisé dans le travail de mémoire de Madeleine Gilles.
+
+\begin{centering}
+
+
+
+\textcolor{white}{.}
+
+
+
+
+
+\vfill
+
+\huge 
+{\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
+
+\vfill
+
+
+\end {centering}
+
+\null
+\newpage
+
+\chapter{Note}\label{note}
+
+Ce rapport en pdf intéractif a été créé en R Markdown, il permet
+d'utiliser à la fois le langage LaTeX et R. Toutefois, dû à la récente
+prise en main de celui-ci, il y a un problème de positionnement des
+images qui n'a pas pu être résolu. LaTex positionne automatiquement les
+images selon son bon vouloir.
+
+\chapter{Annexe}\label{annexe}
+
+\section{ui.R}\label{ui.r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(shiny)}
+\KeywordTok{library}\NormalTok{(shinyWidgets)}
+\KeywordTok{library}\NormalTok{(DT)}
+\KeywordTok{library}\NormalTok{(plotly)}
+\KeywordTok{library}\NormalTok{(shinythemes)}
+\KeywordTok{library}\NormalTok{(shinyWidgets)}
+
+
+\KeywordTok{shinyUI}\NormalTok{(}
+  \KeywordTok{navbarPage}\NormalTok{(}
+    \CommentTok{#theme = shinytheme("slate"),}
+    \DataTypeTok{title =} \StringTok{"Coral growth"}\NormalTok{, }\CommentTok{# Titre onglet 1}
+\NormalTok{    #### Onglet principal : Graphique}
+    \KeywordTok{tabPanel}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot"}\NormalTok{,}
+\NormalTok{             ## Sidebar : volet de gauche - Input}
+             \KeywordTok{sidebarPanel}\NormalTok{(}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_project"}\NormalTok{),}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_condition"}\NormalTok{),}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_status"}\NormalTok{),}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_id"}\NormalTok{), }\CommentTok{# Sélection des ID à afficher}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_plot"}\NormalTok{),     }\CommentTok{#Sélection du graphique}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_nbr_day"}\NormalTok{),      }\CommentTok{# Sélection de Xvar}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_choice_date"}\NormalTok{)              }\CommentTok{#Sélection date}
+\NormalTok{             ),}
+\NormalTok{             ## MainPanel : Volet de droite - Output}
+             \KeywordTok{mainPanel}\NormalTok{(}
+               \KeywordTok{tabsetPanel}\NormalTok{(}
+                 \CommentTok{# Sous-onglet}
+                 \KeywordTok{tabPanel}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Main plot"}\NormalTok{,}
+                          \KeywordTok{plotlyOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_plot"}\NormalTok{, }\DataTypeTok{height =} \StringTok{"600px"}\NormalTok{ ),}
+                          \CommentTok{#sortie console}
+                          \KeywordTok{verbatimTextOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_info"}\NormalTok{))}
+                 \CommentTok{#tabPanel(title = "Test plot")}
+\NormalTok{               )}
+\NormalTok{             )}
+\NormalTok{    ),}
+\NormalTok{    ### Onglet principal : Tableau de donnée}
+    \KeywordTok{tabPanel}\NormalTok{(}\StringTok{"Data table"}\NormalTok{,}
+             \CommentTok{# Sidebar : Volet de gauche - Input}
+             \CommentTok{# sidebarPanel(}
+             \CommentTok{# ),}
+             \CommentTok{# MainPanel : Volet de droite - Output}
+             \KeywordTok{mainPanel}\NormalTok{(}
+               \KeywordTok{tabsetPanel}\NormalTok{(}
+                 \KeywordTok{tabPanel}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Table"}\NormalTok{, }\KeywordTok{DTOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_table"}\NormalTok{)}
+\NormalTok{                          )}
+\NormalTok{               )}
+\NormalTok{             )}
+\NormalTok{    )}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{server.R}\label{server.r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(shiny)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(lubridate)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(plotly)}
+
+
+\KeywordTok{library}\NormalTok{(shinyWidgets)}
+\NormalTok{SciViews}\OperatorTok{::}\NormalTok{R}
+
+
+
+\NormalTok{### ----------------------__Partie logique du serveur__----------------------}
+\KeywordTok{shinyServer}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(input, output, session) \{}
+
+  \CommentTok{# Madeleine :}
+  \CommentTok{#coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"}
+
+  \CommentTok{# Jordan :}
+\NormalTok{  coral_url <-}\StringTok{ "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"}
+
+  \CommentTok{#Importation et format des colonnes}
+  \KeywordTok{read_csv}\NormalTok{(coral_url,}
+           \DataTypeTok{col_types =} \KeywordTok{cols}\NormalTok{( }\DataTypeTok{.default =} \KeywordTok{col_character}\NormalTok{(),}
+                             \DataTypeTok{date =} \KeywordTok{col_datetime}\NormalTok{(),}
+                             \DataTypeTok{weight =} \KeywordTok{col_double}\NormalTok{(),}
+                             \DataTypeTok{temperature =} \KeywordTok{col_double}\NormalTok{(),}
+                             \DataTypeTok{salinity =} \KeywordTok{col_double}\NormalTok{() )) }\OperatorTok{%>.%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(.,}
+           \DataTypeTok{project =} \KeywordTok{factor}\NormalTok{(project), }\DataTypeTok{author =} \KeywordTok{factor}\NormalTok{(author),}
+           \DataTypeTok{aqua =} \KeywordTok{factor}\NormalTok{(aqua),}
+           \DataTypeTok{condition =} \KeywordTok{factor}\NormalTok{(condition),}
+           \DataTypeTok{species =} \KeywordTok{factor}\NormalTok{(species),}
+           \DataTypeTok{id =} \KeywordTok{factor}\NormalTok{(id, }\DataTypeTok{levels =} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(id))),}
+           \DataTypeTok{status =} \KeywordTok{factor}\NormalTok{(status)}
+\NormalTok{    ) ->}\StringTok{ }\NormalTok{df}
+
+\NormalTok{  ### Calcul du poids squelettique :}
+  \CommentTok{#a corriger : rho_aragonite}
+  \CommentTok{#P = Pression hydrostatique, elle vaut 0 a la surface}
+\NormalTok{  skeleton_weight <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(S, T, }\DataTypeTok{P =} \DecValTok{0}\NormalTok{,}
+\NormalTok{                              buoyant_weight,}
+                              \DataTypeTok{rho_aragonite =} \DecValTok{2930}\NormalTok{)\{}
+\NormalTok{    rho_water <-}\StringTok{ }\NormalTok{seacarb}\OperatorTok{::}\KeywordTok{rho}\NormalTok{(}\DataTypeTok{S =}\NormalTok{ S, }\DataTypeTok{T =}\NormalTok{ T , }\DataTypeTok{P =}\NormalTok{ P)}
+\NormalTok{    skl_wgt <-}\StringTok{ }\NormalTok{buoyant_weight }\OperatorTok{/}\StringTok{ }\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{(rho_water }\OperatorTok{/}\StringTok{ }\NormalTok{rho_aragonite))}
+\NormalTok{    skl_wgt <-}\StringTok{ }\KeywordTok{round}\NormalTok{(skl_wgt, }\DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
+    \KeywordTok{return}\NormalTok{(skl_wgt)}
+\NormalTok{  \}}
+
+  \CommentTok{# Ajout de la colonne du poids squelettique}
+\NormalTok{  df <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(df,}
+                  \DataTypeTok{skw =} \KeywordTok{skeleton_weight}\NormalTok{(}\DataTypeTok{S =}\NormalTok{ salinity,}
+                                        \DataTypeTok{T =}\NormalTok{ temperature,}
+                                        \DataTypeTok{buoyant_weight =}\NormalTok{ weight))}
+
+  \CommentTok{# Nombre de ID different}
+\NormalTok{  nbr_id <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(df}\OperatorTok{$}\NormalTok{id)}
+
+  \CommentTok{# Conditions}
+\NormalTok{  nbr_condition <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(df}\OperatorTok{$}\NormalTok{condition)}
+
+  \CommentTok{# Projet}
+\NormalTok{  nbr_projet <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(df}\OperatorTok{$}\NormalTok{project)}
+
+  \CommentTok{# Statut}
+\NormalTok{  nbr_status <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(df}\OperatorTok{$}\NormalTok{status)}
+
+  \CommentTok{# Taux de croissance}
+\NormalTok{  df }\OperatorTok{%>.%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(., id) }\OperatorTok{%>.%}
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(., date) }\OperatorTok{%>.%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(.,}
+           \DataTypeTok{delta_date =}\NormalTok{ (}\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{difftime}\NormalTok{(date, date[}\DecValTok{1}\NormalTok{], }\DataTypeTok{units =} \StringTok{"days"}\NormalTok{))),}
+           \DataTypeTok{ratio =} \KeywordTok{round}\NormalTok{(((skw }\OperatorTok{-}\StringTok{ }\NormalTok{skw[}\DecValTok{1}\NormalTok{]) }\OperatorTok{/}\StringTok{ }\NormalTok{skw[}\DecValTok{1}\NormalTok{] }\OperatorTok{/}\StringTok{ }\NormalTok{delta_date)}\OperatorTok{*}\DecValTok{100}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{3}\NormalTok{),}
+           \DataTypeTok{delta_date =} \KeywordTok{round}\NormalTok{(delta_date, }\DataTypeTok{digits =} \DecValTok{0}\NormalTok{)) }\OperatorTok{%>.%}
+\StringTok{    }\KeywordTok{ungroup}\NormalTok{(.) ->}\StringTok{ }\NormalTok{df}
+
+
+\NormalTok{  ### ------------------__Fin traitement du tableau de données__ ------------------ }\AlertTok{###}
+
+  \CommentTok{#============================================================================#}
+
+  \CommentTok{# --------------------- Selection des dates -------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_date <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{dateRangeInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_date"}\NormalTok{,}
+                   \DataTypeTok{label =} \StringTok{'Date range input: '}\NormalTok{,}
+                   \DataTypeTok{start =} \KeywordTok{min}\NormalTok{(df}\OperatorTok{$}\NormalTok{date), }\DataTypeTok{end =} \KeywordTok{max}\NormalTok{(df}\OperatorTok{$}\NormalTok{date),}
+                   \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(df}\OperatorTok{$}\NormalTok{date), }\DataTypeTok{max =} \KeywordTok{Sys.Date}\NormalTok{()}
+\NormalTok{    )}
+\NormalTok{  \})}
+  \CommentTok{# ----------------------- Selection Xvar ---------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_nbr_day <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{radioButtons}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_nbr_day"}\NormalTok{,}
+                 \DataTypeTok{label =} \StringTok{'Xvar : '}\NormalTok{,}
+                 \DataTypeTok{choices =} \KeywordTok{c}\NormalTok{(}\StringTok{"Date"}\NormalTok{, }\StringTok{"Number of days"}\NormalTok{),}
+                 \DataTypeTok{selected =} \StringTok{"Number of days"}
+\NormalTok{    )}
+\NormalTok{  \})}
+
+  \CommentTok{#--------------------------Selection id---------------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_id <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+    \KeywordTok{pickerInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_id"}\NormalTok{,}
+                \DataTypeTok{label =} \StringTok{"Choice ID :"}\NormalTok{,}
+                \DataTypeTok{choices =}\NormalTok{ nbr_id,}
+                \DataTypeTok{options =} \KeywordTok{list}\NormalTok{(}\StringTok{`}\DataTypeTok{actions-box}\StringTok{`}\NormalTok{ =}\StringTok{ }\OtherTok{TRUE}\NormalTok{),}
+                \DataTypeTok{multiple =}\NormalTok{ T,}
+                \DataTypeTok{selected =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{55}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+
+\NormalTok{  \})}
+
+  \CommentTok{# ----------------------- Choix des ID -----------------------------}
+  \KeywordTok{observe}\NormalTok{(\{}
+    \KeywordTok{print}\NormalTok{(input}\OperatorTok{$}\NormalTok{s_choice_id)}
+\NormalTok{  \})}
+
+  \CommentTok{#----------------------Choix graphique (variable y)---------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_plot <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{radioButtons}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_plot"}\NormalTok{, }\DataTypeTok{label =} \StringTok{"Yvar :"}\NormalTok{,}
+                 \DataTypeTok{choices =} \KeywordTok{c}\NormalTok{(}\StringTok{"Buoyant mass"}\NormalTok{, }\StringTok{"Skeleton mass"}\NormalTok{,}
+                             \StringTok{"Growth rate"}\NormalTok{),}
+                 \DataTypeTok{selected =} \StringTok{"Buoyant mass"}\NormalTok{)}
+\NormalTok{  \})}
+
+  \CommentTok{#--------------------------Choix projet----------------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_project <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{selectInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_project"}\NormalTok{,}
+                \DataTypeTok{label =} \StringTok{"Project :"}\NormalTok{,}
+                \DataTypeTok{choices =}\NormalTok{ nbr_projet,}
+                \DataTypeTok{multiple =} \OtherTok{TRUE}\NormalTok{,}
+                \DataTypeTok{selected =}\NormalTok{ nbr_projet)}
+\NormalTok{  \})}
+
+  \CommentTok{#-------------------------Choix condition--------------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_condition <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{selectInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_condition"}\NormalTok{,}
+                \DataTypeTok{label =} \StringTok{"Condition :"}\NormalTok{,}
+                \DataTypeTok{choices =}\NormalTok{ nbr_condition,}
+                \DataTypeTok{multiple =} \OtherTok{TRUE}\NormalTok{,}
+                \DataTypeTok{selected =}\NormalTok{ nbr_condition)}
+\NormalTok{  \})}
+
+  \CommentTok{#--------------------------Choix statut---------------------------------}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_status <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{selectInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_status"}\NormalTok{,}
+                \DataTypeTok{label =} \StringTok{"Status :"}\NormalTok{,}
+                \DataTypeTok{choices =}\NormalTok{ nbr_status,}
+                \DataTypeTok{multiple =} \OtherTok{TRUE}\NormalTok{,}
+                \DataTypeTok{selected =}\NormalTok{ nbr_status)}
+\NormalTok{  \})}
+
+
+
+\NormalTok{  ###-----------------------Output de mon graphique----------------------}\AlertTok{###}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_plot <-}\StringTok{ }\KeywordTok{renderPlotly}\NormalTok{(\{}
+
+\CommentTok{# Filtre en fonction des choix}
+\NormalTok{    df }\OperatorTok{%>.%}
+\StringTok{      }\KeywordTok{filter}\NormalTok{(.,}
+\NormalTok{             project }\OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_project,}
+\NormalTok{             condition }\OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_condition,}
+\NormalTok{             status }\OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_status,}
+\NormalTok{             date }\OperatorTok{>=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_date[}\DecValTok{1}\NormalTok{] }\OperatorTok{&}\StringTok{ }\NormalTok{date }\OperatorTok{<=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_date[}\DecValTok{2}\NormalTok{],}
+\NormalTok{             id }\OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_id}
+\NormalTok{             ) ->}\StringTok{ }\NormalTok{df}
+
+    \CommentTok{# Choix de la masse squelettique}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Skeleton mass"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      yvar =}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{skw}
+\NormalTok{      y_axis_name <-}\StringTok{ "Skeleton mass (g)"}
+\NormalTok{    \}}
+
+    \CommentTok{# Choix de la masse immergée}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Buoyant mass"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      yvar =}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{weight}
+\NormalTok{      y_axis_name <-}\StringTok{ "Buoyant mass (g)"}
+\NormalTok{    \}}
+
+    \CommentTok{# Choix du taux de croissance}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Growth rate"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      yvar =}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{ratio}
+\NormalTok{      y_axis_name <-}\StringTok{ "Growth rate"}
+\NormalTok{    \}}
+
+    \CommentTok{# Choix par nombre de jour}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Number of days"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_nbr_day) \{}
+\NormalTok{      xvar =}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{delta_date}
+\NormalTok{      xlabel =}\StringTok{ "Day"}
+\NormalTok{    \}}
+
+    \CommentTok{# Choix par date du jour}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Date"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_nbr_day) \{}
+\NormalTok{      xvar =}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{date}
+\NormalTok{      xlabel =}\StringTok{ "Date"}
+\NormalTok{    \}}
+
+    \KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ xvar, }\DataTypeTok{y =}\NormalTok{ yvar, }\DataTypeTok{colour =}\NormalTok{ id)) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(xlabel) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(y_axis_name) ->}\StringTok{ }\NormalTok{p}
+
+\NormalTok{    p <-}\StringTok{ }\KeywordTok{ggplotly}\NormalTok{(p, }\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{  \})}
+
+
+\NormalTok{  ###-----------------------------Sortie console-----------------------------}\AlertTok{###}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_info <-}\StringTok{ }\KeywordTok{renderPrint}\NormalTok{(\{}
+
+    \CommentTok{#Affichage de la formule utilisé}
+\NormalTok{    formule <-}\StringTok{ ""}
+
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Buoyant mass"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      formule <-}\StringTok{ "Buoyant mass (g)"}
+\NormalTok{    \}}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Skeleton mass"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      formule <-}\StringTok{ "Skeleton mass (g)"}
+\NormalTok{    \}}
+    \ControlFlowTok{if}\NormalTok{ (}\StringTok{"Growth rate"} \OperatorTok{%in%}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{s_choice_plot) \{}
+\NormalTok{      formule <-}\StringTok{ "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"}
+\NormalTok{    \}}
+
+    \CommentTok{# Calculs boutures mortes}
+\NormalTok{    nbr_dead <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{count}\NormalTok{(}\KeywordTok{unique}\NormalTok{(}\KeywordTok{subset}\NormalTok{(df, status }\OperatorTok{==}\StringTok{ "dead"}\NormalTok{,id))))}
+\NormalTok{    death_rate <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{round}\NormalTok{((nbr_dead }\OperatorTok{/}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{levels}\NormalTok{(nbr_id))) }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{))}
+\NormalTok{    id_dead <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(}\KeywordTok{subset}\NormalTok{(df, status }\OperatorTok{==}\StringTok{ "dead"}\NormalTok{,id))}
+\NormalTok{    id_dead <-}\StringTok{ }\NormalTok{id_dead}\OperatorTok{$}\NormalTok{id}
+
+    \KeywordTok{cat}\NormalTok{(}\StringTok{"Yvar : "}\NormalTok{, formule, }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+        \StringTok{"Species :"}\NormalTok{, }\KeywordTok{as.character}\NormalTok{(}\KeywordTok{unique}\NormalTok{(df}\OperatorTok{$}\NormalTok{species)), }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+        \StringTok{"Number of deads cuttings :"}\NormalTok{,  nbr_dead, }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+        \StringTok{"ID dead cuttings : "}\NormalTok{, }\KeywordTok{paste}\NormalTok{(id_dead, }\DataTypeTok{collapse =} \StringTok{", "}\NormalTok{), }\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+        \StringTok{"Death rate :"}\NormalTok{, death_rate, }\StringTok{"%"}\NormalTok{)}
+\NormalTok{  \})}
+
+
+  \CommentTok{# ---------------------------Onglet tableau----------------------------------#}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_table <-}\StringTok{ }\KeywordTok{renderDT}\NormalTok{(\{}
+    \KeywordTok{datatable}\NormalTok{(df, }\DataTypeTok{filter =} \StringTok{"top"}\NormalTok{)}
+\NormalTok{  \})}
+
+   \CommentTok{# Recuperation de l'ID du fichier ui.R}
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_table <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{radioButtons}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_table"}\NormalTok{, }\DataTypeTok{label =} \StringTok{"Filtrer"}\NormalTok{,}
+                 \DataTypeTok{choices =} \KeywordTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+                 \DataTypeTok{selected =} \StringTok{"No"}\NormalTok{)}
+\NormalTok{  \})}
+
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_subchoice_table <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{dropdown}\NormalTok{(}
+      \KeywordTok{radioButtons}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_subchoice_table"}\NormalTok{,}
+                   \DataTypeTok{label =} \StringTok{"by"}\NormalTok{,}
+                   \DataTypeTok{choices =} \KeywordTok{c}\NormalTok{(}\StringTok{"skeleton weight"}\NormalTok{, }\StringTok{"growth rates"}\NormalTok{),}
+                   \DataTypeTok{selected =} \KeywordTok{c}\NormalTok{(}\StringTok{"skeleton weight"}\NormalTok{)),}
+      \DataTypeTok{width =} \StringTok{"200px"}\NormalTok{,}
+      \DataTypeTok{size =} \StringTok{"default"}\NormalTok{,}
+      \DataTypeTok{label =} \StringTok{"Variable type"}\NormalTok{,}
+      \DataTypeTok{tooltip =} \KeywordTok{tooltipOptions}\NormalTok{(}\DataTypeTok{placement =} \StringTok{"right"}\NormalTok{, }\DataTypeTok{title =} \StringTok{"Choice variable type"}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  \})}
+
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_choice_var <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+
+    \KeywordTok{numericInput}\NormalTok{(}\DataTypeTok{inputId =} \StringTok{"s_choice_var"}\NormalTok{,}
+                 \DataTypeTok{label =} \ControlFlowTok{if}\NormalTok{ (input}\OperatorTok{$}\NormalTok{s_subchoice_table }\OperatorTok{==}\StringTok{ "growth rates"}\NormalTok{)}
+\NormalTok{                   \{}\StringTok{"Growth rates higher than :"}\NormalTok{\}}
+                 \ControlFlowTok{else}\NormalTok{ \{}\StringTok{"Skeleton weight higher than :"}\NormalTok{\},}
+                 \DataTypeTok{value =} \DecValTok{1}\NormalTok{)}
+\NormalTok{  \})}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

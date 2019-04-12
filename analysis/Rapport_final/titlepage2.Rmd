@@ -1,0 +1,30 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes: \usepackage {xcolor}
+---
+
+
+
+\begin{centering}
+
+
+
+\textcolor{white}{.}
+
+
+
+
+
+\vfill
+
+\huge 
+{\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
+
+\vfill
+
+
+\end {centering}
+\null
+\newpage

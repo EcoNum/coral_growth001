@@ -14,10 +14,10 @@ output:
 <!-- Utiliser anti-dote -->
 <!-- Exemple :  -->
 <!-- # \chemform{CaCO_3} -->
-```{r setup, echo=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 library(knitr)
-library(ggplot2)
+library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
 library(png)
 
 opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE, fig.pos = "H")
