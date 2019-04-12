@@ -28,7 +28,9 @@ La phase de création d'outils comprend :
 
 ### Multiplication par bouturage
 
-Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Elles sont suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chaque bouture.
+Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Elles sont suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chaque bouture (Fig. ???).
+
+![]
 
 
 ## Outils monitorings
