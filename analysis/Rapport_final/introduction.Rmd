@@ -1,0 +1,18 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes: \usepackage {xcolor}
+---
+
+# Introduction
+
+Les coraux sont des animaux de l’embranchement des cnidaires. Les individus sont nommés « polypes »,
+Au sein des cnidaires, 1609 espèces de coraux durs (scléractiniaire hermatypique) forment les récifs coralliens. Les coraux durs vivent en symbiose avec une microalgue unicellulaire les zooxanthelles qui fournit l'énergie nécessaire à la formation de leur squelette carbonate de calcium.
+
+Les récifs coralliens fournissent d’importantes niches écologiques à de nombreux animaux qui en sont dépendants.  Il est donc crucial de les protéger.        
+En situation de stress le corail, peu expulser ses zooxanthelles, ce qui ne laisse paraître seulement la coloration blanche de son squelette. Ce blanchissement affaiblis considérablement le corail. Divers facteurs peuvent stresser le corail : l’acidité, la salinité, la température, la pollution, etc..
+
+Le service d’écologie numérique des milieux aquatiques étudie en mésocosme les réponses écophysiologiques des coraux à divers stress sur Seriatopora hystrix Dana 1846 principalement.
+
+Le but du stage est de mettre à disposition des outils à partir du langage R permettant le monitoring des coraux tout en relevant régulièrement la croissance de ceux-ci.

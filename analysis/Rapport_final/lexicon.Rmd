@@ -1,0 +1,40 @@
+---
+output: 
+  pdf_document:
+    latex_engine: xelatex
+header-includes: \usepackage {xcolor}
+---
+
+\textcolor{white}{.}
+
+
+\Huge 
+{\bf Lexique}
+\vspace{1 cm}
+
+
+\normalsize
+
+Symbiose : Association biologique, durable et réciproquement profitable, entre deux organismes vivants.
+
+Corail : animal de l'embranchement des Cnidaires.
+
+Cnidaire : groupe (embranchement) d'espèces animales spécifiques du milieu aquatique.
+
+EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
+
+UMons : Université de Mons.
+
+Carbonate de calcium : composant majeur du calcaire et constituant principal des coquilles d'animaux marins et du corail.
+
+Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le corail.
+
+Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+
+Scléractiniaire : ordre principal des coraux durs.
+
+Monitoring : suveillance, contrôle.
+
+
+\null
+\newpage
