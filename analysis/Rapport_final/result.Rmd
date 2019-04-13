@@ -1,0 +1,219 @@
+---
+output: pdf_document
+---
+
+# Résultats et interprétations
+
+## Acquisition de données 
+
+### Multiplication par bouturage
+
+Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Le nombre de boutures s'élève à 84, toutes suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chacune (Fig. 4.1, Fig. 4.2).
+
+\begin{figure}[h!]
+\includegraphics[]{../image/regle.jpg}
+\caption{Règle numérotée}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/boutures.jpg}
+\caption{Boutures suspendues}
+\end{figure}
+
+
+## Outils monitorings
+
+### Masse immergée et masse squelettique
+<!-- MASSE -->
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Cette méthodde de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
+
+\begin{equation}
+\large
+  m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
+\end{equation}
+
+$\rho_{eau}$ est déterminé via l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
+Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette du corail.
+
+
+\null
+\newpage
+
+### Tableur en ligne
+
+Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire puis encodés dans un tableau de données.
+
+Le tableur est en ligne cela permet à n'importe quelle personne, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
+
+Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créé pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
+
+\begin{figure}[h!]
+\includegraphics[]{../image/tableur-gs.PNG}
+\caption{Tableur en ligne Google Sheets}
+\end{figure}
+
+Le tableur est divisé en 12 colonnes :
+
++ project : différencie chaque expérience réalisée, généralement on préfèrera recréer un nouveau tableur pour chacune des expériences
++ date : date et heure à laquelle les relevés de mesures ont été pris
++ author : nom de la personne ayant encodé dans le tableur
++ aqua : nom du mésocosme où la bouture a été prélevé
++ condition : condition spécifique appliquée à la bouture (exemple : stress hypersalin)
++ species : nom de l'espèce mesurée
++ id : numéro de la bouture mesurée
++ weight : masse immergée mesurée
++ temperature : température de l'eau de mer
++ salinity : salinité de l'eau de mer
++ status : état de santé de la bouture
++ comment : commentaire
+
+
+
+## Application Shiny
+
+L'application est divisée en deux fichiers, une partie "ui" (User Interface), c'est la partie qui affiche les éléments graphiques de l'interface Shiny à l'utilisateur et une partie "server", qui contient toutes les commandes R qui s'opère côté serveur.
+
+Il est possible mettre l'intégralité du code dans un seul fichier app.R, mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et server.R (voir partie annexe).
+
+\vspace{1 cm}
+
+
+Mon application présente 3 onglets, le premier créer un graphique interactif (Fig. 4.4).
+
+\begin{figure}[h!]
+\includegraphics[]{../image/notebook-plot1.PNG}
+\caption{Application Shiny : onglet "Plot"}
+\end{figure}
+
+\vspace{0.5 cm}
+
+Par défaut, le graphique utilise en ordonné la masse immergée des boutures et en abscisse la date de la mesure.
+Les boutures sélectionnées sont peu nombreuse pour l'exemple mais il est possible de toutes les sélectionner.
+
+\vspace{0.5 cm}
+
+Différents paramètres peuvent modifier le graphique (Fig. 4.5).
+
+<!-- \begin{figure}[h!] -->
+<!-- \includegraphics[width=10cm]{} -->
+<!-- \caption{Application Shiny : paramètres} -->
+<!-- \end{figure} -->
+
+![Application Shiny : paramètres](../image/notebook-plot2.PNG){width=15cm}
+
+\vspace{0.5cm}
+
+\null
+\newpage
+
+En ordonné, on peut choisir :
+
++ la masse immergée
++ la masse squelettique
++ le taux de croissance (Fig. 4.6)
+<!-- ajouter les formules de calcul du taux de croissance -->
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny3.PNG}
+\caption{Application Shiny : taux de croissance}
+\end{figure}
+
+En abscisse, on peut choisir :
+
++ la date de la mesure
++ le nombre de jour écoulé depuis la première mesure
+
+Il est également possible de restreindre la période de temps (option *Date range input*).
+
+
+Il est possible de sélectionner les ID dans un menu déroulant ou de directement cliquer à droite du graphique sur les ID triés par couleur (Fig. 4.7, Fig. 4.8). 
+
+Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny4.PNG}
+\caption{Application Shiny : menu déroulant}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny5.PNG}
+\caption{Application Shiny : affichage intéractif}
+\end{figure}
+
+
+En passant le curseur sur les points du graphique, on peut obtenir quelques informations supplémentaires.
+On peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran.
+
+
+En bas du graphique des informations supplémentaires sont données :
+
++ Yvar :  l'ordonnée du graphique
++ Species : l'espèce des boutures 
++ Number of deads cuttings : le nombre de boutures mortes
++ ID dead cuttings : l'ID des boutures mortes
++ Death rate : le taux de mortalité
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny7.PNG}
+\caption{Application Shiny : informations supplémentaires}
+\end{figure}
+
+Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont été calculées, il y a l'ajout de la masse squelettique et du "ratio" qui correspond au taux de croissance.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/notebook-table1.png}
+\caption{Application Shiny : tableau de donnée}
+\end{figure}
+
+
+Le dernier onglet contient une page d'aide.
+
+## Outils utilisés
+
+Les outils utilisés sont :
+
+* La machine virtuelle *SciViews Box*, contenant un linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
+
+* Les langages de programmation : R.
+
+* Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
+
+* Le service web GitHub.
+
+
+## Objectifs réalisés
+
+Les objectifs réalisés sont :
+
+* Bouturer les coraux et relever leurs masses immergées.
+
+* Créer un tableau en ligne contenant les données nécessaires.
+
+* Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
+
+
+## Difficultés rencontrées
+
+### R vs python
+
+La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine tu traitement de donné et de création d'application web.
+*python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens. A l'inverse, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
+
+Dans le domaine du *data scientist*, *R* et *python* sont courament employé.
+
+### Shiny communication entre ui.R et server.R
+
+Les application web géré par shiny utilise deux fonctions communiquant entre elles **ui** et le **server**
+
+Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
+Celui-ci est appelé dans server.R sous la forme *input$ma_variable*, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
+
+Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie grandement le travail avec R.
+Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
+Dans certaines situations cela complique le travail.
+
+
+### Apport au sein de l'entreprise
+
+L'application est utilisé dans le travail de mémoire de Madeleine Gilles.
+

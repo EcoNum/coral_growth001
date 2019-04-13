@@ -1,0 +1,60 @@
+---
+documentclass: report
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    includes:
+      in_header: ../template/preamble-latex-fr.tex
+    latex_engine: xelatex
+    number_sections: yes
+  word_document: default
+---
+<!-- # Note : faire un maximum ici, puis installe un R, RStudio sous linux et installer les packages permettant des choses plus exotiques-->
+<!-- Utiliser anti-dote -->
+<!-- Exemple :  -->
+<!-- # \chemform{CaCO_3} -->
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+library(knitr)
+library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
+library(png)
+
+opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE, fig.pos = "H")
+```
+
+```{r child = 'titlepage.Rmd'}
+```
+
+```{r child = 'titlepage2.Rmd'}
+```
+
+```{r child = 'acknowledgement.Rmd'}
+```
+
+```{r child = 'summary.Rmd'}
+```
+
+
+```{r child = 'tableofcontents.Rmd'}
+```
+
+
+```{r child = 'lexicon.Rmd'}
+```
+
+```{r child = 'presentation.Rmd'}
+```
+
+```{r child = 'introduction.Rmd'}
+```
+
+```{r child = 'objective.Rmd'}
+```
+
+```{r child = 'result.Rmd'}
+```
+
+
+```{r child = 'annex.Rmd'}
+```

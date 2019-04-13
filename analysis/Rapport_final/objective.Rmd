@@ -1,0 +1,35 @@
+---
+output: pdf_document
+---
+
+# Objectifs du travail
+
+Le but du stage est de créer une application web via le package Shiny dévelopé par RStudio sur R, qui suit l'évolution des coraux dans les mésocosmes. Les coraux seront utilisés dans des expériences par le laboratoire, il est donc nécessaire de visualiser leur croissance.
+L'application doit pouvoir être utilisée facilement par d'autres personnes à *posteriori*, il faut donc l'automatiser et anticiper les problèmes à venir.
+
+Le stage se déroule en 2 parties, la première est une phase d'apprentissage, la deuxième est la création de l'application et l'implémentation d'outils pour le monitoring de la croissance des coraux.
+
+## Stage
+
+La phase d'apprentissage comprend :
+
++ Apprentissage du langage de programmation R, de ses packages et de l'environnement RStudio.
+
+La phase de création d'outils comprend :
+
++ L'acquisition des données de croissance régulière des coraux.
+
++ La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
+
+
+
+
+
+
+
+
+
+
+
+
+

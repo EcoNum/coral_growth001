@@ -1,0 +1,43 @@
+---
+output: 
+  pdf_document:
+    latex_engine: xelatex
+header-includes: \usepackage {xcolor}
+---
+
+\textcolor{white}{.}
+
+
+\Huge 
+{\bf Lexique}
+\vspace{1 cm}
+
+
+\normalsize
+Aragonite : minéral composé de carbonate de calcium.
+
+Carbonate de calcium (CaCO~3~) : composant majeur du calcaire et constituant principal des coquilles d'animaux marins et du corail.
+
+Cnidaire : groupe (embranchement) d'espèces animales spécifiques du milieu aquatique.
+
+Corail : animal de l'embranchement des Cnidaires.
+
+EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
+
+Symbiose : association biologique, durable et réciproquement profitable, entre deux organismes vivants.
+
+Monitoring : suveillance, contrôle.
+
+Scléractiniaire : ordre principal des coraux durs.
+
+Script : suite de commandes permettant d'automatiser une tâche.
+
+Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+
+UMons : université de Mons.
+
+Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le corail.
+
+
+\null
+\newpage
