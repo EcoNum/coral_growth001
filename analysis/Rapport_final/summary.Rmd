@@ -15,7 +15,7 @@ header-includes: \usepackage {xcolor}
 
 \normalsize
 
-Depuis plusieurs années, les scientifiques et le grand public s'intéressent fortement aux effets du changement climatique sur les écosystèmes. Les coraux forment des écosystèmes marins complexes parmi les plus riches en biodiversité. Dans le service d'EcoNum, on étudie les effets du stress salin sur les coraux. 
+Depuis plusieurs années, les scientifiques et le grand public s'intéressent fortement aux effets du changement climatique sur les écosystèmes. Les coraux forment des écosystèmes marins complexes parmi les plus riches en biodiversité. Le service d'EcoNum étudie l’écophysiologie des scléractiniaires.
 
 Le but de ce stage est multiple, dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R et ensuite de développer des outils permettant le monitoring des coraux. Tout en faisant cela, des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses.
 

@@ -52,9 +52,6 @@ opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE, fig.pos = "H")
 ```{r child = 'objective.Rmd'}
 ```
 
-```{r child = 'communication.Rmd'}
-```
-
 ```{r child = 'result.Rmd'}
 ```
 

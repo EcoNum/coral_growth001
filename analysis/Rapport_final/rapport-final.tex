@@ -224,13 +224,12 @@ de celui-ci.
 Je voudrai également remercier les autres personnes du laboratoire
 d'Ecologie Numérique des Milieux Aquatiques. Tout d'abord, je remercie
 Guyliann Engels qui m'a suivie depuis le début, qui a répondu aux
-nombreuses questions que je pouvais avoir et qui m'a soutenu tout au
-long de ce stage dans son bureau. Je remercie Antoine, le technicien qui
-arrive à maintenir tout les mésocosmes en équilibre, qui m'a de
-nombreuses fois prit le temps de m'aider. Je remercie également les
-mémorants, Madeleine et Rémy pour tout les échanges instructifs que j'ai
-pu avoir avec eux lors de ce stage. Je remercie aussi Nicolas pour les
-conseils qu'il m'a prodigué.
+nombreuses questions que je pouvais avoir et qui m'a accueili dans son
+bureau. Je remercie Antoine, le technicien qui arrive à maintenir tout
+les mésocosmes en équilibre, qui m'a de nombreuses fois prit le temps de
+m'aider. Je remercie également les mémorants, Madeleine et Rémy pour
+tous les échanges instructifs que j'ai pu avoir avec eux lors de ce
+stage. Je remercie aussi Nicolas pour les conseils qu'il m'a prodigué.
 
 Un dernier remerciement revient à Raphael qui a créé l'application sur
 laquelle je me suis basé pour commencer la mienne. \vfill
@@ -247,8 +246,8 @@ laquelle je me suis basé pour commencer la mienne. \vfill
 Depuis plusieurs années, les scientifiques et le grand public
 s'intéressent fortement aux effets du changement climatique sur les
 écosystèmes. Les coraux forment des écosystèmes marins complexes parmi
-les plus riches en biodiversité. Dans le service d'EcoNum, on étudie les
-effets du stress salin sur les coraux.
+les plus riches en biodiversité. Le service d'EcoNum étudie
+l'écophysiologie des scléractiniaires.
 
 Le but de ce stage est multiple, dans un premier temps il faudra
 acquérir des connaissances suffisantes du langage de programmation R et
@@ -297,30 +296,34 @@ by columns in a given range and in the last tab a help is available.
 {\bf Lexique} \vspace{1 cm}
 
 \normalsize
+Aragonite : minéral composé de carbonate de calcium.
 
-Symbiose : Association biologique, durable et réciproquement profitable,
-entre deux organismes vivants.
-
-Corail : animal de l'embranchement des Cnidaires.
+Carbonate de calcium (CaCO\textsubscript{3}) : composant majeur du
+calcaire et constituant principal des coquilles d'animaux marins et du
+corail.
 
 Cnidaire : groupe (embranchement) d'espèces animales spécifiques du
 milieu aquatique.
 
+Corail : animal de l'embranchement des Cnidaires.
+
 EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
 
-UMons : Université de Mons.
+Symbiose : association biologique, durable et réciproquement profitable,
+entre deux organismes vivants.
 
-Carbonate de calcium : composant majeur du calcaire et constituant
-principal des coquilles d'animaux marins et du corail.
-
-Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le
-corail.
-
-Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+Monitoring : suveillance, contrôle.
 
 Scléractiniaire : ordre principal des coraux durs.
 
-Monitoring : suveillance, contrôle.
+Script : suite de commandes permettant d'automatiser une tâche.
+
+Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+
+UMons : université de Mons.
+
+Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le
+corail.
 
 \null
 \newpage
@@ -444,13 +447,13 @@ pollution, etc..
 
 Le service d'écologie numérique des milieux aquatiques étudie en
 mésocosme les réponses écophysiologiques des coraux à divers stress sur
-Seriatopora hystrix Dana 1846 principalement.
+\emph{Seriatopora hystrix} Dana 1846 principalement.
 
-Le but du stage est de mettre à disposition des outils à partir du
+L'objectif du stage est de mettre à disposition des outils à partir du
 langage R permettant le monitoring des coraux tout en relevant
 régulièrement la croissance de ceux-ci.
 
-\chapter{But}\label{but}
+\chapter{Objectifs du travail}\label{objectifs-du-travail}
 
 Le but du stage est de créer une application web via le package Shiny
 dévelopé par RStudio sur R, qui suit l'évolution des coraux dans les
@@ -486,23 +489,30 @@ La phase de création d'outils comprend :
   (monitoring) des coraux de l'espèce \emph{S. hystrix}.
 \end{itemize}
 
-\chapter{Analyse}\label{analyse}
+\chapter{Résultats et
+interprétations}\label{resultats-et-interpretations}
 
-\section{Acquisition de données
-réelles}\label{acquisition-de-donnees-reelles}
+\section{Acquisition de données}\label{acquisition-de-donnees}
 
 \subsection{Multiplication par
 bouturage}\label{multiplication-par-bouturage}
 
 Dans le but d'acquérir des nouvelles données de croissance, on a
 utiliser une technique de multiplication asexuée : le bouturage. Cela
-consiste à séparer à l'aide d'une pince des branches de coraux. Elles
-sont au nombre de 84, toutes suspendues dans l'eau à l'aide de fil de
-pêche sur une règle qui porte un numéro d'identification propre à chaque
-bouture (Fig. ???).
+consiste à séparer à l'aide d'une pince des branches de coraux. Le
+nombre de boutures s'élève à 84, toutes suspendues dans l'eau à l'aide
+de fil de pêche sur une règle qui porte un numéro d'identification
+propre à chacune (Fig. 4.1, Fig. 4.2).
 
-\includegraphics{../image/regle.jpg}
-\includegraphics{../image/boutures.jpg}
+\begin{figure}[h!]
+\includegraphics[]{../image/regle.jpg}
+\caption{Règle numérotée}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/boutures.jpg}
+\caption{Boutures suspendues}
+\end{figure}
 
 \section{Outils monitorings}\label{outils-monitorings}
 
@@ -524,8 +534,11 @@ ci-dessous mise au point par Jokiel \emph{et al} (1978) :
 
 \(\rho_{eau}\) est déterminé via l'équation d'état de l'eau de mer grâce
 à la mesure de la salinité et de la température. Le
-\(\rho_{squelettique}\) est la densité de l'aragonite(CaCO3) du
-squelette du corail.
+\(\rho_{squelettique}\) est la densité de l'aragonite
+(CaCO\textsubscript{3}) du squelette du corail.
+
+\null
+\newpage
 
 \subsection{Tableur en ligne}\label{tableur-en-ligne}
 
@@ -533,14 +546,19 @@ Les mesures effectuées sur les coraux et les paramètres de l'eau des
 mésocosmes sont dans un premier temps notés dans un cahier de
 laboratoire puis encodés dans un tableau de données.
 
-Le tableur est en ligne cela permet à n'importe qui, qui a besoin de
-remplir un tableau de donnée puisse le faire depuis n'importe quelle
-machine connectée à internet.
+Le tableur est en ligne cela permet à n'importe quelle personne, qui a
+besoin de remplir un tableau de donnée puisse le faire depuis n'importe
+quelle machine connectée à internet.
 
 Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en
 forme conditionnelles ont été créé pour mettre en évidence les cases non
 remplies, formater le type des cellules et mettre un dégradé de couleur
-suivant l'avancement des données.
+suivant l'avancement des données (Fig. 4.3).
+
+\begin{figure}[h!]
+\includegraphics[]{../image/tableur-gs.PNG}
+\caption{Tableur en ligne Google Sheets}
+\end{figure}
 
 Le tableur est divisé en 12 colonnes :
 
@@ -548,7 +566,7 @@ Le tableur est divisé en 12 colonnes :
 \tightlist
 \item
   project : différencie chaque expérience réalisée, généralement on
-  recréera un nouveau tableur pour chacune des expériences
+  préfèrera recréer un nouveau tableur pour chacune des expériences
 \item
   date : date et heure à laquelle les relevés de mesures ont été pris
 \item
@@ -574,48 +592,81 @@ Le tableur est divisé en 12 colonnes :
   comment : commentaire
 \end{itemize}
 
-\begin{figure}[h!]
-\includegraphics[]{../image/tableur-gs.PNG}
-\caption{Tableur en ligne Google Sheets}
-\end{figure}
+\section{Application Shiny}\label{application-shiny}
 
-\subsection{Application Shiny}\label{application-shiny}
-
-L'application est divisée en deux éléments, une partie ``ui'' (User
+L'application est divisée en deux fichiers, une partie ``ui'' (User
 Interface), c'est la partie qui affiche les éléments graphiques de
-l'interface Shiny à l'utilisateur, et une partie ``server'', qui
-contient toutes les commandes R qui s'opère côté serveur.
+l'interface Shiny à l'utilisateur et une partie ``server'', qui contient
+toutes les commandes R qui s'opère côté serveur.
 
 Il est possible mettre l'intégralité du code dans un seul fichier app.R,
 mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et
 server.R (voir partie annexe).
 
-Mon application présente 2 onglets, le premier créer un graphique
-interactif.
+\vspace{1 cm}
+
+Mon application présente 3 onglets, le premier créer un graphique
+interactif (Fig. 4.4).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/notebook-plot1.PNG}
 \caption{Application Shiny : onglet "Plot"}
 \end{figure}
 
+\vspace{0.5 cm}
+
 Par défaut, le graphique utilise en ordonné la masse immergée des
 boutures et en abscisse la date de la mesure. Les boutures sélectionnées
 sont peu nombreuse pour l'exemple mais il est possible de toutes les
 sélectionner.
 
-Différents paramètres peuvent modifier le graphique.
+\vspace{0.5 cm}
 
-\begin{figure}[h!]
-\includegraphics[]{../image/notebook-plot2.PNG}
+Différents paramètres peuvent modifier le graphique (Fig. 4.5).
+
+\begin{figure}
+\centering
+\includegraphics[width=15.00000cm]{../image/notebook-plot2.PNG}
 \caption{Application Shiny : paramètres}
 \end{figure}
 
-On peut sélectionner le taux de croissance en fonction du temps.
+\vspace{0.5cm}
+
+\null
+\newpage
+
+En ordonné, on peut choisir :
+
+\begin{itemize}
+\tightlist
+\item
+  la masse immergée
+\item
+  la masse squelettique
+\item
+  le taux de croissance 
+\end{itemize}
+
+En abscisse, on peut choisir :
+
+\begin{itemize}
+\tightlist
+\item
+  la date de la mesure
+\item
+  le nombre de jour écoulé depuis la première mesure
+\end{itemize}
+
+Il est également possible de restreindre la période de temps (option
+\emph{Date range input}).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny3.PNG}
 \caption{Application Shiny : taux de croissance}
 \end{figure}
+
+\null
+\newpage
 
 Il est possible de sélectionner les ID dans un menu déroulant ou de
 directement cliquer à droite du graphique sur les ID triés par couleur.
@@ -633,10 +684,25 @@ Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 \end{figure}
 
 En passant le curseur sur les points du graphique, on peut obtenir
-quelques informations.
+quelques informations supplémentaires. On peut également désélectionner
+les lignes en cliquant sur le numéro associer à la couleur de l'ID à
+droite de l'écran.
 
-Sous le graphique, des informations supplémentaires : le nombre de
-boutures mortes, leur ID et le taux de mortalité sont calculés.
+En bas du graphique des informations supplémentaires sont données :
+
+\begin{itemize}
+\tightlist
+\item
+  Yvar : l'ordonnée du graphique
+\item
+  Species : l'espèce des boutures
+\item
+  Number of deads cuttings : le nombre de boutures mortes
+\item
+  ID dead cuttings : l'ID des boutures mortes
+\item
+  Death rate : le taux de mortalité
+\end{itemize}
 
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny7.PNG}
@@ -648,9 +714,11 @@ colonnes ont été calculées, il y a l'ajout de la masse squelettique et
 du ``ratio'' qui correspond au taux de croissance.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny8.PNG}
+\includegraphics[]{../image/notebook-table1.png}
 \caption{Application Shiny : tableau de donnée}
 \end{figure}
+
+Le dernier onglet contient une page d'aide.
 
 \section{Outils utilisés}\label{outils-utilises}
 
@@ -683,20 +751,19 @@ Les objectifs réalisés sont :
   paquet Shiny.
 \end{itemize}
 
-\chapter{Communications
-interpersonnelles}\label{communications-interpersonnelles}
-
 \section{Difficultés rencontrées}\label{difficultes-rencontrees}
 
 \subsection{R vs python}\label{r-vs-python}
 
 La principale difficulté rencontrée au début est de passer de
 l'apprentissage du langage de programmation \emph{python} à \emph{R}. Ce
-sont tous les deux des langages de programmation interprétés.
-\emph{python} a été créé pour faire de la programmation informatique
-généraliste, il est utilisé dans de larges domaines par des
-informaticiens. A l'inverse, R est dédié aux analyses statistiques,
-plutôt utilisées par des spécialistes ou des scientifiques.
+sont tous les deux des langages de programmation interprétés qui peuvent
+être utilisés dans le domaine tu traitement de donné et de création
+d'application web. \emph{python} a été créé pour faire de la
+programmation informatique généraliste, il est utilisé dans de larges
+domaines par des informaticiens. A l'inverse, R est dédié aux analyses
+statistiques, plutôt utilisées par des spécialistes ou des
+scientifiques.
 
 Dans le domaine du \emph{data scientist}, \emph{R} et \emph{python} sont
 courament employé.
@@ -709,9 +776,9 @@ entre elles \textbf{ui} et le \textbf{server}
 
 Le schéma de communication basique entre les deux scripts commence par
 la déclaration d'une variable \emph{inputId = ma\_variable} dans ui.R.
-Celui-ci est appelé dans server.R sous la forme input\$ma\_variable,
-cette variable sera ensuite traitée dans un bloc de code délimiter par
-des crochets.
+Celui-ci est appelé dans server.R sous la forme
+\emph{input\$ma\_variable}, cette variable sera ensuite traitée dans un
+bloc de code délimiter par des crochets.
 
 Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur
 sous une couche de code masqué, cette couche simplifie grandement le
@@ -723,41 +790,13 @@ situations cela complique le travail.
 \subsection{Apport au sein de
 l'entreprise}\label{apport-au-sein-de-lentreprise}
 
-Pour l'instant, la contribution à l'entreprise revient principalement
-aux relevés des boutures (monitoring) et l'encodage, ceci permet de
-libérer du temps au technicien. L'application qui est en développement
-est utilisé dans le travail de mémoire de Madeleine Gilles.
-
-\begin{centering}
-
-
-
-\textcolor{white}{.}
-
-
-
-
-
-\vfill
-
-\huge 
-{\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
-
-\vfill
-
-
-\end {centering}
-
-\null
-\newpage
+L'application est utilisé dans le travail de mémoire de Madeleine
+Gilles.
 
 \chapter{Note}\label{note}
 
 Ce rapport en pdf intéractif a été créé en R Markdown, il permet
-d'utiliser à la fois le langage LaTeX et R. Toutefois, dû à la récente
-prise en main de celui-ci, il y a un problème de positionnement des
-images qui n'a pas pu être résolu. LaTex positionne automatiquement les
-images selon son bon vouloir.
+d'utiliser à la fois le langage LaTeX et R.
 
 \chapter{Annexe}\label{annexe}
 
@@ -813,8 +852,12 @@ images selon son bon vouloir.
 \NormalTok{                          )}
 \NormalTok{               )}
 \NormalTok{             )}
-\NormalTok{    )}
+\NormalTok{    ),}
+\NormalTok{    ### Onglet principal : Aide}
+    \KeywordTok{tabPanel}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Help"}\NormalTok{,}
+             \KeywordTok{fluidRow}\NormalTok{(}\KeywordTok{column}\NormalTok{(}\DecValTok{12}\NormalTok{, }\KeywordTok{includeMarkdown}\NormalTok{(}\StringTok{"../../analysis/Notebook/Notebook-Manuel.Rmd"}\NormalTok{))))}
 \NormalTok{  )}
+
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}

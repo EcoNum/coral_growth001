@@ -7,8 +7,6 @@ output: pdf_document
 # Note 
 
 Ce rapport en pdf intéractif a été créé en R Markdown, il permet d'utiliser à la fois le langage LaTeX et R.
-Toutefois, dû à la récente prise en main de celui-ci, il y a un problème de positionnement des images qui n'a pas pu être résolu.
-LaTex positionne automatiquement les images selon son bon vouloir.
 
 # Annexe 
 
@@ -63,9 +61,14 @@ shinyUI(
                           )
                )
              )
-    )
+    ),
+    ### Onglet principal : Aide
+    tabPanel(title = "Help",
+             fluidRow(column(12, includeMarkdown("../../analysis/Notebook/Notebook-Manuel.Rmd"))))
   )
+
 )
+
 ```
 ## server.R
 ```{r, echo = TRUE, eval = FALSE}

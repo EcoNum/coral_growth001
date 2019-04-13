@@ -14,26 +14,29 @@ header-includes: \usepackage {xcolor}
 
 
 \normalsize
+Aragonite : minéral composé de carbonate de calcium.
 
-Symbiose : Association biologique, durable et réciproquement profitable, entre deux organismes vivants.
-
-Corail : animal de l'embranchement des Cnidaires.
+Carbonate de calcium (CaCO~3~) : composant majeur du calcaire et constituant principal des coquilles d'animaux marins et du corail.
 
 Cnidaire : groupe (embranchement) d'espèces animales spécifiques du milieu aquatique.
 
+Corail : animal de l'embranchement des Cnidaires.
+
 EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
 
-UMons : Université de Mons.
+Symbiose : association biologique, durable et réciproquement profitable, entre deux organismes vivants.
 
-Carbonate de calcium : composant majeur du calcaire et constituant principal des coquilles d'animaux marins et du corail.
-
-Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le corail.
-
-Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+Monitoring : suveillance, contrôle.
 
 Scléractiniaire : ordre principal des coraux durs.
 
-Monitoring : suveillance, contrôle.
+Script : suite de commandes permettant d'automatiser une tâche.
+
+Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+
+UMons : université de Mons.
+
+Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le corail.
 
 
 \null

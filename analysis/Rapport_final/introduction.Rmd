@@ -13,6 +13,6 @@ Au sein des cnidaires, 1609 espèces de coraux durs (scléractiniaire hermatypiq
 Les récifs coralliens fournissent d’importantes niches écologiques à de nombreux animaux qui en sont dépendants.  Il est donc crucial de les protéger.        
 En situation de stress le corail, peu expulser ses zooxanthelles, ce qui ne laisse paraître seulement la coloration blanche de son squelette. Ce blanchissement affaiblis considérablement le corail. Divers facteurs peuvent stresser le corail : l’acidité, la salinité, la température, la pollution, etc..
 
-Le service d’écologie numérique des milieux aquatiques étudie en mésocosme les réponses écophysiologiques des coraux à divers stress sur Seriatopora hystrix Dana 1846 principalement.
+Le service d’écologie numérique des milieux aquatiques étudie en mésocosme les réponses écophysiologiques des coraux à divers stress sur *Seriatopora hystrix* Dana 1846 principalement.
 
-Le but du stage est de mettre à disposition des outils à partir du langage R permettant le monitoring des coraux tout en relevant régulièrement la croissance de ceux-ci.
+L'objectif du stage est de mettre à disposition des outils à partir du langage R permettant le monitoring des coraux tout en relevant régulièrement la croissance de ceux-ci.
