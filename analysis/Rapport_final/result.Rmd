@@ -135,15 +135,21 @@ Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 \caption{Application Shiny : menu déroulant}
 \end{figure}
 
+
+
+
+En passant le curseur sur les points du graphique, on peut obtenir quelques informations supplémentaires (Fig. 4.8).
+On peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran (Fig. 4.9).
+
+\begin{figure}[h!]
+\includegraphics[]{../image/info-curseur.PNG}
+\caption{Application Shiny : information via le curseur}
+\end{figure}
+
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny-selection.PNG}
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
-
-
-En passant le curseur sur les points du graphique, on peut obtenir quelques informations supplémentaires.
-On peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran.
-
 
 En bas du graphique des informations supplémentaires sont données :
 
@@ -167,6 +173,12 @@ Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont
 
 
 Le dernier onglet contient une page d'aide.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/aide.PNG}
+\caption{Application Shiny : onglet aide}
+\end{figure}
+
 
 ## Outils utilisés
 

@@ -104,7 +104,7 @@
 \usepackage{titling}
 
 % Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
+\newcommand{\subtitle}[1]{
   \posttitle{
     \begin{center}\large#1\end{center}
     }
@@ -676,15 +676,20 @@ Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 \caption{Application Shiny : menu déroulant}
 \end{figure}
 
-\begin{figure}[h!]
-\includegraphics[]{../image/shiny-selection.PNG}
-\caption{Application Shiny : affichage intéractif}
-\end{figure}
-
 En passant le curseur sur les points du graphique, on peut obtenir
 quelques informations supplémentaires. On peut également désélectionner
 les lignes en cliquant sur le numéro associer à la couleur de l'ID à
 droite de l'écran.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/info-curseur.PNG}
+\caption{Application Shiny : information via le curseur}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[]{../image/shiny-selection.PNG}
+\caption{Application Shiny : affichage intéractif}
+\end{figure}
 
 En bas du graphique des informations supplémentaires sont données :
 
@@ -717,6 +722,11 @@ du ``ratio'' qui correspond au taux de croissance.
 \end{figure}
 
 Le dernier onglet contient une page d'aide.
+
+\begin{figure}[h!]
+\includegraphics[]{../image/aide.PNG}
+\caption{Application Shiny : onglet aide}
+\end{figure}
 
 \section{Outils utilisés}\label{outils-utilises}
 
