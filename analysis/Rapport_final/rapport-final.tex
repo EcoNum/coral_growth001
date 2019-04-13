@@ -104,7 +104,7 @@
 \usepackage{titling}
 
 % Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
+\providecommand{\subtitle}[1]{
   \posttitle{
     \begin{center}\large#1\end{center}
     }
@@ -370,7 +370,7 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A)
 
 \subsection{Philippe Grosjean}\label{philippe-grosjean}
 
-\includegraphics{../image/Grosjean2.jpg}
+\includegraphics[width=4.00000cm]{../image/Grosjean2.jpg}
 
 Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs
 projets de recherches sur l'identification automatique du plancton par
@@ -497,8 +497,9 @@ bouturage}\label{multiplication-par-bouturage}
 Dans le but d'acquérir des nouvelles données de croissance, on a
 utiliser une technique de multiplication asexuée : le bouturage. Cela
 consiste à séparer à l'aide d'une pince des branches de coraux. Elles
-sont suspendues dans l'eau à l'aide de fil de pêche sur une règle qui
-porte un numéro d'identification propre à chaque bouture (Fig. ???).
+sont au nombre de 84, toutes suspendues dans l'eau à l'aide de fil de
+pêche sur une règle qui porte un numéro d'identification propre à chaque
+bouture (Fig. ???).
 
 \includegraphics{../image/regle.jpg}
 \includegraphics{../image/boutures.jpg}
@@ -526,46 +527,56 @@ ci-dessous mise au point par Jokiel \emph{et al} (1978) :
 \(\rho_{squelettique}\) est la densité de l'aragonite(CaCO3) du
 squelette du corail.
 
-\subsection{Tableur}\label{tableur}
+\subsection{Tableur en ligne}\label{tableur-en-ligne}
 
 Les mesures effectuées sur les coraux et les paramètres de l'eau des
-mésocosmes sont encodé dans un tableau de données.
+mésocosmes sont dans un premier temps notés dans un cahier de
+laboratoire puis encodés dans un tableau de données.
 
-Pour l'instant, j'utilise ma licence d'Excel d'office 365 fourni par la
-HEH. Par la suite, j'aimerai utiliser un tableur en ligne afin que
-n'importe qui, qui a besoin de remplir un tableau de donnée puisse le
-faire depuis n'importe quelle machine connectée à internet.
+Le tableur est en ligne cela permet à n'importe qui, qui a besoin de
+remplir un tableau de donnée puisse le faire depuis n'importe quelle
+machine connectée à internet.
 
-Afin d'éviter au maximum des erreurs d'encodages, j'ai utilisé des
-règles pour mettre en évidence les cases non remplies, formater le type
-des cellules et mettre un dégradé de couleur suivant l'avancement des
-données.
+Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en
+forme conditionnelles ont été créé pour mettre en évidence les cases non
+remplies, formater le type des cellules et mettre un dégradé de couleur
+suivant l'avancement des données.
 
-\begin{figure}[h!]
-\includegraphics[]{../image/excel3.PNG}
-\caption{Mise en forme conditionnelle d'Excel}
-\end{figure}
-
-Le tableau de donnée contient 7 colonnes :
+Le tableur est divisé en 12 colonnes :
 
 \begin{itemize}
+\tightlist
 \item
-  ID : corresponds à l'identifiant de la bouture.
+  project : différencie chaque expérience réalisée, généralement on
+  recréera un nouveau tableur pour chacune des expériences
 \item
-  weight : corresponds à la masse immergée de la bouture.
+  date : date et heure à laquelle les relevés de mesures ont été pris
 \item
-  temp : corresponds à la température de l'eau de mer.
+  author : nom de la personne ayant encodé dans le tableur
 \item
-  salinity : corresponds à la salinité de l'eau de mer
+  aqua : nom du mésocosme où la bouture a été prélevé
 \item
-  date : corresponds à la date et heure du relevé.
+  condition : condition spécifique appliquée à la bouture (exemple :
+  stress hypersalin)
 \item
-  commentaire : donne quelques annotations.
+  species : nom de l'espèce mesurée
+\item
+  id : numéro de la bouture mesurée
+\item
+  weight : masse immergée mesurée
+\item
+  temperature : température de l'eau de mer
+\item
+  salinity : salinité de l'eau de mer
+\item
+  status : état de santé de la bouture
+\item
+  comment : commentaire
 \end{itemize}
 
 \begin{figure}[h!]
-\includegraphics[]{../image/excel1.PNG}
-\caption{Tableau de donnée}
+\includegraphics[]{../image/tableur-gs.PNG}
+\caption{Tableur en ligne Google Sheets}
 \end{figure}
 
 \subsection{Application Shiny}\label{application-shiny}
@@ -577,22 +588,26 @@ contient toutes les commandes R qui s'opère côté serveur.
 
 Il est possible mettre l'intégralité du code dans un seul fichier app.R,
 mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et
-server.R (voir page annexe).
+server.R (voir partie annexe).
 
 Mon application présente 2 onglets, le premier créer un graphique
 interactif.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny1.PNG}
-\caption{Application Shiny : légende}
+\includegraphics[]{../image/notebook-plot1.PNG}
+\caption{Application Shiny : onglet "Plot"}
 \end{figure}
 
-Par défaut, le graphique montre l'évolution de la masse squelettique en
-fonction du temps.
+Par défaut, le graphique utilise en ordonné la masse immergée des
+boutures et en abscisse la date de la mesure. Les boutures sélectionnées
+sont peu nombreuse pour l'exemple mais il est possible de toutes les
+sélectionner.
+
+Différents paramètres peuvent modifier le graphique.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny2.PNG}
-\caption{Application Shiny : masse squelettique}
+\includegraphics[]{../image/notebook-plot2.PNG}
+\caption{Application Shiny : paramètres}
 \end{figure}
 
 On peut sélectionner le taux de croissance en fonction du temps.
@@ -662,15 +677,11 @@ Les objectifs réalisés sont :
 \item
   Bouturer les coraux et relever leurs masses immergées.
 \item
-  Créer un tableau Excel contenant les données nécessaires.
+  Créer un tableau en ligne contenant les données nécessaires.
 \item
-  Créer un prototype d'application web à l'aide du paquet Shiny.
+  Créer une application web répondant aux besoins du service à l'aide du
+  paquet Shiny.
 \end{itemize}
-
-\section{Planning de travail}\label{planning-de-travail}
-
-Les horaires de stages sont flexibles, on peut arriver entre 7 et 9
-heure et il faut prester au moins 8 heures par jour.
 
 \chapter{Communications
 interpersonnelles}\label{communications-interpersonnelles}
