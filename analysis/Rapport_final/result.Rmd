@@ -114,7 +114,7 @@ En ordonné, on peut choisir :
 <!-- ajouter les formules de calcul du taux de croissance -->
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny3.PNG}
+\includegraphics[]{../image/taux-croissance.PNG}
 \caption{Application Shiny : taux de croissance}
 \end{figure}
 
@@ -131,12 +131,12 @@ Il est possible de sélectionner les ID dans un menu déroulant ou de directemen
 Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny4.PNG}
+\includegraphics[]{../image/menu-deroulant.PNG}
 \caption{Application Shiny : menu déroulant}
 \end{figure}
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny5.PNG}
+\includegraphics[]{../image/shiny-selection.PNG}
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
 
@@ -154,7 +154,7 @@ En bas du graphique des informations supplémentaires sont données :
 + Death rate : le taux de mortalité
 
 \begin{figure}[h!]
-\includegraphics[]{../image/shiny7.PNG}
+\includegraphics[]{../image/verbatim.PNG}
 \caption{Application Shiny : informations supplémentaires}
 \end{figure}
 
