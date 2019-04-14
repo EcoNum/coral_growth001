@@ -145,7 +145,7 @@ shinyServer(function(input, output, session) {
                 selected = nbr_condition)
   })
 
-  #--------------------------Choix statut---------------------------------
+  #--------------------------Choix statut---------------------------------ok
   output$u_choice_status <- renderUI({
 
     selectInput(inputId = "s_choice_status",

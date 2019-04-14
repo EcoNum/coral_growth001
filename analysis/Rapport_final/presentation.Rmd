@@ -13,7 +13,7 @@ L’Université de Mons (UMONS), est une université francophone implantée en B
 
 Le Département de biologie de la faculté des Sciences est impliqué dans la formation des étudiants et dans la recherche.
 
-Le département de biologie de la faculté des Sciences comprend 5 services dont le service d'Écologie Numérique des Milieux Aquatiques. Ce dernier étudie les écosystèmes aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
+Le département de biologie de la faculté des Sciences comprend 5 services, dont le service d'Écologie Numérique des Milieux Aquatiques. Ce dernier étudie les écosystèmes aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
 
 Le Service développe également des outils en science des données, y compris dans le domaine du data mining, des big data, et de la recherche reproductible. Il participe à des études sur les logiciels Open Source.
 
@@ -42,7 +42,7 @@ Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs projets 
 
 Il enseigne également la science des données biologiques, l'écologie marine, l'écophysiologie et l'océanographie générale aux étudiants en biologie.
 
-Il développe des outils Open Source comme la *SciViews Box*, qui est une machine virtuelle contenant une suite de logiciel pré-configuré pour l'utilisation de ses étudiants et des chercheurs.
+Il développe des outils Open Source comme la *SciViews Box*, qui est une machine virtuelle contenant une suite de logiciels préconfiguré pour l'utilisation de ses étudiants et des chercheurs.
 
 Il encadre 1 doctorant et 2 étudiants en masters.
 

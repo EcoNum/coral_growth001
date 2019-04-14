@@ -8,7 +8,7 @@ output: pdf_document
 
 ### Multiplication par bouturage
 
-Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Le nombre de boutures s'élève à 84, toutes suspendues dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chacune (Fig. 4.1, Fig. 4.2).
+Dans le but d'acquérir de nouvelles données de croissance, on a utilisé une technique de multiplication asexuée : le bouturage. Cela consiste à séparer à l'aide d'une pince des branches de coraux. Le nombre de boutures s'élève à 84, toutes suspendu dans l'eau à l'aide de fil de pêche sur une règle qui porte un numéro d'identification propre à chacune (Fig. 4.1, Fig. 4.2).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/regle.jpg}
@@ -25,14 +25,14 @@ Dans le but d'acquérir des nouvelles données de croissance, on a utiliser une 
 
 ### Masse immergée et masse squelettique
 <!-- MASSE -->
-Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Cette méthodde de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Cette méthode de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité, on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
 
 \begin{equation}
 \large
   m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
 \end{equation}
 
-$\rho_{eau}$ est déterminé via l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
+$\rho_{eau}$ est déterminé par l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
 Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette du corail.
 
 
@@ -45,7 +45,7 @@ Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosm
 
 Le tableur est en ligne cela permet à n'importe quelle personne, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
 
-Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créé pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
+Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/tableur-gs.PNG}
@@ -55,7 +55,7 @@ Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme 
 Le tableur est divisé en 12 colonnes :
 
 + project : différencie chaque expérience réalisée, généralement on préfèrera recréer un nouveau tableur pour chacune des expériences
-+ date : date et heure à laquelle les relevés de mesures ont été pris
++ date : date et heure à laquelle les relevés de mesures ont été prises
 + author : nom de la personne ayant encodé dans le tableur
 + aqua : nom du mésocosme où la bouture a été prélevé
 + condition : condition spécifique appliquée à la bouture (exemple : stress hypersalin)
@@ -87,8 +87,8 @@ Mon application présente 3 onglets, le premier créer un graphique interactif (
 
 \vspace{0.5 cm}
 
-Par défaut, le graphique utilise en ordonné la masse immergée des boutures et en abscisse la date de la mesure.
-Les boutures sélectionnées sont peu nombreuse pour l'exemple mais il est possible de toutes les sélectionner.
+Par défaut, le graphique utilise en ordonnée la masse immergée des boutures et en abscisse la date de la mesure.
+Les boutures sélectionnées sont peu nombreuses pour l'exemple, mais il est possible de toutes les sélectionner.
 
 \vspace{0.5 cm}
 
@@ -151,7 +151,7 @@ On peut également désélectionner les lignes en cliquant sur le numéro associ
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
 
-En bas du graphique des informations supplémentaires sont données :
+En bas du graphique, des informations supplémentaires sont données :
 
 + Yvar :  l'ordonnée du graphique
 + Species : l'espèce des boutures 
@@ -180,17 +180,42 @@ Le dernier onglet contient une page d'aide.
 \end{figure}
 
 
+\null
+\newpage
+
+
 ## Outils utilisés
 
 Les outils utilisés sont :
 
-* La machine virtuelle *SciViews Box*, contenant un linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
+* La machine virtuelle *SciViews Box*, contenant un Linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
 
 * Les langages de programmation : R.
 
 * Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
 
 * Le service web GitHub.
+
+
+## Difficultés rencontrées
+
+### R vs python
+
+La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine tu traitement de donné et de création d'application web.
+*python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens. A l'inverse, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
+
+Dans le domaine du *data scientist*, *R* et *python* sont couramment employé.
+
+### Shiny communication entre ui.R et server.R
+
+Les application web gérées par shiny utilisent deux fonctions communiquant entre elles **ui** et le **server**
+
+Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
+Celui-ci est appelé dans server.R sous la forme *input$ma_variable*, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
+
+Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie grandement le travail avec R.
+Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
+Dans certaines situations cela complique le travail.
 
 
 ## Objectifs réalisés
@@ -203,29 +228,16 @@ Les objectifs réalisés sont :
 
 * Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
 
+### Conclusion 
 
-## Difficultés rencontrées
+L'application web répond aux attentes.
 
-### R vs python
+Elle est disponible en ligne à l'adresse : https://jack177.shinyapps.io/coralgrowth/
 
-La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine tu traitement de donné et de création d'application web.
-*python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens. A l'inverse, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
+Il est également possible de scanner le QR code.
 
-Dans le domaine du *data scientist*, *R* et *python* sont courament employé.
-
-### Shiny communication entre ui.R et server.R
-
-Les application web géré par shiny utilise deux fonctions communiquant entre elles **ui** et le **server**
-
-Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
-Celui-ci est appelé dans server.R sous la forme *input$ma_variable*, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
-
-Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie grandement le travail avec R.
-Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
-Dans certaines situations cela complique le travail.
-
-
-### Apport au sein de l'entreprise
-
-L'application est utilisé dans le travail de mémoire de Madeleine Gilles.
+\begin{figure}[h!]
+\includegraphics[width=4cm]{../image/App_Coral_Growth.png}
+\caption{QR code}
+\end{figure}
 

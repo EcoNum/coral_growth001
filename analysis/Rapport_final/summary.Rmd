@@ -19,7 +19,7 @@ Depuis plusieurs années, les scientifiques et le grand public s'intéressent fo
 
 Le but de ce stage est multiple, dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R et ensuite de développer des outils permettant le monitoring des coraux. Tout en faisant cela, des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses.
 
-Un tableur contiendra l'ensemble des données des relevés. À partir de cela, l'application web génère plusieurs onglets dont une visualisation dynamique de la croissance des boutures, un tableau intéractif qui permet de trier par colonnes dans une plage donnée et dans le dernier onglet une aide est disponible.
+Un tableur contiendra l'ensemble des données des relevés. À partir de cela, l'application web génère plusieurs onglets, dont une visualisation dynamique de la croissance des boutures, un tableau intéractif qui permet de trier par colonnes dans une plage donnée et dans le dernier onglet une aide est disponible.
 
 
 \vspace{2 cm}
