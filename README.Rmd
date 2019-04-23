@@ -62,19 +62,22 @@ Le tableur est divisé en 12 colonnes :
 + status : état de santé de la bouture
 + comment : commentaire
 
-
-![](analysis/image/notebook-googlesheets-presentation.png)
-
+<!-- ![](analysis/image/notebook-googlesheets-presentation.png) -->
+\begin{figure}[h!]
+\includegraphics[]{analysis/image/notebook-googlesheets-presentation.png}
+\caption{}
+\end{figure}
 
 
 
 
 ### Onglet graphique
 Le premier onglet "Plot", permet la visualisation sous forme de graphique de la croissance du corail. 
-
-
-![Onglet graphique](analysis/image/notebook-plot1.png)
-
+<!-- ![Onglet graphique](analysis/image/notebook-plot1.png) -->
+\begin{figure}[h!]
+\includegraphics[]{analysis/image/notebook-plot1.png}
+\caption{}
+\end{figure}
 
 ### Paramètres
 On peut filtrer sur différents paramètres : 
@@ -138,8 +141,6 @@ En bas du graphique des informations supplémentaires sont données :
 
 Le deuxième onglet "Data table", permet de visualiser le tableau de donnée, certaines colonnes ont été calculées. 
 On peut le trier en fonction de chacune des colonnes.<br/><br/>
-
-
 ![Paramètres filtrables](analysis/image/notebook-table1.png)
 <br/><br/>
 
@@ -171,23 +172,30 @@ variable *nomInput* (inputId, label, ...).
 
 L'adresse URL est contenue dans la variable coral_url. 
 L'URL est générée via un fichier en ligne Google sheets. <br/> <br/>
+<!-- ![Feuille Google Sheets](analysis/image/notebook-googlesheets0.png) -->
 
-
-![Feuille Google Sheets](analysis/image/notebook-googlesheets0.png)
+\begin{figure}[h!]
+\includegraphics[]{analysis/image/notebook-googlesheets0.png}
+\caption{}
+\end{figure}
 <br/><br/>
-
 
 Pour cela il faut aller dans *Fichier > Publier sur le web*, puis choisir :
 *Intégrer > Valeurs séparées par des virgules (.csv)*. <br/><br/>
 
-![Chemin d'accès des options de publication](analysis/image/notebook-googlesheets1.png) 
-
+\begin{figure}[h!]
+\includegraphics[]{analysis/image/notebook-googlesheets1.png}
+\caption{}
+\end{figure}
+<!-- ![Chemin d'accès des options de publication](analysis/image/notebook-googlesheets1.png)  -->
 <br/> 
 _______________________________________________________________________________
 <br/>
-
-![Format du fichier partagé](analysis/image/notebook-googlesheets2.png)
-
+<!-- ![Format du fichier partagé](analysis/image/notebook-googlesheets2.png) -->
+\begin{figure}[h!]
+\includegraphics[]{analysis/image/notebook-googlesheets2.png}
+\caption{}
+\end{figure}
 
 Le lien de partage au format csv contenu dans *coral_url* sera lu par la 
 fonction *read_csv*. Cette fonction va importer le tableau de donnée et les 
