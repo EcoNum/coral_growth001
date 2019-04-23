@@ -62,7 +62,7 @@ Le tableur est divisé en 12 colonnes :
 + status : état de santé de la bouture
 + comment : commentaire
 
-![](../image/notebook-googlesheets-presentation.png)
+![](analysis/image/notebook-googlesheets-presentation.png)
 
 
 
