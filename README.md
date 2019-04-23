@@ -55,12 +55,10 @@ Le tableur est divisé en 12 colonnes :
 -   status : état de santé de la bouture
 -   comment : commentaire
 
-![](../image/notebook-googlesheets-presentation.png)
-
+<!-- ![](analysis/image/notebook-googlesheets-presentation.png) -->
 ### Onglet graphique
 
-Le premier onglet "Plot", permet la visualisation sous forme de graphique de la croissance du corail. ![Onglet graphique](analysis/image/notebook-plot1.png)
-
+Le premier onglet "Plot", permet la visualisation sous forme de graphique de la croissance du corail. <!-- ![Onglet graphique](analysis/image/notebook-plot1.png) -->
 ### Paramètres
 
 On peut filtrer sur différents paramètres :
@@ -120,10 +118,14 @@ server.R
 
 ### Importation
 
-L'adresse URL est contenue dans la variable coral\_url. L'URL est générée via un fichier en ligne Google sheets. <br/> <br/> ![Feuille Google Sheets](analysis/image/notebook-googlesheets0.png) <br/><br/>
+L'adresse URL est contenue dans la variable coral\_url. L'URL est générée via un fichier en ligne Google sheets. <br/> <br/> <!-- ![Feuille Google Sheets](analysis/image/notebook-googlesheets0.png) -->
 
-Pour cela il faut aller dans *Fichier &gt; Publier sur le web*, puis choisir : *Intégrer &gt; Valeurs séparées par des virgules (.csv)*. <br/><br/> ![Chemin d'accès des options de publication](analysis/image/notebook-googlesheets1.png) <br/> \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ <br/> ![Format du fichier partagé](analysis/image/notebook-googlesheets2.png)
+<br/><br/>
 
+Pour cela il faut aller dans *Fichier &gt; Publier sur le web*, puis choisir : *Intégrer &gt; Valeurs séparées par des virgules (.csv)*. <br/><br/>
+
+<!-- ![Chemin d'accès des options de publication](analysis/image/notebook-googlesheets1.png)  -->
+<br/> \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ <br/> <!-- ![Format du fichier partagé](analysis/image/notebook-googlesheets2.png) -->
 Le lien de partage au format csv contenu dans *coral\_url* sera lu par la fonction *read\_csv*. Cette fonction va importer le tableau de donnée et les mettre au bon format. Une grande source d'erreur provient de l'importation, il est important de respecter le nom des colonnes, ne pas jouer avec le format des colonnes, surtout pour la date qui devient facilement un problème. <br/> Dans le tableau de donnée de base, la plupart des colonnes ont le format "texte brute", seuls les colonnes "id", "weight", "temperature" et "salinity" ont un format numérique.
 
 À notifier
