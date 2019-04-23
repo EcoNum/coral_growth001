@@ -276,5 +276,10 @@ shinyServer(function(input, output, session) {
                  else {"Skeleton weight higher than :"},
                  value = 1)
   })
+
+  output$u_lien <- renderUI({
+    url <- a("README.md", href="https://github.com/EcoNum/coral_growth001")
+    tagList("Help page at the following adress : ", url)
+  })
 })
 
