@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "Aide pour l'application 'CoralGrowth'"
+author: "Benrezkallah Jordan"
 date: "`r Sys.Date()`"
 bibliography:
 - book.bib
