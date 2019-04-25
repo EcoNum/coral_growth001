@@ -86,8 +86,8 @@ shinyServer(function(input, output, session) {
 
     dateRangeInput(inputId = "s_choice_date",
                    label = 'Date range input: ',
-                   start = min(df$date), end = max(df$date),
-                   min = min(df$date), max = Sys.Date()
+                   start = min(df$date), end = Sys.Date(),
+                   min = min(df$date)
     )
   })
   # ----------------------- Selection Xvar ---------------------------
@@ -278,7 +278,7 @@ shinyServer(function(input, output, session) {
   })
 
   output$u_lien <- renderUI({
-    url <- a("README.md", href="https://github.com/EcoNum/coral_growth001")
+    url <- a("README.md", href = "https://github.com/EcoNum/coral_growth001#manuel-de-lapplication-coral-growth")
     tagList("Help page at the following adress : ", url)
   })
 })
