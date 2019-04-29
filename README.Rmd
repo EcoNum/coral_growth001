@@ -37,7 +37,7 @@ Ce projet vise à créer une application Shiny permettant la surveillance de l'�
 
 ## Organisation / organization
 
-Ce dépôt se base sur le travail réalisé par Raphael Conotte et est effectué par Jordan Benrezkallah pour travail de fin d'étude de son bachelier de biotechnicien à la HEH durant l'année académique 2018-2019.
+Ce dépôt se base sur le travail réalisé par Raphael Conotte et est effectué par Jordan Benrezkallah pour son stage de fin d'étude de son bachelier de biotechnicien option bioinformatique à la HEH durant l'année académique 2018-2019.
 
 
 # Note
