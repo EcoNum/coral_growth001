@@ -278,8 +278,12 @@ shinyServer(function(input, output, session) {
   })
 
   output$u_lien <- renderUI({
-    url <- a("README.md", href = "https://github.com/EcoNum/coral_growth001#manuel-de-lapplication-coral-growth")
-    tagList("Help page at the following adress : ", url)
+    url1 <- a("Bookdown CoralGrowth", href = "https://econum.github.io/coral_growth001_book/")
+    url2 <- a("Github repository", href = "https://github.com/EcoNum/coral_growth001")
+    tagList(tags$h2( "Help page at the following adress : " ),
+            tags$h3(url1),
+            tags$h3(url2))
   })
+
 })
 
