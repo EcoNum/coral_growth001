@@ -23,7 +23,7 @@ header-includes: \usepackage {xcolor}
 
 \Huge
 
-{\bf Rapport de stage partiel}
+{\bf Rapport de stage}
 
 \vspace{1 cm}
 

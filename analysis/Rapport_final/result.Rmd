@@ -43,7 +43,7 @@ Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette d
 
 Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire puis encodés dans un tableau de données.
 
-Le tableur est en ligne cela permet à n'importe quelle personne, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
+Le tableur est en ligne cela permet à n'importe quelle personne de manipuler le tableau de données depuis n'importe quelle machine connectée à internet.
 
 Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
 
@@ -73,7 +73,7 @@ Le tableur est divisé en 12 colonnes :
 
 L'application est divisée en deux fichiers, une partie "ui" (User Interface), c'est la partie qui affiche les éléments graphiques de l'interface Shiny à l'utilisateur et une partie "server", qui contient toutes les commandes R qui s'opère côté serveur.
 
-Il est possible mettre l'intégralité du code dans un seul fichier app.R, mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et server.R (voir partie annexe).
+Il est possible mettre l'intégralité du code dans un seul fichier app.R. Cependant, j'ai divisé mon script en deux fichiers ui.R et server.R pour plus de clarté (voir partie annexe).
 
 \vspace{1 cm}
 
@@ -126,7 +126,7 @@ En abscisse, on peut choisir :
 Il est également possible de restreindre la période de temps (option *Date range input*).
 
 
-Il est possible de sélectionner les ID dans un menu déroulant ou de directement cliquer à droite du graphique sur les ID triés par couleur (Fig. 4.7, Fig. 4.8). 
+Il est aussi possible de sélectionner les ID dans un menu déroulant ou de directement cliquer à droite du graphique sur les ID triés par couleur (Fig. 4.7, Fig. 4.8). 
 
 Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 
@@ -151,7 +151,7 @@ On peut également désélectionner les lignes en cliquant sur le numéro associ
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
 
-En bas du graphique, des informations supplémentaires sont données :
+En bas du graphique, des informations supplémentaires sont données (Fig. 4.10) :
 
 + Yvar :  l'ordonnée du graphique
 + Species : l'espèce des boutures 
@@ -172,7 +172,7 @@ Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont
 \end{figure}
 
 
-Le dernier onglet contient une page d'aide.
+Le dernier onglet contient une page d'aide (Fig. 4.11). 
 
 \begin{figure}[h!]
 \includegraphics[]{../image/aide.PNG}
@@ -232,12 +232,18 @@ Les objectifs réalisés sont :
 
 L'application web répond aux attentes.
 
+Une aide (bookdown) est intégrée à l'application.
+
 Elle est disponible en ligne à l'adresse : https://jack177.shinyapps.io/coralgrowth/
+
+
 
 Il est également possible de scanner le QR code.
 
 \begin{figure}[h!]
-\includegraphics[width=4cm]{../image/App_Coral_Growth.png}
+\begin{centering}
+\includegraphics[width=6cm]{../image/QRcode.png}
 \caption{QR code}
+\end{centering}
 \end{figure}
 

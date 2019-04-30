@@ -6,7 +6,14 @@ output: pdf_document
 
 # Note 
 
-Ce rapport en pdf intéractif a été créé en R Markdown, il permet d'utiliser à la fois le langage LaTeX et R.
+Ce rapport en pdf intéractif a été créé en R Markdown, il permet d’utiliser à la fois le
+langage LaTeX et R.
+
+Le code ci-dessous a dû être retravaillé pour être correctement affiché.
+
+La dernière version du code est disponible à l’adresse suivante :
+
+https://github.com/EcoNum/coral_growth001
 
 # Annexe 
 
@@ -62,11 +69,13 @@ shinyUI(
                )
              )
     ),
+    
     ### Onglet principal : Aide
     tabPanel(title = "Help",
-             fluidRow(column(12, includeMarkdown("../../analysis/Notebook/Notebook-Manuel.Rmd"))))
+             fluidRow(
+               uiOutput(outputId = "u_lien")
+             ))
   )
-
 )
 
 ```
@@ -351,6 +360,15 @@ shinyServer(function(input, output, session) {
                  else {"Skeleton weight higher than :"},
                  value = 1)
   })
+  
+  output$u_lien <- renderUI({
+    url1 <- a("Bookdown CoralGrowth", href = "https://econum.github.io/coral_growth001_book/")
+    url2 <- a("Github repository", href = "https://github.com/EcoNum/coral_growth001")
+    tagList(tags$h2( "Help page at the following adress : " ),
+            tags$h3(url1),
+            tags$h3(url2))
+  })
+
 })
 
 

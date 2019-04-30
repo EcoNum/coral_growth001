@@ -6,14 +6,14 @@ output: pdf_document
 
 ## Présentation de l'entreprise
 
-Mon stage de fin d'études, se déroule dans à l'université de l'UMons dans le service d'Écologie Numérique des Milieux Aquatiques (abrégé en EcoNum) du département de Biologie.
+Mon stage de fin d'études, se déroule à l'université de Mons dans le service d'Écologie Numérique des Milieux Aquatiques (abrégé en EcoNum) du département de Biologie.
 
 
 L’Université de Mons (UMONS), est une université francophone implantée en Belgique, dans la province du Hainaut. Elle est constituée de 2 écoles et de 7 facultés, dont la faculté des Sciences.
 
 Le Département de biologie de la faculté des Sciences est impliqué dans la formation des étudiants et dans la recherche.
 
-Le département de biologie de la faculté des Sciences comprend 5 services, dont le service d'Écologie Numérique des Milieux Aquatiques. Ce dernier étudie les écosystèmes aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
+Ce département comprend 5 services, dont le service d'Écologie Numérique des Milieux Aquatiques. Ce dernier étudie le comportement des écosystèmes aquatiques complexes, tels les communautés planctoniques et les récifs coralliens, face aux changements de leur environnement. 
 
 Le Service développe également des outils en science des données, y compris dans le domaine du data mining, des big data, et de la recherche reproductible. Il participe à des études sur les logiciels Open Source.
 

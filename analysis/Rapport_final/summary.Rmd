@@ -17,9 +17,9 @@ header-includes: \usepackage {xcolor}
 
 Depuis plusieurs années, les scientifiques et le grand public s'intéressent fortement aux effets du changement climatique sur les écosystèmes. Les coraux forment des écosystèmes marins complexes parmi les plus riches en biodiversité. Le service d'EcoNum étudie l’écophysiologie des scléractiniaires.
 
-Le but de ce stage est multiple, dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R et ensuite de développer des outils permettant le monitoring des coraux. Tout en faisant cela, des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses.
+Les objectifs de ce stage sont multiples. Dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R. Ensuite, développer des outils permettant le monitoring des coraux. Des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses tout au long de ce stage
 
-Un tableur contiendra l'ensemble des données des relevés. À partir de cela, l'application web génère plusieurs onglets, dont une visualisation dynamique de la croissance des boutures, un tableau intéractif qui permet de trier par colonnes dans une plage donnée et dans le dernier onglet une aide est disponible.
+Un tableur sera conçu et contiendra l'ensemble des données relevées. À partir de cela, une application web mise en place génèrera plusieurs onglets. Le premier est une visualisation dynamique de la croissance des boutures, le second est un tableau intéractif qui permet de trier par colonnes dans une plage donnée. Enfin, le dernier onglet une aide est disponible.
 
 
 \vspace{2 cm}

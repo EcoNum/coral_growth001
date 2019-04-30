@@ -150,7 +150,7 @@
 
 \Huge
 
-{\bf Rapport de stage partiel}
+{\bf Rapport de stage}
 
 \vspace{1 cm}
 
@@ -217,19 +217,19 @@ Année académique 2018-2019
 {\bf Remerciements} \vspace{1 cm}
 
 \normalsize
-Je remercie le professeur Philippe Grosjean qui m'a accueillie dans son
+Je remercie le professeur Philippe Grosjean qui m'a accueilli dans son
 laboratoire afin d'effectuer ce stage et qui a permis la mise en oeuvre
 de celui-ci.
 
 Je voudrai également remercier les autres personnes du laboratoire
 d'Écologie Numérique des Milieux Aquatiques. Tout d'abord, je remercie
-Guyliann Engels qui m'a suivie depuis le début, qui a répondu aux
+Guyliann Engels qui m'a suivi depuis le début, qui a répondu aux
 nombreuses questions que je pouvais avoir et qui m'a accueilli dans son
-bureau. Je remercie Antoine, le technicien qui arrive à maintenir tout
-les mésocosmes en équilibre, qui m'a de nombreuses fois prit le temps de
-m'aider. Je remercie également les mémorants, Madeleine et Rémy pour
-tous les échanges instructifs que j'ai pu avoir avec eux lors de ce
-stage. Je remercie aussi Nicolas pour les conseils qu'il m'a prodigués.
+bureau. Je remercie Antoine, le technicien capable de maintenir les
+mésocosmes, il m'a de nombreuses fois prit le temps de m'aider. Je
+remercie également les mémorants, Madeleine et Rémy pour tous les
+échanges instructifs que j'ai pu avoir avec eux lors de ce stage. Je
+remercie aussi Nicolas pour les conseils qu'il m'a prodigués.
 
 Un dernier remerciement revient à Raphaël qui a créé l'application sur
 laquelle je me suis basé pour commencer la mienne. \vfill
@@ -249,17 +249,18 @@ s'intéressent fortement aux effets du changement climatique sur les
 les plus riches en biodiversité. Le service d'EcoNum étudie
 l'écophysiologie des scléractiniaires.
 
-Le but de ce stage est multiple, dans un premier temps il faudra
-acquérir des connaissances suffisantes du langage de programmation R et
-ensuite de développer des outils permettant le monitoring des coraux.
-Tout en faisant cela, des boutures de coraux devront être réalisées
-ainsi que des relevés réguliers de leurs masses.
+Les objectifs de ce stage sont multiples. Dans un premier temps il
+faudra acquérir des connaissances suffisantes du langage de
+programmation R. Ensuite, développer des outils permettant le monitoring
+des coraux. Des boutures de coraux devront être réalisées ainsi que des
+relevés réguliers de leurs masses tout au long de ce stage
 
-Un tableur contiendra l'ensemble des données des relevés. À partir de
-cela, l'application web génère plusieurs onglets, dont une visualisation
-dynamique de la croissance des boutures, un tableau intéractif qui
-permet de trier par colonnes dans une plage donnée et dans le dernier
-onglet une aide est disponible.
+Un tableur sera conçu et contiendra l'ensemble des données relevées. À
+partir de cela, une application web mise en place génèrera plusieurs
+onglets. Le premier est une visualisation dynamique de la croissance des
+boutures, le second est un tableau intéractif qui permet de trier par
+colonnes dans une plage donnée. Enfin, le dernier onglet une aide est
+disponible.
 
 \vspace{2 cm}
 
@@ -333,9 +334,9 @@ corail.
 \section{Présentation de
 l'entreprise}\label{presentation-de-lentreprise}
 
-Mon stage de fin d'études, se déroule dans à l'université de l'UMons
-dans le service d'Écologie Numérique des Milieux Aquatiques (abrégé en
-EcoNum) du département de Biologie.
+Mon stage de fin d'études, se déroule à l'université de Mons dans le
+service d'Écologie Numérique des Milieux Aquatiques (abrégé en EcoNum)
+du département de Biologie.
 
 L'Université de Mons (UMONS), est une université francophone implantée
 en Belgique, dans la province du Hainaut. Elle est constituée de 2
@@ -344,11 +345,10 @@ en Belgique, dans la province du Hainaut. Elle est constituée de 2
 Le Département de biologie de la faculté des Sciences est impliqué dans
 la formation des étudiants et dans la recherche.
 
-Le département de biologie de la faculté des Sciences comprend 5
-services, dont le service d'Écologie Numérique des Milieux Aquatiques.
-Ce dernier étudie les écosystèmes aquatiques complexes, tels les
-communautés planctoniques et les récifs coralliens, face aux changements
-de leur environnement.
+Ce département comprend 5 services, dont le service d'Écologie Numérique
+des Milieux Aquatiques. Ce dernier étudie le comportement des
+écosystèmes aquatiques complexes, tels les communautés planctoniques et
+les récifs coralliens, face aux changements de leur environnement.
 
 Le Service développe également des outils en science des données, y
 compris dans le domaine du data mining, des big data, et de la recherche
@@ -546,9 +546,9 @@ Les mesures effectuées sur les coraux et les paramètres de l'eau des
 mésocosmes sont dans un premier temps notés dans un cahier de
 laboratoire puis encodés dans un tableau de données.
 
-Le tableur est en ligne cela permet à n'importe quelle personne, qui a
-besoin de remplir un tableau de donnée puisse le faire depuis n'importe
-quelle machine connectée à internet.
+Le tableur est en ligne cela permet à n'importe quelle personne de
+manipuler le tableau de données depuis n'importe quelle machine
+connectée à internet.
 
 Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en
 forme conditionnelles ont été créées pour mettre en évidence les cases
@@ -599,9 +599,9 @@ Interface), c'est la partie qui affiche les éléments graphiques de
 l'interface Shiny à l'utilisateur et une partie ``server'', qui contient
 toutes les commandes R qui s'opère côté serveur.
 
-Il est possible mettre l'intégralité du code dans un seul fichier app.R,
-mais pour plus de clarté j'ai divisé mon script en deux fichiers ui.R et
-server.R (voir partie annexe).
+Il est possible mettre l'intégralité du code dans un seul fichier app.R.
+Cependant, j'ai divisé mon script en deux fichiers ui.R et server.R pour
+plus de clarté (voir partie annexe).
 
 \vspace{1 cm}
 
@@ -665,9 +665,9 @@ En abscisse, on peut choisir :
 Il est également possible de restreindre la période de temps (option
 \emph{Date range input}).
 
-Il est possible de sélectionner les ID dans un menu déroulant ou de
-directement cliquer à droite du graphique sur les ID triés par couleur
-(Fig. 4.7, Fig. 4.8).
+Il est aussi possible de sélectionner les ID dans un menu déroulant ou
+de directement cliquer à droite du graphique sur les ID triés par
+couleur (Fig. 4.7, Fig. 4.8).
 
 Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 
@@ -691,7 +691,8 @@ couleur de l'ID à droite de l'écran (Fig. 4.9).
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
 
-En bas du graphique, des informations supplémentaires sont données :
+En bas du graphique, des informations supplémentaires sont données (Fig.
+4.10) :
 
 \begin{itemize}
 \tightlist
@@ -721,7 +722,7 @@ du ``ratio'' qui correspond au taux de croissance.
 \caption{Application Shiny : tableau de donnée}
 \end{figure}
 
-Le dernier onglet contient une page d'aide.
+Le dernier onglet contient une page d'aide (Fig. 4.11).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/aide.PNG}
@@ -802,20 +803,30 @@ Les objectifs réalisés sont :
 
 L'application web répond aux attentes.
 
+Une aide (bookdown) est intégrée à l'application.
+
 Elle est disponible en ligne à l'adresse :
 \url{https://jack177.shinyapps.io/coralgrowth/}
 
 Il est également possible de scanner le QR code.
 
 \begin{figure}[h!]
-\includegraphics[width=4cm]{../image/App_Coral_Growth.png}
+\begin{centering}
+\includegraphics[width=6cm]{../image/QRcode.png}
 \caption{QR code}
+\end{centering}
 \end{figure}
 
 \chapter{Note}\label{note}
 
 Ce rapport en pdf intéractif a été créé en R Markdown, il permet
 d'utiliser à la fois le langage LaTeX et R.
+
+Le code ci-dessous a dû être retravaillé pour être correctement affiché.
+
+La dernière version du code est disponible à l'adresse suivante :
+
+\url{https://github.com/EcoNum/coral_growth001}
 
 \chapter{Annexe}\label{annexe}
 
@@ -872,11 +883,13 @@ d'utiliser à la fois le langage LaTeX et R.
 \NormalTok{               )}
 \NormalTok{             )}
 \NormalTok{    ),}
+    
 \NormalTok{    ### Onglet principal : Aide}
     \KeywordTok{tabPanel}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Help"}\NormalTok{,}
-             \KeywordTok{fluidRow}\NormalTok{(}\KeywordTok{column}\NormalTok{(}\DecValTok{12}\NormalTok{, }\KeywordTok{includeMarkdown}\NormalTok{(}\StringTok{"../../analysis/Notebook/Notebook-Manuel.Rmd"}\NormalTok{))))}
+             \KeywordTok{fluidRow}\NormalTok{(}
+               \KeywordTok{uiOutput}\NormalTok{(}\DataTypeTok{outputId =} \StringTok{"u_lien"}\NormalTok{)}
+\NormalTok{             ))}
 \NormalTok{  )}
-
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1161,6 +1174,15 @@ d'utiliser à la fois le langage LaTeX et R.
                  \ControlFlowTok{else}\NormalTok{ \{}\StringTok{"Skeleton weight higher than :"}\NormalTok{\},}
                  \DataTypeTok{value =} \DecValTok{1}\NormalTok{)}
 \NormalTok{  \})}
+  
+\NormalTok{  output}\OperatorTok{$}\NormalTok{u_lien <-}\StringTok{ }\KeywordTok{renderUI}\NormalTok{(\{}
+\NormalTok{    url1 <-}\StringTok{ }\KeywordTok{a}\NormalTok{(}\StringTok{"Bookdown CoralGrowth"}\NormalTok{, }\DataTypeTok{href =} \StringTok{"https://econum.github.io/coral_growth001_book/"}\NormalTok{)}
+\NormalTok{    url2 <-}\StringTok{ }\KeywordTok{a}\NormalTok{(}\StringTok{"Github repository"}\NormalTok{, }\DataTypeTok{href =} \StringTok{"https://github.com/EcoNum/coral_growth001"}\NormalTok{)}
+    \KeywordTok{tagList}\NormalTok{(tags}\OperatorTok{$}\KeywordTok{h2}\NormalTok{( }\StringTok{"Help page at the following adress : "}\NormalTok{ ),}
+\NormalTok{            tags}\OperatorTok{$}\KeywordTok{h3}\NormalTok{(url1),}
+\NormalTok{            tags}\OperatorTok{$}\KeywordTok{h3}\NormalTok{(url2))}
+\NormalTok{  \})}
+
 \NormalTok{\})}
 \end{Highlighting}
 \end{Shaded}
