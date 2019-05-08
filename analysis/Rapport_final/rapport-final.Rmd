@@ -21,6 +21,10 @@ library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
 library(png)
 
 opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE, fig.pos = "H")
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60),  # For code
+                      width = 60)  # For output
+
+options(cli.width = 60)  # For tidyverse loading messages
 ```
 
 ```{r child = 'titlepage.Rmd'}
@@ -56,5 +60,6 @@ opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE, fig.pos = "H")
 ```
 
 
-```{r child = 'annex.Rmd'}
+```{r child = 'annex.Rmd' }
+
 ```

@@ -1,12 +1,17 @@
 ---
-
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 
 # Note 
 
 Ce rapport en pdf intéractif a été créé en R Markdown, il permet d'utiliser à la fois le langage LaTeX et R.
+
+Le code ci-dessous a dû être retravaillé pour être correctement affiché.
+
+La dernière version du code est disponible à l'adresse suivante : https://github.com/EcoNum/coral_growth001
 
 # Annexe 
 
@@ -32,17 +37,18 @@ shinyUI(
                uiOutput(outputId = "u_choice_project"),
                uiOutput(outputId = "u_choice_condition"),
                uiOutput(outputId = "u_choice_status"),
-               uiOutput(outputId = "u_choice_id"), # Sélection des ID à afficher
-               uiOutput(outputId = "u_choice_plot"),     #Sélection du graphique
-               uiOutput(outputId = "u_choice_nbr_day"),      # Sélection de Xvar
-               uiOutput(outputId = "u_choice_date")              #Sélection date
+               uiOutput(outputId = "u_choice_id"), # Sélection des ID
+               uiOutput(outputId = "u_choice_plot")#Sélection du graphique
+               uiOutput(outputId = "u_choice_nbr_day"),# Sélection de Xvar
+               uiOutput(outputId = "u_choice_date")       #Sélection date
              ),
              ## MainPanel : Volet de droite - Output
              mainPanel(
                tabsetPanel(
                  # Sous-onglet
                  tabPanel(title = "Main plot",
-                          plotlyOutput(outputId = "u_plot", height = "600px" ),
+                          plotlyOutput(outputId = "u_plot", 
+                                       height = "600px" ),
                           #sortie console
                           verbatimTextOutput(outputId = "u_info"))
                  #tabPanel(title = "Test plot")
@@ -64,36 +70,38 @@ shinyUI(
     ),
     ### Onglet principal : Aide
     tabPanel(title = "Help",
-             fluidRow(column(12, includeMarkdown("../../analysis/Notebook/Notebook-Manuel.Rmd"))))
+             fluidRow(
+               column(12, includeMarkdown(
+                 "../../analysis/Notebook/Notebook-Manuel.Rmd"))))
   )
-
 )
 
 ```
 ## server.R
 ```{r, echo = TRUE, eval = FALSE}
-
 library(shiny)
 library(ggplot2)
 library(lubridate)
 library(tidyverse)
 library(dplyr)
 library(plotly)
-
-
 library(shinyWidgets)
 SciViews::R
 
 
 
-### ----------------------__Partie logique du serveur__----------------------
+### ------------------__Partie logique du serveur__-----------------------
 shinyServer(function(input, output, session) {
 
-  # Madeleine :
-  #coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjjUM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C/pub?gid=0&single=true&output=csv"
+  # Tableur de Madeleine :
+  # coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJLtfjj
+  #UM4VK6aM177ly9GCKyMHFrFqQdsqjhJCtpe4DUGuZWOe2fZWB5xTZEx3WAcW08BVEBFfn2C
+  #/pub?gid=0&single=true&output=csv"
 
-  # Jordan :
-  coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
+  # Tableur de Jordan :
+  coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztF
+  gALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pu
+  b?gid=0&single=true&output=csv"
 
   #Importation et format des colonnes
   read_csv(coral_url,
@@ -146,17 +154,18 @@ shinyServer(function(input, output, session) {
     group_by(., id) %>.%
     arrange(., date) %>.%
     mutate(.,
-           delta_date = (as.numeric(difftime(date, date[1], units = "days"))),
-           ratio = round(((skw - skw[1]) / skw[1] / delta_date)*100, digits = 3),
+           delta_date = (as.numeric(difftime(date, 
+                                             date[1], units = "days"))),
+           ratio = round(((skw-skw[1])/skw[1]/delta_date)*100,digits = 3),
            delta_date = round(delta_date, digits = 0)) %>.%
     ungroup(.) -> df
 
 
-  ### ------------------__Fin traitement du tableau de données__ ------------------ ###
+  ### ----------__Fin traitement du tableau de données__ ------------- ###
 
-  #============================================================================#
+  #======================================================================#
 
-  # --------------------- Selection des dates -------------------------
+  # ----------------------- Selection des dates --------------------------
   output$u_choice_date <- renderUI({
 
     dateRangeInput(inputId = "s_choice_date",
@@ -165,7 +174,7 @@ shinyServer(function(input, output, session) {
                    min = min(df$date), max = Sys.Date()
     )
   })
-  # ----------------------- Selection Xvar ---------------------------
+  # ------------------------- Selection Xvar -----------------------------
   output$u_choice_nbr_day <- renderUI({
 
     radioButtons(inputId = "s_choice_nbr_day",
@@ -186,7 +195,7 @@ shinyServer(function(input, output, session) {
 
   })
 
-  # ----------------------- Choix des ID -----------------------------
+  # ------------------------- Choix des ID -------------------------------
   observe({
     print(input$s_choice_id)
   })
@@ -200,7 +209,7 @@ shinyServer(function(input, output, session) {
                  selected = "Buoyant mass")
   })
 
-  #--------------------------Choix projet----------------------------------
+  #--------------------------Choix projet---------------------------------
   output$u_choice_project <- renderUI({
 
     selectInput(inputId = "s_choice_project",
@@ -210,7 +219,7 @@ shinyServer(function(input, output, session) {
                 selected = nbr_projet)
   })
 
-  #-------------------------Choix condition--------------------------------
+  #-------------------------Choix condition-------------------------------
   output$u_choice_condition <- renderUI({
 
     selectInput(inputId = "s_choice_condition",
@@ -232,7 +241,7 @@ shinyServer(function(input, output, session) {
 
 
 
-  ###-----------------------Output de mon graphique----------------------###
+  ###---------------------Output de mon graphique--------------------###
   output$u_plot <- renderPlotly({
 
 # Filtre en fonction des choix
@@ -241,7 +250,7 @@ shinyServer(function(input, output, session) {
              project %in% input$s_choice_project,
              condition %in% input$s_choice_condition,
              status %in% input$s_choice_status,
-             date >= input$s_choice_date[1] & date <= input$s_choice_date[2],
+             date >= input$s_choice_date[1]&date<=input$s_choice_date[2],
              id %in% input$s_choice_id
              ) -> df
 
@@ -284,7 +293,7 @@ shinyServer(function(input, output, session) {
   })
 
 
-  ###-----------------------------Sortie console-----------------------------###
+  ###-------------------------Sortie console---------------------------###
   output$u_info <- renderPrint({
 
     #Affichage de la formule utilisé
@@ -298,13 +307,16 @@ shinyServer(function(input, output, session) {
       formule <- "Skeleton mass (g)"
     }
     if ("Growth rate" %in% input$s_choice_plot) {
-      formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
+      formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) /
+      skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
     }
 
 
     # Calculs boutures mortes
     nbr_dead <- as.numeric(count(unique(subset(df, status == "dead",id))))
-    death_rate <- as.numeric(round((nbr_dead / length(levels(nbr_id))) * 100, digits = 2))
+    death_rate <- as.numeric(round
+                             ((nbr_dead / length(levels(nbr_id))) * 100,
+                               digits = 2))
     id_dead <- unique(subset(df, status == "dead",id))
     id_dead <- id_dead$id
 
@@ -316,7 +328,7 @@ shinyServer(function(input, output, session) {
   })
 
 
-  # ---------------------------Onglet tableau----------------------------------#
+  # -------------------------Onglet tableau------------------------------#
   output$u_table <- renderDT({
     datatable(df, filter = "top")
   })
@@ -339,7 +351,8 @@ shinyServer(function(input, output, session) {
       width = "200px",
       size = "default",
       label = "Variable type",
-      tooltip = tooltipOptions(placement = "right", title = "Choice variable type")
+      tooltip = tooltipOptions(placement = "right",
+                               title = "Choice variable type")
     )
   })
 
