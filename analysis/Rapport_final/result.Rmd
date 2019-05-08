@@ -17,7 +17,7 @@ Dans le but d'acquérir de nouvelles données de croissance, on a utilisé une t
 
 \begin{figure}[h!]
 \includegraphics[]{../image/boutures.jpg}
-\caption{Boutures suspendues}
+\caption{Boutures suspendues de *Seriatopora hystrix*}
 \end{figure}
 
 
@@ -25,7 +25,7 @@ Dans le but d'acquérir de nouvelles données de croissance, on a utilisé une t
 
 ### Masse immergée et masse squelettique
 <!-- MASSE -->
-Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet. Cette méthode de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité, on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet (Fig.##). Cette méthode de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité, on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
 
 \begin{equation}
 \large
@@ -35,13 +35,17 @@ Pour évaluer la croissance des boutures de coraux, on utilise la masse squelett
 $\rho_{eau}$ est déterminé par l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
 Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette du corail.
 
+\begin{figure}[h!]
+\includegraphics[]{../image/poster-balance.jpg}
+\caption{Tableur en ligne Google Sheets}
+\end{figure}
 
 \null
 \newpage
 
 ### Tableur en ligne
 
-Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire puis encodés dans un tableau de données.
+Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire. Puis, un tableau de donnée est créé afin d'y encoder les données.
 
 Le tableur est en ligne cela permet à n'importe quelle personne, qui a besoin de remplir un tableau de donnée puisse le faire depuis n'importe quelle machine connectée à internet.
 

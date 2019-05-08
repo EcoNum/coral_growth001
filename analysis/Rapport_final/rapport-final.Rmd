@@ -1,7 +1,6 @@
 ---
 documentclass: report
 output:
-  word_document: default
   pdf_document:
     fig_caption: yes
     keep_tex: yes
@@ -9,6 +8,7 @@ output:
       in_header: ../template/preamble-latex-fr.tex
     latex_engine: xelatex
     number_sections: yes
+  word_document: default
 ---
 <!-- # Note : faire un maximum ici, puis installe un R, RStudio sous linux et installer les packages permettant des choses plus exotiques-->
 <!-- Utiliser anti-dote -->

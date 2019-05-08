@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.11)  14 APR 2019 16:43
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.11)  8 MAY 2019 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -989,10 +989,17 @@ LaTeX Info: Redefining \dots on input line 135.
 LaTeX Info: Redefining \up on input line 135.
 File: ../image/technique-logo.jpg Graphic file (type bmp)
 <../image/technique-logo.jpg>
+File: ../image/condorcet.jpg Graphic file (type bmp)
+<../image/condorcet.jpg>
 File: ../image/UMONS-logo.jpg Graphic file (type bmp)
 <../image/UMONS-logo.jpg>
 File: ../image/ECONUM-logo.pdf Graphic file (type pdf)
 <use ../image/ECONUM-logo.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
+[][] []
+ []
+
 
 (c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/oberdiek/se-ascii
 -print.def
@@ -1000,7 +1007,10 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 ) [1
 
-] [2] [3] [4] [5] (./rapport-final.toc
+]
+File: ../image/fede.jpg Graphic file (type bmp)
+<../image/fede.jpg>
+[2] [3] [4] [5] [6] (./rapport-final.toc
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 2.
 (c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1034,110 +1044,128 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `rapport-final.toc'.
 
-[6] [7]
+[7] [8]
 Chapitre 1.
 File: ../image/plan-campus.png Graphic file (type bmp)
 <../image/plan-campus.png>
-[8
+[9
 
 ]
 File: ../image/plaine-Nimy.jpg Graphic file (type bmp)
 <../image/plaine-Nimy.jpg>
 File: ../image/Grosjean2.jpg Graphic file (type bmp)
 <../image/Grosjean2.jpg>
-[9]
+[10]
 File: ../image/Guyliann.jpg Graphic file (type bmp)
 <../image/Guyliann.jpg>
 File: ../image/antoine2.jpg Graphic file (type bmp)
 <../image/antoine2.jpg>
-[10]
+[11]
 File: ../image/remy.jpg Graphic file (type bmp)
 <../image/remy.jpg>
 File: ../image/madeleine.jpg Graphic file (type bmp)
 <../image/madeleine.jpg>
-[11] [12]
+[12] [13]
 Chapitre 2.
-[13
+File: ../image/polype_schema.jpg Graphic file (type bmp)
+<../image/polype_schema.jpg>
+[14
 
 ]
+File: ../image/recif2.jpg Graphic file (type bmp)
+<../image/recif2.jpg>
+[15]
+File: ../image/symbiose.png Graphic file (type bmp)
+<../image/symbiose.png>
+[16]
+File: ../image/blanchissement.png Graphic file (type bmp)
+<../image/blanchissement.png>
+[17]
 Chapitre 3.
-[14
+[18
 
 ]
 Chapitre 4.
 File: ../image/regle.jpg Graphic file (type bmp)
 <../image/regle.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 [][]
  []
 
 File: ../image/boutures.jpg Graphic file (type bmp)
 <../image/boutures.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 548--549
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15
+[19
 
 ]
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 531.
+LaTeX Font Warning: Command \large invalid in math mode on input line 566.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 533.
+(Font)              <12> on input line 568.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 533.
+(Font)              <8> on input line 568.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 533.
-LaTeX Font Info:    Calculating math sizes for size <> on input line 533.
+(Font)              <6> on input line 568.
+LaTeX Font Info:    Calculating math sizes for size <> on input line 568.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <> on input line 533.
+(Font)              <> on input line 568.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <0.7> on input line 533.
+(Font)              <0.7> on input line 568.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <0.5> on input line 533.
-[16]
-File: ../image/tableur-gs.PNG Graphic file (type bmp)
-<../image/tableur-gs.PNG>
+(Font)              <0.5> on input line 568.
+File: ../image/poster-balance.jpg Graphic file (type bmp)
+<../image/poster-balance.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 559--560
-[][]
- []
-
-File: ../image/notebook-plot1.PNG Graphic file (type bmp)
-<../image/notebook-plot1.PNG>
-
-Underfull \hbox (badness 10000) in paragraph at lines 612--613
+Underfull \hbox (badness 10000) in paragraph at lines 576--577
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17]
+[20]
+File: ../image/tableur-gs.PNG Graphic file (type bmp)
+<../image/tableur-gs.PNG>
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--601
+[][]
+ []
+
+[21]
+File: ../image/notebook-plot1.PNG Graphic file (type bmp)
+<../image/notebook-plot1.PNG>
+
+Underfull \hbox (badness 10000) in paragraph at lines 653--654
+[][]
+ []
+
 File: ../image/notebook-plot2.PNG Graphic file (type bmp)
 <../image/notebook-plot2.PNG>
 
-Overfull \hbox (40.12616pt too wide) in paragraph at lines 629--630
+Overfull \hbox (40.12616pt too wide) in paragraph at lines 670--671
  [][] 
  []
 
-[18]
+[22] [23]
 File: ../image/taux-croissance.PNG Graphic file (type bmp)
 <../image/taux-croissance.PNG>
 
-Underfull \hbox (badness 10000) in paragraph at lines 651--652
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
 [][]
  []
 
 File: ../image/menu-deroulant.PNG Graphic file (type bmp)
 <../image/menu-deroulant.PNG>
-[19]
+[24]
 File: ../image/info-curseur.PNG Graphic file (type bmp)
 <../image/info-curseur.PNG>
 File: ../image/shiny-selection.PNG Graphic file (type bmp)
@@ -1154,80 +1182,80 @@ File: ../image/aide.PNG Graphic file (type bmp)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[20] [21]
+[25] [26]
 File: ../image/App_Coral_Growth.png Graphic file (type bmp)
 <../image/App_Coral_Growth.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[22] [23]
+[27] [28]
 Chapitre 5.
-[24
+[29
 
 ]
 Chapitre 6.
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 831.
-[25
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 872.
+[30
 
-] [26]
-Underfull \vbox (badness 10000) detected at line 1180
+] [31]
+Underfull \vbox (badness 10000) detected at line 1221
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1180
+Underfull \vbox (badness 10000) detected at line 1221
  []
 
-[27]
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-[28]
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-[29]
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-[30]
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1180
- []
-
-[31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1183.
 [32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1183.
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+[33]
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+[34]
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+[35]
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1221
+ []
+
+[36]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1224.
+[37]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1224.
 (./rapport-final.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1183.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1224.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1224.
 
 Package rerunfilecheck Info: File `rapport-final.out' has not changed.
 (rerunfilecheck)             Checksum: DCD7B0125AD4D6DD2B3F7FCAA567725D.
  ) 
 Here is how much of TeX's memory you used:
- 25069 strings out of 494901
- 466350 string characters out of 6175220
- 624729 words of memory out of 5000000
- 28707 multiletter control sequences out of 15000+600000
+ 25097 strings out of 494901
+ 467014 string characters out of 6175220
+ 625076 words of memory out of 5000000
+ 28728 multiletter control sequences out of 15000+600000
  569114 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,6n,68p,810b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,6n,68p,810b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on rapport-final.pdf (32 pages).
+Output written on rapport-final.pdf (37 pages).

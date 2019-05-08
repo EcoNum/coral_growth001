@@ -32,7 +32,7 @@ Scléractiniaire : ordre principal des coraux durs.
 
 Script : suite de commandes permettant d'automatiser une tâche.
 
-Seriatopora hystrix Dana 1846 : espèce de scléractiniaires.
+*Seriatopora hystrix* Dana 1846 : espèce de scléractiniaires.
 
 UMons : université de Mons.
 

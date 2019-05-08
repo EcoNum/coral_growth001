@@ -68,7 +68,7 @@ Il encadre mon travail.
 <!-- \caption{Technicien du service d'EcoNum.} -->
 <!-- \end{figure} -->
 
-Antoine Batigny est le technicien du service. Il s'occupe principalement de gérer les mésocosmes. 
+Antoine Batigny est le technicien du service. Il gère principalement les mésocosmes. 
 
 ### Rémy Dugauquier
 ![Etudiant en master](../image/remy.jpg){width=4cm}
