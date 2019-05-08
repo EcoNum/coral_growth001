@@ -11,7 +11,8 @@ header-includes: \usepackage {xcolor}
 
 \begin{figure}
 
-\includegraphics[width=3.5cm, height=6cm]{../image/technique-logo.jpg} 
+\includegraphics[width=3.5cm, height=6cm]{../image/technique-logo.jpg}
+\includegraphics[width=5.5cm,height=3.5cm]{../image/condorcet.jpg}
 \includegraphics[width=5cm,height=7cm]{../image/UMONS-logo.jpg}
 \includegraphics[width=1.8cm,height=3.5cm]{../image/ECONUM-logo.pdf}
 
@@ -55,6 +56,8 @@ Bloc 3 du cursus Bachelier en Biotechnique
 Année académique 2018-2019
 
 \end {centering}
+
+\includegraphics[width=4cm,height=3.5cm]{../image/fede.jpg}
 
 \newpage
 \null
