@@ -24,6 +24,13 @@ En situation de stress le corail, peut expulser ses zooxanthelles, ce qui ne lai
 
 Le service d’écologie numérique des milieux aquatiques étudie en mésocosme les réponses écophysiologiques des coraux à divers stress sur *Seriatopora hystrix* Dana 1846 principalement.
 
-Le précédent stagiaire, Raphaël Conotte a développé une application en local à partir du langage R permettant le monitoring des coraux.
+Le précédent stagiaire, Raphaël Conotte a développé une application en local à partir du langage R permettant le monitoring des coraux (Fig. ##, Fig. ##).
 
 Les objectifs du stage sont multiples. Premièrement, il va falloir apprendre le langage R et ses multiples packages. Deuxièmement, se baser sur le travail de Raphaël pour créer une version améliorée de celui-ci. Dernièrement, une mesure régulière des coraux sera effectuée tout au long du stage. Cela consiste à reproduire des échantillons de corails qui seront ensuite pesé deux à trois fois par semaine, ce travail se fait en parallèle avec la partie informatique.
+
+L'application créée pendant ce stage aura été complètement réécrite et simplifé. Le code de Raphaël étant beaucoup trop complexe pour un débutant dans R.  
+
+![Application de Raphaël : onglet Dataset](../image/raphael1.png)
+![Application de Raphaël : onglet Dataset](../image/raphael2.png)
+
+

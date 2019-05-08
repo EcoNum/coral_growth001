@@ -37,7 +37,7 @@ Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette d
 
 \begin{figure}[h!]
 \includegraphics[]{../image/poster-balance.jpg}
-\caption{Tableur en ligne Google Sheets}
+\caption{Mesure du poids immergé d'une bouture}
 \end{figure}
 
 \null
@@ -45,9 +45,14 @@ Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette d
 
 ### Tableur en ligne
 
-Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire. Puis, un tableau de donnée est créé afin d'y encoder les données.
+Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire. Il sera nécessaire de créer un nouveau tableau de donnée afin d'utiliser les données. 
+
+Au début, le tableur choisit était Excel, car c'est le logiciel le plus connu et que la HEH me permet d'utiliser une licence. Cela fonctionnait bien avec les fichiers en local. Malheureusement, aucun package permet d'utiliser Excel en ligne.
+
+C'est avec Googlesheets qu'une solution fut trouvé.
 
 Le tableur est en ligne cela permet à n'importe quelle personne de manipuler le tableau de données depuis n'importe quelle machine connectée à internet.
+
 
 Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
 
@@ -73,7 +78,7 @@ Le tableur est divisé en 12 colonnes :
 
 
 
-## Application Shiny
+## Présentation de l'application Shiny
 
 L'application est divisée en deux fichiers, une partie "ui" (User Interface), c'est la partie qui affiche les éléments graphiques de l'interface Shiny à l'utilisateur et une partie "server", qui contient toutes les commandes R qui s'opère côté serveur.
 
@@ -176,7 +181,7 @@ Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont
 \end{figure}
 
 
-Le dernier onglet contient une page d'aide (Fig. 4.11). 
+Le dernier onglet contient une page d'aide (Fig. 4.11). Cette documentation permettra aux utilisateurs de comprendre comment utiliser l'application et permettra aussi de comprendre comment fonctionne le code. Il est important de documenter son travail si l'on veut qu'il puisse être réutilisé par la suite.
 
 \begin{figure}[h!]
 \includegraphics[]{../image/aide.PNG}
@@ -188,38 +193,30 @@ Le dernier onglet contient une page d'aide (Fig. 4.11).
 \newpage
 
 
-## Outils utilisés
 
-Les outils utilisés sont :
-
-* La machine virtuelle *SciViews Box*, contenant un Linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
-
-* Les langages de programmation : R.
-
-* Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
-
-* Le service web GitHub.
 
 
 ## Difficultés rencontrées
 
 ### R vs python
 
-La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine tu traitement de donné et de création d'application web.
+La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine du traitement de donné et de création d'application web.
 *python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens. A l'inverse, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
 
 Dans le domaine du *data scientist*, *R* et *python* sont couramment employé.
 
 ### Shiny communication entre ui.R et server.R
 
-Les application web gérées par shiny utilisent deux fonctions communiquant entre elles **ui** et le **server**
+Les application web gérées par shiny utilisent deux fonctions communiquant entre elles **ui** et le **server**.
 
 Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
 Celui-ci est appelé dans server.R sous la forme *input$ma_variable*, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
 
 Shiny utilise du Javascript pour dynamiser l'interface de l'utilisateur sous une couche de code masqué, cette couche simplifie grandement le travail avec R.
 Si on sort du cadre de l'utilisation prévu par Shiny, on se heurte à de grands soucis de codage. Shiny restreint donc, la communication entre les différents blocs de code.
-Dans certaines situations cela complique le travail.
+Dans certaines situations cela complique le travail, ce fut notamment le cas lors de la création du menu déroulant qui a besoin de connaître dans ui.R le nombre d'ID qui est nécessaire, sauf que la variable donnant cette information est dans server.R et Shiny permet difficilement de faire cela.
+
+
 
 
 ## Objectifs réalisés
@@ -228,15 +225,21 @@ Les objectifs réalisés sont :
 
 * Bouturer les coraux et relever leurs masses immergées.
 
-* Créer un tableau en ligne contenant les données nécessaires.
+* Créer un tableau de donnée en ligne contenant les données nécessaires.
 
 * Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
 
+L'outil insight de Github permet de visualiser le travail des différents contributeurs sur un même projet.
+On peut constater le travail réalisé pendant le stage (Fig. ##). 
+
+![Contributeur de l'application](../image/github.PNG)
+
 ### Conclusion 
+
 
 L'application web répond aux attentes.
 
-Une aide (bookdown) est intégrée à l'application.
+Une documentation (bookdown) est intégrée à l'application.
 
 Elle est disponible en ligne à l'adresse : https://jack177.shinyapps.io/coralgrowth/
 

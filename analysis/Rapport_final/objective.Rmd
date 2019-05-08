@@ -22,7 +22,17 @@ La phase de création d'outils comprend :
 + La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
 
 
+## Outils utilisés
 
+Les outils utilisés sont :
+
+* La machine virtuelle *SciViews Box*, contenant un Linux (Xubuntu), R, RStudio et les paquets nécessaires pré-installés.
+
+* Les langages de programmation : R.
+
+* Les paquets : Shiny, tidyverse, ggplot2, dyplyr, plotly, googlesheets, ect.
+
+* Le service web GitHub.
 
 
 

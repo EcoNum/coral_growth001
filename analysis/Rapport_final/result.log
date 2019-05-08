@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.4.11)  8 MAY 2019 10:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.4.11)  8 MAY 2019 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,12 +606,12 @@ f-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<../image/regle.jpg, id=56, 4143.48pt x 2330.7075pt>
+<../image/regle.jpg, id=52, 4143.48pt x 2330.7075pt>
 File: ../image/regle.jpg Graphic file (type jpg)
 <use ../image/regle.jpg>
 Package pdftex.def Info: ../image/regle.jpg  used on input line 102.
 (pdftex.def)             Requested size: 469.69357pt x 264.20262pt.
-<../image/boutures.jpg, id=57, 4143.48pt x 2330.7075pt>
+<../image/boutures.jpg, id=53, 4143.48pt x 2330.7075pt>
 File: ../image/boutures.jpg Graphic file (type jpg)
 <use ../image/boutures.jpg>
 Package pdftex.def Info: ../image/boutures.jpg  used on input line 107.
@@ -669,7 +669,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <0.7> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <0.5> on input line 127.
-<../image/poster-balance.jpg, id=58, 4143.48pt x 2330.7075pt>
+<../image/poster-balance.jpg, id=54, 4143.48pt x 2330.7075pt>
 File: ../image/poster-balance.jpg Graphic file (type jpg)
 <use ../image/poster-balance.jpg>
 Package pdftex.def Info: ../image/poster-balance.jpg  used on input line 135.
@@ -682,100 +682,108 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 {c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map} <../image/regle.jpg>] [2 <../image/boutures.jpg> <../image/poster-balance
 .jpg>]
-<../image/tableur-gs.PNG, id=86, 1353.55687pt x 342.5297pt>
+<../image/tableur-gs.PNG, id=82, 1353.55687pt x 342.5297pt>
 File: ../image/tableur-gs.PNG Graphic file (type png)
 <use ../image/tableur-gs.PNG>
-Package pdftex.def Info: ../image/tableur-gs.PNG  used on input line 158.
+Package pdftex.def Info: ../image/tableur-gs.PNG  used on input line 166.
 (pdftex.def)             Requested size: 469.74521pt x 118.87323pt.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 167.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 175.
 
 (c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<../image/notebook-plot1.PNG, id=88, 1434.86063pt x 658.71094pt>
+<../image/notebook-plot1.PNG, id=84, 1434.86063pt x 658.71094pt>
 File: ../image/notebook-plot1.PNG Graphic file (type png)
 <use ../image/notebook-plot1.PNG>
-Package pdftex.def Info: ../image/notebook-plot1.PNG  used on input line 211.
+Package pdftex.def Info: ../image/notebook-plot1.PNG  used on input line 220.
 (pdftex.def)             Requested size: 469.73969pt x 215.64648pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../image/notebook-plot2.PNG, id=89, 1445.4pt x 660.21657pt>
+[3 <../image/tableur-gs.PNG>]
+<../image/notebook-plot2.PNG, id=92, 1445.4pt x 660.21657pt>
 File: ../image/notebook-plot2.PNG Graphic file (type png)
 <use ../image/notebook-plot2.PNG>
-Package pdftex.def Info: ../image/notebook-plot2.PNG  used on input line 228.
+Package pdftex.def Info: ../image/notebook-plot2.PNG  used on input line 237.
 (pdftex.def)             Requested size: 426.7863pt x 194.94353pt.
-[3 <../image/tableur-gs.PNG>] [4 <../image/notebook-plot1.PNG>]
-<../image/taux-croissance.PNG, id=103, 1397.97281pt x 472.76625pt>
+[4 <../image/notebook-plot1.PNG>]
+<../image/taux-croissance.PNG, id=99, 1397.97281pt x 472.76625pt>
 File: ../image/taux-croissance.PNG Graphic file (type png)
 <use ../image/taux-croissance.PNG>
-Package pdftex.def Info: ../image/taux-croissance.PNG  used on input line 250.
+Package pdftex.def Info: ../image/taux-croissance.PNG  used on input line 259.
 (pdftex.def)             Requested size: 469.737pt x 158.85559pt.
-<../image/menu-deroulant.PNG, id=104, 420.82219pt x 229.60782pt>
+<../image/menu-deroulant.PNG, id=100, 420.82219pt x 229.60782pt>
 File: ../image/menu-deroulant.PNG Graphic file (type png)
 <use ../image/menu-deroulant.PNG>
-Package pdftex.def Info: ../image/menu-deroulant.PNG  used on input line 274.
+Package pdftex.def Info: ../image/menu-deroulant.PNG  used on input line 283.
 (pdftex.def)             Requested size: 420.82756pt x 229.61075pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../image/info-curseur.PNG, id=105, 167.12437pt x 86.57344pt>
+<../image/info-curseur.PNG, id=101, 167.12437pt x 86.57344pt>
 File: ../image/info-curseur.PNG Graphic file (type png)
 <use ../image/info-curseur.PNG>
-Package pdftex.def Info: ../image/info-curseur.PNG  used on input line 284.
+Package pdftex.def Info: ../image/info-curseur.PNG  used on input line 293.
 (pdftex.def)             Requested size: 167.12904pt x 86.57585pt.
 [5 <../image/notebook-plot2.png> <../image/taux-croissance.PNG>]
-<../image/shiny-selection.PNG, id=114, 49.68562pt x 88.07906pt>
+<../image/shiny-selection.PNG, id=110, 49.68562pt x 88.07906pt>
 File: ../image/shiny-selection.PNG Graphic file (type png)
 <use ../image/shiny-selection.PNG>
-Package pdftex.def Info: ../image/shiny-selection.PNG  used on input line 289.
+Package pdftex.def Info: ../image/shiny-selection.PNG  used on input line 298.
 (pdftex.def)             Requested size: 49.6855pt x 88.07883pt.
-<../image/verbatim.PNG, id=115, 892.83563pt x 125.71968pt>
+<../image/verbatim.PNG, id=111, 892.83563pt x 125.71968pt>
 File: ../image/verbatim.PNG Graphic file (type png)
 <use ../image/verbatim.PNG>
-Package pdftex.def Info: ../image/verbatim.PNG  used on input line 310.
+Package pdftex.def Info: ../image/verbatim.PNG  used on input line 320.
 (pdftex.def)             Requested size: 469.75388pt x 66.14577pt.
 [6 <../image/menu-deroulant.PNG> <../image/info-curseur.PNG> <../image/shiny-se
 lection.PNG>]
-<../image/notebook-table1.png, id=126, 1261.71375pt x 493.845pt>
+<../image/notebook-table1.png, id=122, 1261.71375pt x 493.845pt>
 File: ../image/notebook-table1.png Graphic file (type png)
 <use ../image/notebook-table1.png>
-Package pdftex.def Info: ../image/notebook-table1.png  used on input line 319.
+Package pdftex.def Info: ../image/notebook-table1.png  used on input line 329.
 (pdftex.def)             Requested size: 469.75311pt x 183.86517pt.
-<../image/aide.PNG, id=127, 1048.66782pt x 621.82312pt>
+<../image/aide.PNG, id=123, 1048.66782pt x 621.82312pt>
 File: ../image/aide.PNG Graphic file (type png)
 <use ../image/aide.PNG>
-Package pdftex.def Info: ../image/aide.PNG  used on input line 326.
+Package pdftex.def Info: ../image/aide.PNG  used on input line 340.
 (pdftex.def)             Requested size: 469.75198pt x 278.54639pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [7 <../image/verbatim.PNG> <../image/notebook-table1.png>] [8 <../image/aide.PN
 G>]
-<../image/App_Coral_Growth.png, id=144, 3011.25pt x 3910.61pt>
-File: ../image/App_Coral_Growth.png Graphic file (type png)
-<use ../image/App_Coral_Growth.png>
-Package pdftex.def Info: ../image/App_Coral_Growth.png  used on input line 410.
+<../image/github.PNG, id=139, 564.60938pt x 526.21594pt>
+File: ../image/github.PNG Graphic file (type png)
+<use ../image/github.PNG>
+Package pdftex.def Info: ../image/github.PNG  used on input line 406.
+(pdftex.def)             Requested size: 469.76286pt x 437.819pt.
+<../image/QRcode.png, id=141, 386.44376pt x 637.38126pt>
+File: ../image/QRcode.png Graphic file (type png)
+<use ../image/QRcode.png>
+Package pdftex.def Info: ../image/QRcode.png  used on input line 423.
+(pdftex.def)             Requested size: 170.71388pt x 281.56706pt.
 
-(pdftex.def)             Requested size: 113.76703pt x 147.74545pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
-[9 <../image/App_Coral_Growth.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 429.
+[9] [10 <../image/github.PNG>] [11 <../image/QRcode.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 429.
 (./result.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 429.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 429.
 Package rerunfilecheck Info: File `result.out' has not changed.
-(rerunfilecheck)             Checksum: 9F34539997A1BA0AFC84F4B2D54B20BA;2220.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 415.
+(rerunfilecheck)             Checksum: F25705DB82E40276C80B4CC314750627;2182.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 429.
  ) 
 Here is how much of TeX's memory you used:
- 10274 strings out of 494542
- 147494 string characters out of 6175181
- 209856 words of memory out of 5000000
- 13778 multiletter control sequences out of 15000+600000
+ 10279 strings out of 494542
+ 147564 string characters out of 6175181
+ 209835 words of memory out of 5000000
+ 13781 multiletter control sequences out of 15000+600000
  66290 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 28i,5n,32p,324b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,5n,32p,324b,386s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
 nc}{c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
 nc}{c:/Users/Jack/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-math
@@ -795,10 +803,10 @@ X/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/Jack/AppData/Roaming/Tiny
 TeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/Jack/AppData/Roaming/Ti
 nyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Jack/AppData/Roamin
 g/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on result.pdf (9 pages, 11697092 bytes).
+Output written on result.pdf (11 pages, 11600206 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 172 words of extra memory for PDF output out of 10000 (max. 10000000)
 
