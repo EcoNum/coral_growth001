@@ -45,6 +45,7 @@ options(cli.width = 60)  # For tidyverse loading messages
 
 
 ```{r child = 'tableofcontents.Rmd'}
+\setstretch{1}
 ```
 
 
