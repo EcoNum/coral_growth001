@@ -27,3 +27,8 @@ Organisation / organization
 ---------------------------
 
 Ce dépôt se base sur le travail réalisé par Raphael Conotte et est effectué par Jordan Benrezkallah pour travail de fin d'étude de son bachelier de biotechnicien à la HEH durant l'année académique 2018-2019.
+
+Note
+====
+
+L'application une fois terminée sera exportée sous forme de package R.

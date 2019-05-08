@@ -77,20 +77,20 @@ shinyServer(function(input, output, session) {
     ungroup(.) -> df
 
 
-  ### ------------------__Fin traitement du tableau de données__ ------------------ ###
+  ### -----------__Fin traitement du tableau de données__ ----------- ###
 
-  #============================================================================#
+  #=====================================================================#
 
-  # --------------------- Selection des dates -------------------------
+  # ---------------------- Selection des dates --------------------------
   output$u_choice_date <- renderUI({
 
     dateRangeInput(inputId = "s_choice_date",
                    label = 'Date range input: ',
-                   start = min(df$date), end = max(df$date),
-                   min = min(df$date), max = Sys.Date()
+                   start = min(df$date), end = Sys.Date(),
+                   min = min(df$date)
     )
   })
-  # ----------------------- Selection Xvar ---------------------------
+  # ----------------------- Selection Xvar ------------------------------
   output$u_choice_nbr_day <- renderUI({
 
     radioButtons(inputId = "s_choice_nbr_day",
@@ -100,7 +100,7 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  #--------------------------Selection id---------------------------------
+  #--------------------------Selection id-------------------------------
   output$u_choice_id <- renderUI({
     pickerInput(inputId = "s_choice_id",
                 label = "Choice ID :",
@@ -111,12 +111,12 @@ shinyServer(function(input, output, session) {
 
   })
 
-  # ----------------------- Choix des ID -----------------------------
+  # ------------------------- Choix des ID ------------------------------
   observe({
     print(input$s_choice_id)
   })
 
-  #----------------------Choix graphique (variable y)---------------------
+  #----------------------Choix graphique (variable y)--------------------
   output$u_choice_plot <- renderUI({
 
     radioButtons(inputId = "s_choice_plot", label = "Yvar :",
@@ -125,7 +125,7 @@ shinyServer(function(input, output, session) {
                  selected = "Buoyant mass")
   })
 
-  #--------------------------Choix projet----------------------------------
+  #--------------------------Choix projet--------------------------------
   output$u_choice_project <- renderUI({
 
     selectInput(inputId = "s_choice_project",
@@ -135,7 +135,7 @@ shinyServer(function(input, output, session) {
                 selected = nbr_projet)
   })
 
-  #-------------------------Choix condition--------------------------------
+  #-------------------------Choix condition------------------------------
   output$u_choice_condition <- renderUI({
 
     selectInput(inputId = "s_choice_condition",
@@ -145,7 +145,7 @@ shinyServer(function(input, output, session) {
                 selected = nbr_condition)
   })
 
-  #--------------------------Choix statut---------------------------------ok
+  #--------------------------Choix statut--------------------------------
   output$u_choice_status <- renderUI({
 
     selectInput(inputId = "s_choice_status",
@@ -157,7 +157,7 @@ shinyServer(function(input, output, session) {
 
 
 
-  ###-----------------------Output de mon graphique----------------------###
+  ###----------------------Output de mon graphique--------------------###
   output$u_plot <- renderPlotly({
 
 # Filtre en fonction des choix
@@ -209,7 +209,7 @@ shinyServer(function(input, output, session) {
   })
 
 
-  ###-----------------------------Sortie console-----------------------------###
+  ###-------------------------Sortie console-------------------------###
   output$u_info <- renderPrint({
 
     #Affichage de la formule utilisé
@@ -241,7 +241,7 @@ shinyServer(function(input, output, session) {
   })
 
 
-  # ---------------------------Onglet tableau----------------------------------#
+  # --------------------------Onglet tableau----------------------------#
   output$u_table <- renderDT({
     datatable(df, filter = "top")
   })
@@ -276,5 +276,14 @@ shinyServer(function(input, output, session) {
                  else {"Skeleton weight higher than :"},
                  value = 1)
   })
+
+  output$u_lien <- renderUI({
+    url1 <- a("Bookdown CoralGrowth", href = "https://econum.github.io/coral_growth001_book/")
+    url2 <- a("Github repository", href = "https://github.com/EcoNum/coral_growth001")
+    tagList(tags$h2( "Help page at the following adress : " ),
+            tags$h3(url1),
+            tags$h3(url2))
+  })
+
 })
 
