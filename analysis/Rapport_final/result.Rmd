@@ -57,7 +57,7 @@ Le tableur est en ligne cela permet à n'importe quelle personne de manipuler le
 Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.4).
 
 \begin{figure}[h!]
-\includegraphics[width=18cm, height=15cm]{../image/tableur-gs.PNG}
+\includegraphics[]{../image/tableur-gs.PNG}
 \caption{Tableur en ligne Google Sheets}
 \end{figure}
 
