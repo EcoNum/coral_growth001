@@ -5,23 +5,23 @@ output:
 header-includes: \usepackage {xcolor}
 linestretch: 1.5
 ---
-
+\setstretch{1}
 
 
 \begin{centering}
 
 \begin{figure}
 
-\includegraphics[width=3.5cm, height=6cm]{../image/technique-logo.jpg}
-\includegraphics[width=5.5cm, height=3.5cm]{../image/condorcet.jpg}
-\includegraphics[width=4.5cm, height=7cm]{../image/UMONS-logo.jpg}
-\includegraphics[width=1.8cm, height=3.5cm]{../image/ECONUM-logo.pdf}
+\includegraphics[width=3.0cm, height=6cm]{../image/technique-logo.jpg} 
+\includegraphics[width=5.0cm, height=3.5cm]{../image/condorcet.jpg}
+\includegraphics[width=3.7cm, height=7cm]{../image/UMONS-logo.jpg}
+\includegraphics[width=1.6cm, height=3.5cm]{../image/ECONUM-logo.pdf}
 
 \end{figure}
 
 \textcolor{white}{.}
 
-\vspace{2.5 cm}
+\vspace{2.0 cm}
 
 \Huge
 
@@ -48,7 +48,7 @@ Encadrant de stage : Guyliann Engels
 Promoteur : Aline Leonet et David Coornaert
 
 
-\vspace{3.5 cm}
+\vspace{2.5 cm}
 
 \normalsize
 HEH - Campus technique -
@@ -58,7 +58,7 @@ Année académique 2018-2019
 
 \end {centering}
 
-\includegraphics[width=4cm,height=3.5cm]{../image/fede.jpg}
+\includegraphics[width=4cm, height=3.5cm]{../image/fede.jpg}
 
 \newpage
 \null

@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-
+\setstretch{1.2}
 
 \tableofcontents
 

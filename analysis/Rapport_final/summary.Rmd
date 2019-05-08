@@ -17,9 +17,9 @@ header-includes: \usepackage {xcolor}
 
 Depuis plusieurs années, les scientifiques et le grand public s'intéressent fortement aux effets du changement climatique sur les écosystèmes. Les coraux forment des écosystèmes marins complexes parmi les plus riches en biodiversité. Le service d'EcoNum étudie l’écophysiologie des scléractiniaires.
 
-Les objectifs de ce stage sont multiples. Dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R. Ensuite, développer des outils permettant le monitoring des coraux. Des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses tout au long de ce stage
+Les objectifs de ce stage sont multiples. Dans un premier temps il faudra acquérir des connaissances suffisantes du langage de programmation R. Ensuite, développer des outils permettant le monitoring des coraux. Des boutures de coraux devront être réalisées ainsi que des relevés réguliers de leurs masses tout au long de ce stage.
 
-Un tableur sera conçu et contiendra l'ensemble des données relevées. À partir de cela, une application web mise en place génèrera plusieurs onglets. Le premier est une visualisation dynamique de la croissance des boutures, le second est un tableau intéractif qui permet de trier par colonnes dans une plage donnée. Enfin, le dernier onglet une aide est disponible.
+Un tableur en ligne sera conçu et contiendra l'ensemble des données relevées. À partir de cela, une application web mise en place génèrera plusieurs onglets. Le premier est une visualisation dynamique de la croissance des boutures, le second est un tableau intéractif qui permet de trier par colonnes dans une plage donnée. Enfin, le dernier onglet une aide est disponible.
 
 
 \vspace{2 cm}
@@ -29,13 +29,11 @@ Un tableur sera conçu et contiendra l'ensemble des données relevées. À parti
 \vspace{1 cm}
 
 \normalsize
-For several years, scientists and mainstream have been strongly interested in the effects of climate change on ecosystems. Corals form complex marine ecosystems that are among the richest in biodiversity. In the EcoNum department, we study the effects of salt stress on corals. 
+For several years, scientists and the general public have been strongly interested in the effects of climate change on ecosystems. Corals form complex marine ecosystems that are among the richest in biodiversity. The EcoNum department studies the ecophysiology of sclerotia.
 
-The purpose of this internship is multiple, first it will be necessary to acquire sufficient knowledge of the R programming language and then to develop tools for coral monitoring. While doing this, coral cuttings should be carried out as well as regular surveys of their masses.
+The objectives of this internship are multiple. First of all, it will be necessary to acquire sufficient knowledge of the R programming language. Then, develop tools to monitor corals. Coral cuttings should be carried out as well as regular surveys of their masses throughout this course.
 
-A spreadsheet will contain all the data from the surveys. From this, the web application generates several tabs including a dynamic visualization of the growth of cuttings, an interactive table that allows you to sort by columns in a given range and in the last tab a help is available.
-
-
+A spreadsheet will be designed and will contain all the data collected. From this, a web application set up will generate several tabs. The first is a dynamic visualization of the growth of cuttings, the second is an interactive table that allows you to sort by columns in a given range. Finally, the last tab a help is available.
 
 \null
 \newpage

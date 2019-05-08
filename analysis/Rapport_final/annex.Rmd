@@ -8,17 +8,14 @@ output:
 # Note 
 
 Ce rapport en pdf intéractif a été créé en R Markdown, il permet d’utiliser à la fois le
-langage LaTeX et R.
+langage LaTeX et R. LaTeX utilise des algorithmes pour améliorer la lecture, il automatise la plupart des paramètres comme la position des images.
+Il empêche parfois d'afficher l'agencement souhaité ou il renverse des images verticales pour utiliser au maximum l'espace de la page.
 
-Le code ci-dessous a dû être retravaillé pour être correctement affiché.
+Le code en annexe a dû être retravaillé pour être correctement affiché.
 
 La dernière version du code est disponible à l’adresse suivante :
 
 https://github.com/EcoNum/coral_growth001
-
-Le code ci-dessous a dû être retravaillé pour être correctement affiché.
-
-La dernière version du code est disponible à l'adresse suivante : https://github.com/EcoNum/coral_growth001
 
 # Annexe 
 

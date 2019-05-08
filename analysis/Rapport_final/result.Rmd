@@ -25,7 +25,7 @@ Dans le but d'acquérir de nouvelles données de croissance, on a utilisé une t
 
 ### Masse immergée et masse squelettique
 <!-- MASSE -->
-Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet (Fig.##). Cette méthode de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité, on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
+Pour évaluer la croissance des boutures de coraux, on utilise la masse squelettique. Pour l'obtenir sans détruire le corail, on mesure la masse immergée du corail dans l'eau de mer avec une balance munie d'un crochet (Fig. 4.3). Cette méthode de mesure est rapide et peu stressante pour les organismes. Après avoir mesuré la température et la salinité, on peut convertir la masse immergée en masse squelettique à l'aide de la formule ci-dessous mise au point par Jokiel *et al* (1978) :
 
 \begin{equation}
 \large
@@ -54,10 +54,10 @@ C'est avec Googlesheets qu'une solution fut trouvé.
 Le tableur est en ligne cela permet à n'importe quelle personne de manipuler le tableau de données depuis n'importe quelle machine connectée à internet.
 
 
-Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.3).
+Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme conditionnelles ont été créées pour mettre en évidence les cases non remplies, formater le type des cellules et mettre un dégradé de couleur suivant l'avancement des données (Fig. 4.4).
 
 \begin{figure}[h!]
-\includegraphics[]{../image/tableur-gs.PNG}
+\includegraphics[width=18cm, height=15cm]{../image/tableur-gs.PNG}
 \caption{Tableur en ligne Google Sheets}
 \end{figure}
 
@@ -87,7 +87,7 @@ Il est possible mettre l'intégralité du code dans un seul fichier app.R. Cepen
 \vspace{1 cm}
 
 
-Mon application présente 3 onglets, le premier créer un graphique interactif (Fig. 4.4).
+Mon application présente 3 onglets, le premier créer un graphique interactif (Fig. 4.5).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/notebook-plot1.PNG}
@@ -101,7 +101,7 @@ Les boutures sélectionnées sont peu nombreuses pour l'exemple, mais il est pos
 
 \vspace{0.5 cm}
 
-Différents paramètres peuvent modifier le graphique (Fig. 4.5).
+Différents paramètres peuvent modifier le graphique (Fig. 4.6).
 
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=10cm]{} -->
@@ -119,7 +119,7 @@ En ordonné, on peut choisir :
 
 + la masse immergée
 + la masse squelettique
-+ le taux de croissance (Fig. 4.6)
++ le taux de croissance (Fig. 4.7)
 <!-- ajouter les formules de calcul du taux de croissance -->
 
 \begin{figure}[h!]
@@ -135,7 +135,7 @@ En abscisse, on peut choisir :
 Il est également possible de restreindre la période de temps (option *Date range input*).
 
 
-Il est aussi possible de sélectionner les ID dans un menu déroulant ou de directement cliquer à droite du graphique sur les ID triés par couleur (Fig. 4.7, Fig. 4.8). 
+Il est aussi possible de sélectionner les ID dans un menu déroulant, on peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran (Fig. 4.8, Fig. 4.9). 
 
 Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 
@@ -147,20 +147,21 @@ Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
 
 
 
-En passant le curseur sur les points du graphique, on peut obtenir quelques informations supplémentaires (Fig. 4.8).
-On peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran (Fig. 4.9).
+En passant le curseur sur les points du graphique, on peut obtenir quelques informations supplémentaires (Fig. 4.10).
 
-\begin{figure}[h!]
-\includegraphics[]{../image/info-curseur.PNG}
-\caption{Application Shiny : information via le curseur}
-\end{figure}
+
 
 \begin{figure}[h!]
 \includegraphics[]{../image/shiny-selection.PNG}
 \caption{Application Shiny : affichage intéractif}
 \end{figure}
 
-En bas du graphique, des informations supplémentaires sont données (Fig. 4.10) :
+\begin{figure}[h!]
+\includegraphics[]{../image/info-curseur.PNG}
+\caption{Application Shiny : information via le curseur}
+\end{figure}
+
+En bas du graphique, des informations supplémentaires sont données (Fig. 4.11) :
 
 + Yvar :  l'ordonnée du graphique
 + Species : l'espèce des boutures 
@@ -173,7 +174,7 @@ En bas du graphique, des informations supplémentaires sont données (Fig. 4.10)
 \caption{Application Shiny : informations supplémentaires}
 \end{figure}
 
-Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont été calculées, il y a l'ajout de la masse squelettique et du "ratio" qui correspond au taux de croissance.
+Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont été calculées, il y a l'ajout de la masse squelettique et du "ratio" qui correspond au taux de croissance (Fig. 4.12).
 
 \begin{figure}[h!]
 \includegraphics[]{../image/notebook-table1.png}
@@ -181,7 +182,7 @@ Le deuxième onglet contient le tableau de donnée où de nouvelles colonnes ont
 \end{figure}
 
 
-Le dernier onglet contient une page d'aide (Fig. 4.11). Cette documentation permettra aux utilisateurs de comprendre comment utiliser l'application et permettra aussi de comprendre comment fonctionne le code. Il est important de documenter son travail si l'on veut qu'il puisse être réutilisé par la suite.
+Le dernier onglet contient une page d'aide (Fig. 4.13). Cette documentation permettra aux utilisateurs de comprendre comment utiliser l'application et permettra aussi de comprendre comment fonctionne le code. Il est important de documenter son travail si l'on veut qu'il puisse être réutilisé par la suite.
 
 \begin{figure}[h!]
 \includegraphics[]{../image/aide.PNG}
@@ -230,7 +231,7 @@ Les objectifs réalisés sont :
 * Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
 
 L'outil insight de Github permet de visualiser le travail des différents contributeurs sur un même projet.
-On peut constater le travail réalisé pendant le stage (Fig. ##). 
+On peut constater le travail réalisé pendant le stage (Fig. 4.14). 
 
 ![Contributeur de l'application](../image/github.PNG)
 

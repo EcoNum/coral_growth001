@@ -3,28 +3,62 @@ output:
   pdf_document:
     latex_engine: xelatex
 header-includes: \usepackage {xcolor}
+linestretch: 1.5
 ---
-
+\setstretch{1}
 
 
 \begin{centering}
 
+\begin{figure}
 
+\includegraphics[width=3.0cm, height=6cm]{../image/technique-logo.jpg} 
+\includegraphics[width=5.0cm, height=3.5cm]{../image/condorcet.jpg}
+\includegraphics[width=3.7cm, height=7cm]{../image/UMONS-logo.jpg}
+\includegraphics[width=1.6cm, height=3.5cm]{../image/ECONUM-logo.pdf}
+
+\end{figure}
 
 \textcolor{white}{.}
 
+\vspace{2.0 cm}
 
+\Huge
 
+{\bf Rapport de stage}
 
-
-\vfill
+\vspace{1 cm}
 
 \huge 
 {\bf Mise en place d'une application web surveillant la croissance des coraux en mésocosmes.}
 
-\vfill
+\vspace{1 cm}
 
+\Large
+
+Jordan Benrezkallah
+
+\vspace{2 cm}
+
+\normalsize
+Maître de stage : Philippe Grosjean
+
+Encadrant de stage : Guyliann Engels
+
+Promoteur : Aline Leonet et David Coornaert
+
+
+\vspace{2.5 cm}
+
+\normalsize
+HEH - Campus technique -
+Bloc 3 du cursus Bachelier en Biotechnique
+
+Année académique 2018-2019
 
 \end {centering}
-\null
+
+\includegraphics[width=4cm, height=3.5cm]{../image/fede.jpg}
+
 \newpage
+\null
