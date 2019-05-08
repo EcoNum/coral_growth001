@@ -40,16 +40,13 @@ Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette d
 \caption{Mesure du poids immergé d'une bouture}
 \end{figure}
 
-\null
-\newpage
-
 ### Tableur en ligne
 
 Les mesures effectuées sur les coraux et les paramètres de l'eau des mésocosmes sont dans un premier temps notés dans un cahier de laboratoire. Il sera nécessaire de créer un nouveau tableau de donnée afin d'utiliser les données. 
 
-Au début, le tableur choisit était Excel, car c'est le logiciel le plus connu et que la HEH me permet d'utiliser une licence. Cela fonctionnait bien avec les fichiers en local. Malheureusement, aucun package permet d'utiliser Excel en ligne.
+Au début, le tableur choisi était Excel, car c'est le logiciel le plus connu et que la HEH me permet d'utiliser une licence. Cela fonctionnait bien avec les fichiers en local. Malheureusement, aucun package ne permet d'utiliser Excel en ligne.
 
-C'est avec Googlesheets qu'une solution fut trouvé.
+C'est avec Googlesheets qu'une solution fut trouvée.
 
 Le tableur est en ligne cela permet à n'importe quelle personne de manipuler le tableau de données depuis n'importe quelle machine connectée à internet.
 
@@ -64,7 +61,7 @@ Afin d'éviter au maximum des erreurs d'encodages, des règles de mise en forme 
 Le tableur est divisé en 12 colonnes :
 
 + project : différencie chaque expérience réalisée, généralement on préfèrera recréer un nouveau tableur pour chacune des expériences
-+ date : date et heure à laquelle les relevés de mesures ont été prises
++ date : date et heure à laquelle les relevés de mesures ont été pris
 + author : nom de la personne ayant encodé dans le tableur
 + aqua : nom du mésocosme où la bouture a été prélevé
 + condition : condition spécifique appliquée à la bouture (exemple : stress hypersalin)
@@ -112,10 +109,9 @@ Différents paramètres peuvent modifier le graphique (Fig. 4.6).
 
 \vspace{0.5cm}
 
-\null
-\newpage
 
-En ordonné, on peut choisir :
+
+En ordonnée, on peut choisir :
 
 + la masse immergée
 + la masse squelettique
@@ -130,7 +126,7 @@ En ordonné, on peut choisir :
 En abscisse, on peut choisir :
 
 + la date de la mesure
-+ le nombre de jour écoulé depuis la première mesure
++ le nombre de jours écoulés depuis la première mesure
 
 Il est également possible de restreindre la période de temps (option *Date range input*).
 
@@ -190,18 +186,12 @@ Le dernier onglet contient une page d'aide (Fig. 4.13). Cette documentation perm
 \end{figure}
 
 
-\null
-\newpage
-
-
-
-
 
 ## Difficultés rencontrées
 
 ### R vs python
 
-La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine du traitement de donné et de création d'application web.
+La principale difficulté rencontrée au début est de passer de l'apprentissage du langage de programmation *python* à *R*. Ce sont tous les deux des langages de programmation interprétés qui peuvent être utilisés dans le domaine du traitement de donnée et de création d'application web.
 *python* a été créé pour faire de la programmation informatique généraliste, il est utilisé dans de larges domaines par des informaticiens. A l'inverse, R est dédié aux analyses statistiques, plutôt utilisées par des spécialistes ou des scientifiques.
 
 Dans le domaine du *data scientist*, *R* et *python* sont couramment employé.
