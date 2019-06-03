@@ -5,11 +5,7 @@ library(tidyverse)
 library(dplyr)
 library(plotly)
 library(flow)
-
 library(shinyWidgets)
-
-
-
 
 ### ----------------------__Partie logique du serveur__----------------------
 shinyServer(function(input, output, session) {
@@ -71,8 +67,11 @@ shinyServer(function(input, output, session) {
     group_by(., id) %>.%
     arrange(., date) %>.%
     mutate(.,
+           lag_date = dplyr::lag(date),
            delta_date = (as.numeric(difftime(date, date[1], units = "days"))),
-           ratio = round(((skw - skw[1]) / skw[1] / delta_date)*100, digits = 3),
+           delta_lag_date = dplyr::lag(delta_date),
+           lag_skw = dplyr::lag(skw),
+           ratio = round(((skw - lag_skw) / lag_skw / (delta_date - delta_lag_date))*100, digits = 3),
            delta_date = round(delta_date, digits = 0)) %>.%
     ungroup(.) -> df
 

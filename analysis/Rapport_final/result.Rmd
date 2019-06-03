@@ -29,16 +29,18 @@ Pour évaluer la croissance des boutures de coraux, on utilise la masse squelett
 
 \begin{equation}
 \large
-  m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
+  m_{squelettique} = \frac {m_{immerge}}{ 1 - \frac{\rho_{eau}}{ \rho_{squelettique}}}
 \end{equation}
 
 $\rho_{eau}$ est déterminé par l'équation d'état de l'eau de mer grâce à la mesure de la salinité et de la température.
 Le $\rho_{squelettique}$ est la densité de l'aragonite (CaCO~3~) du squelette du corail.
 
+\begin{centering}
 \begin{figure}[h!]
-\includegraphics[]{../image/poster-balance.jpg}
+\includegraphics[angle=270]{../image/poster-balance.jpg}
 \caption{Mesure du poids immergé d'une bouture}
 \end{figure}
+\end {centering}
 
 ### Tableur en ligne
 
@@ -133,7 +135,9 @@ Il est également possible de restreindre la période de temps (option *Date ran
 
 Il est aussi possible de sélectionner les ID dans un menu déroulant, on peut également désélectionner les lignes en cliquant sur le numéro associer à la couleur de l'ID à droite de l'écran (Fig. 4.8, Fig. 4.9). 
 
-Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
+
+La fenêtre du menu déroulant a maintenant une taille adaptée et ne dépasse pas du cadre. Il permet de sélectionner ou de désélectionner toutes les boutures en deux cliques ou de sélectionner/désélectionner les boutures unes à unes. 
+
 
 \begin{figure}[h!]
 \includegraphics[]{../image/menu-deroulant.PNG}
@@ -186,7 +190,6 @@ Le dernier onglet contient une page d'aide (Fig. 4.13). Cette documentation perm
 \end{figure}
 
 
-
 ## Difficultés rencontrées
 
 ### R vs python
@@ -198,7 +201,7 @@ Dans le domaine du *data scientist*, *R* et *python* sont couramment employé.
 
 ### Shiny communication entre ui.R et server.R
 
-Les application web gérées par shiny utilisent deux fonctions communiquant entre elles **ui** et le **server**.
+Les applications web gérées par shiny utilisent deux fonctions communiquant entre elles **ui** et le **server**.
 
 Le schéma de communication basique entre les deux scripts commence par la déclaration d'une variable *inputId = ma_variable* dans ui.R.
 Celui-ci est appelé dans server.R sous la forme *input$ma_variable*, cette variable sera ensuite traitée dans un bloc de code délimiter par des crochets.
@@ -214,34 +217,57 @@ Dans certaines situations cela complique le travail, ce fut notamment le cas lor
 
 Les objectifs réalisés sont :
 
+* Apprendre les bases du langage R et différents packages R.
+
+* Maîtriser l'outil RStudio.
+
 * Bouturer les coraux et relever leurs masses immergées.
 
-* Créer un tableau de donnée en ligne contenant les données nécessaires.
+* Créer un tableau de données en ligne contenant les données nécessaires.
 
-* Créer une application web répondant aux besoins du service à l'aide du paquet Shiny.
+* Créer une application web exploitant en continue les données du tableau en ligne.
+
+* Réaliser un code simple et documenté.
+
+* Utiliser le service web Github afin de réaliser un travail professionnel.
 
 L'outil insight de Github permet de visualiser le travail des différents contributeurs sur un même projet.
 On peut constater le travail réalisé pendant le stage (Fig. 4.14). 
 
 ![Contributeur de l'application](../image/github.PNG)
 
-### Conclusion 
+# Conclusion 
 
+Le point de départ de ce stage est l'application précédente effectuée par Raphaël Conotte. Pour comprendre son travail, il a fallu dans un premier temps apprendre le langage de programmation R et ses composants. Deuxièmement, il a fallu lire et comprendre son code ainsi que le jeu de données qu'il a utilisé. Dans le même temps, j'ai appris à multiplier du corail, les peser et créer mon propre jeu de données.
 
-L'application web répond aux attentes.
+On m'a donné la possibilité de soit repartir du code précédent, soit de tout réécrire. C'est le second choix que j'ai pris, car le code de Raphaël étant encore aujourd'hui toujours trop complexe à mes yeux, je pense qu'il a voulu tester différentes manières de faire.
 
-Une documentation (bookdown) est intégrée à l'application.
+Le début de mon code était donc un fichier vide que j'ai rempli au fur et à mesure, en m'inspirant parfois du code de Raphaël. Je pense avoir rendu un code beaucoup plus simple à lire et mieux documenté. L'application que j'ai réalisée se démarque de celle de Raphaël. En plus de trier la base de données par projet, elle permet également de combiner les tris par condition et par l'état des boutures. 
 
-Elle est disponible en ligne à l'adresse : https://jack177.shinyapps.io/coralgrowth/
+Contrairement à l'application précédente qui ne contenait que 6 boutures, mon travail en compte 84. Dans le but de faciliter la sélection de celles-ci, le menu déroulant a été perfectionné. 
 
+Le tableau de données présenté dans l'onglet "Data table" a été simplifié, mais il permet de faire un tri sur chacune des colonnes à l'aide d'un curseur de déplacement "slider".
 
+L'application est actuellement en ligne et est disponible à l'adresse suivante : https://jack177.shinyapps.io/coralgrowth/
 
-Il est également possible de scanner le QR code.
+Une documentation au format *bookdown* a été écrite pour les utilisateurs du laboratoire, mais aussi pour l'informaticien qui souhaiterait améliorer le code. En effet, le travail peut-être amélioré. On pourrait ajouter plusieurs jeux de données à partir d'une url, ajouter des visualisations différentes afin de permettre un autre point vue sur le jeu de donnés ou encore de placer mon code dans un package afin d'être utilisé par n'importe qui utilisant R.
+
+Le dernier onglet "Help" contient la documentation bookdown et le dépôt Github où se trouve la dernière version du code utilisée.
+
+Il est également possible de scanner le *QR code* (Fig. 4.15) qui redirige vers l'application.
 
 \begin{figure}[h!]
 \begin{centering}
-\includegraphics[width=6cm]{../image/QRcode.png}
+\includegraphics[width=5cm]{../image/QRcode.png}
 \caption{QR code}
 \end{centering}
 \end{figure}
+
+D'un point de vue personnel, ce stage m'a permis de m'insérer dans une petite équipe où je me suis rapidement intégré. J'ai pu fréquenter un laboratoire de recherche et en apprendre beaucoup sur la vie marine et le milieu universitaire.
+
+Le travail que j'ai effectué était passionnant. Je me suis rendu compte des différentes possibilités que peut offrir l'informatique à la biologie ainsi que la valeur ajoutée que j'ai pu proposer.
+
+J'ai travaillé comme un professionnel sur un projet que j'ai vu se réaliser petit à petit, en utilisant des outils propres aux informaticiens comme Github. J'ai acquis des connaissances sur le traitement de données, découvert le langage de programmation *R* et appris a rédiger en *LaTeX*/*R Markdown* ce rapport.
+
+Je souhaiterai poursuivre das cette voie en apprenant à traiter des données avec *python* à l'aide des paquets *Numpy* et *Pandas* afin de le comparer à R et également apprendre le langage *javascript* utilisé par le package *shiny* qui rend les pages web dynamiques.
 

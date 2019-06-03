@@ -259,22 +259,23 @@ Année académique 2018-2019
 {\bf Remerciements} \vspace{1 cm}
 
 \normalsize
-Je remercie le professeur Philippe Grosjean qui m'a accueilli dans son
-laboratoire afin d'effectuer ce stage et qui a permis la mise en oeuvre
-de celui-ci.
+Je souhaite tout d'abord remercier mon professeur Aline Leonet qui m'a
+aidé à trouver mon stage, ensuite le professeur Philippe Grosjean qui
+m'a accueilli dans son laboratoire afin d'effectuer ce stage et qui a
+permis la mise en oeuvre de celui-ci.
 
 Je voudrai également remercier les autres personnes du laboratoire
 d'Écologie Numérique des Milieux Aquatiques. Tout d'abord, je remercie
-Guyliann Engels qui m'a suivi depuis le début, qui a répondu aux
+Guyliann Engels qui m'a suivi de près depuis le début, qui a répondu aux
 nombreuses questions que je pouvais avoir et qui m'a accueilli dans son
 bureau. Je remercie Antoine, le technicien capable de maintenir les
-mésocosmes, il m'a de nombreuses fois prit le temps de m'aider. Je
+mésocosmes, il a de nombreuses fois pris le temps de m'aider. Je
 remercie également les mémorants, Madeleine et Rémy pour tous les
 échanges instructifs que j'ai pu avoir avec eux lors de ce stage. Je
 remercie aussi Nicolas pour les conseils qu'il m'a prodigués.
 
 Un dernier remerciement revient à Raphaël qui a créé l'application sur
-laquelle je me suis basé pour commencer la mienne. \vfill
+laquelle je me suis inspiré pour commencer la mienne. \vfill
 \null
 \newpage
 
@@ -358,7 +359,7 @@ EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
 Symbiose : association biologique, durable et réciproquement profitable,
 entre deux organismes vivants.
 
-Monitoring : suveillance, contrôle.
+Monitoring : surveillance, contrôle.
 
 Scléractiniaire : ordre principal des coraux durs.
 
@@ -366,7 +367,7 @@ Script : suite de commandes permettant d'automatiser une tâche.
 
 \emph{Seriatopora hystrix} Dana 1846 : espèce de scléractiniaires.
 
-UMons : université de Mons.
+UMONS : université de Mons.
 
 Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le
 corail.
@@ -418,7 +419,7 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A)
 
 \subsection{Philippe Grosjean}\label{philippe-grosjean}
 
-\includegraphics[width=4.00000cm]{../image/Grosjean2.jpg}
+\includegraphics[width=3.00000cm]{../image/Grosjean2.jpg}
 
 Mon maître de stage est Monsieur Philippe Grosjean. Il mène plusieurs
 projets de recherches sur l'identification automatique du plancton par
@@ -437,7 +438,7 @@ Il encadre 1 doctorant et 2 étudiants en masters.
 
 \subsection{Guyliann Engels}\label{guyliann-engels}
 
-\includegraphics[width=4.00000cm]{../image/Guyliann.jpg}
+\includegraphics[width=3.00000cm]{../image/Guyliann.jpg}
 
 Guyliann Engels est chercheur et assistant au sein du service. Il
 effectue sa thèse sur l'écophysiologie du corail, où il utilise un
@@ -450,14 +451,14 @@ Il encadre mon travail.
 
 \subsection{Antoine Batigny}\label{antoine-batigny}
 
-\includegraphics[width=4.00000cm]{../image/antoine2.jpg}
+\includegraphics[width=3.00000cm]{../image/antoine2.jpg}
 
 Antoine Batigny est le technicien du service. Il gère principalement les
 mésocosmes.
 
 \subsection{Rémy Dugauquier}\label{remy-dugauquier}
 
-\includegraphics[width=4.00000cm]{../image/remy.jpg}
+\includegraphics[width=3.00000cm]{../image/remy.jpg}
 
 Rémy Dugauquier est en dernière année du master en biologie des
 organismes et écologie. Il réalise son T.F.E. sur l'écologie des
@@ -465,11 +466,11 @@ organismes planctoniques en baie de Calvi, France.
 
 \subsection{Madeleine Gille}\label{madeleine-gille}
 
-\includegraphics[width=4.00000cm]{../image/madeleine.jpg}
+\includegraphics[width=3.00000cm]{../image/madeleine.jpg}
 
 Madeleine Gille est étudiante en dernière année du master en biologie
 des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un
-stress salins (hyper et hyposalin) sur \emph{Seriatopora hystrix} (Dana,
+stress salin (hyper et hyposalin) sur \emph{Seriatopora hystrix} (Dana,
 1815).
 
 \chapter{Introduction}\label{introduction}
@@ -477,14 +478,15 @@ stress salins (hyper et hyposalin) sur \emph{Seriatopora hystrix} (Dana,
 Les coraux sont des animaux de l'embranchement des cnidaires, tout comme
 les méduses. Les individus sont nommés « polypes » (Fig. 2.1). Au sein
 des cnidaires, 1609 espèces de coraux durs (scléractiniaire
-hermatypique) forment les récifs coralliens (Fig. 2.2). Les coraux durs
-vivent en symbiose avec une microalgue unicellulaire les zooxanthelles
-qui fournit l'énergie nécessaire à la formation de leur squelette
-carbonate de calcium (Fig. 2.3).
+hermatypique) forment les récifs coralliens (Fig. 2.2). La majorité des
+coraux scléractiniens vivent en symbiose avec des microalgues
+unicellulaires les zooxanthelles qui fournissent l'énergie nécessaire à
+la formation de leur squelette carbonate de calcium (Fig. 2.3)(Veron
+2000a).
 
 \begin{figure}
 \centering
-\includegraphics{../image/polype_schema.jpg}
+\includegraphics[width=8.00000cm]{../image/polype_schema.jpg}
 \caption{Schéma d'un polype}
 \end{figure}
 
@@ -494,17 +496,21 @@ carbonate de calcium (Fig. 2.3).
 \caption{Récif corallien}
 \end{figure}
 
-\includegraphics{../image/symbiose.png} \newpage
+\begin{figure}[h!]
+\includegraphics[]{../image/zooxanthelles-symbiose.png}
+\caption{Relation symbiotique entre les zooxanthelles et les polypes}
+\end{figure}\newpage
+
 \null
 
 Les récifs coralliens fournissent d'importantes niches écologiques à de
 nombreux animaux qui en sont dépendants. Il est donc crucial de les
 protéger.\\
-En situation de stress le corail, peut expulser ses zooxanthelles, ce
+En situation de stress, le corail peut expulser ses zooxanthelles, ce
 qui ne laisse paraître seulement la coloration blanche de son squelette.
 Ce blanchissement affaiblit considérablement le corail (Fig. 2.4).
 Divers facteurs peuvent stresser le corail : l'acidité, la salinité, la
-température, la pollution, etc..
+température, la pollution, etc (Veron 2000b).
 
 \begin{figure}
 \centering
@@ -524,9 +530,9 @@ Les objectifs du stage sont multiples. Premièrement, il va falloir
 apprendre le langage R et ses multiples packages. Deuxièmement, se baser
 sur le travail de Raphaël pour créer une version améliorée de celui-ci.
 Dernièrement, une mesure régulière des coraux sera effectuée tout au
-long du stage. Cela consiste à reproduire des échantillons de corails
-qui seront ensuite pesé deux à trois fois par semaine, ce travail se
-fait en parallèle avec la partie informatique.
+long du stage. Cela consiste à reproduire des échantillons de coraux qui
+seront ensuite pesé deux à trois fois par semaine, ce travail se fait en
+parallèle avec la partie informatique.
 
 L'application créée pendant ce stage aura été complètement réécrite et
 simplifé. Le code de Raphaël étant beaucoup trop complexe pour un
@@ -546,7 +552,7 @@ débutant dans R.
 \chapter{Objectifs du travail}\label{objectifs-du-travail}
 
 Le but du stage est de créer une application web via le package Shiny
-dévelopé par RStudio sur R, qui suit l'évolution des coraux dans les
+développé par RStudio sur R, qui suit l'évolution des coraux dans les
 mésocosmes. Les coraux seront utilisés dans des expériences par le
 laboratoire, il est donc nécessaire de visualiser leur croissance.
 L'application doit pouvoir être utilisée facilement par d'autres
@@ -578,6 +584,9 @@ La phase de création d'outils comprend :
   La réalisation d'une application web Shiny, surveillant la croissance
   (monitoring) des coraux de l'espèce \emph{S. hystrix}.
 \end{itemize}
+
+\null
+\newpage
 
 \section{Outils utilisés}\label{outils-utilises}
 
@@ -636,7 +645,7 @@ formule ci-dessous mise au point par Jokiel \emph{et al} (1978) :
 
 \begin{equation}
 \large
-  m_{squelettique} = \frac {m_{immerge}}{ \frac{1 - \rho_{eau}}{ \rho_{squelettique}}}
+  m_{squelettique} = \frac {m_{immerge}}{ 1 - \frac{\rho_{eau}}{ \rho_{squelettique}}}
 \end{equation}
 
 \(\rho_{eau}\) est déterminé par l'équation d'état de l'eau de mer grâce
@@ -644,10 +653,12 @@ formule ci-dessous mise au point par Jokiel \emph{et al} (1978) :
 \(\rho_{squelettique}\) est la densité de l'aragonite
 (CaCO\textsubscript{3}) du squelette du corail.
 
+\begin{centering}
 \begin{figure}[h!]
-\includegraphics[]{../image/poster-balance.jpg}
+\includegraphics[angle=270]{../image/poster-balance.jpg}
 \caption{Mesure du poids immergé d'une bouture}
 \end{figure}
+\end {centering}
 
 \subsection{Tableur en ligne}\label{tableur-en-ligne}
 
@@ -656,12 +667,12 @@ mésocosmes sont dans un premier temps notés dans un cahier de
 laboratoire. Il sera nécessaire de créer un nouveau tableau de donnée
 afin d'utiliser les données.
 
-Au début, le tableur choisit était Excel, car c'est le logiciel le plus
+Au début, le tableur choisi était Excel, car c'est le logiciel le plus
 connu et que la HEH me permet d'utiliser une licence. Cela fonctionnait
-bien avec les fichiers en local. Malheureusement, aucun package permet
-d'utiliser Excel en ligne.
+bien avec les fichiers en local. Malheureusement, aucun package ne
+permet d'utiliser Excel en ligne.
 
-C'est avec Googlesheets qu'une solution fut trouvé.
+C'est avec Googlesheets qu'une solution fut trouvée.
 
 Le tableur est en ligne cela permet à n'importe quelle personne de
 manipuler le tableau de données depuis n'importe quelle machine
@@ -685,7 +696,7 @@ Le tableur est divisé en 12 colonnes :
   project : différencie chaque expérience réalisée, généralement on
   préfèrera recréer un nouveau tableur pour chacune des expériences
 \item
-  date : date et heure à laquelle les relevés de mesures ont été prises
+  date : date et heure à laquelle les relevés de mesures ont été pris
 \item
   author : nom de la personne ayant encodé dans le tableur
 \item
@@ -750,7 +761,7 @@ Différents paramètres peuvent modifier le graphique (Fig. 4.6).
 
 \vspace{0.5cm}
 
-En ordonné, on peut choisir :
+En ordonnée, on peut choisir :
 
 \begin{itemize}
 \tightlist
@@ -774,7 +785,7 @@ En abscisse, on peut choisir :
 \item
   la date de la mesure
 \item
-  le nombre de jour écoulé depuis la première mesure
+  le nombre de jours écoulés depuis la première mesure
 \end{itemize}
 
 Il est également possible de restreindre la période de temps (option
@@ -784,7 +795,10 @@ Il est aussi possible de sélectionner les ID dans un menu déroulant, on
 peut également désélectionner les lignes en cliquant sur le numéro
 associer à la couleur de l'ID à droite de l'écran (Fig. 4.8, Fig. 4.9).
 
-Le menu déroulant permet de tout sélectionner ou de tout désélectionner.
+La fenêtre du menu déroulant a maintenant une taille adaptée et ne
+dépasse pas du cadre. Il permet de sélectionner ou de désélectionner
+toutes les boutures en deux cliques ou de sélectionner/désélectionner
+les boutures unes à unes.
 
 \begin{figure}[h!]
 \includegraphics[]{../image/menu-deroulant.PNG}
@@ -853,7 +867,7 @@ puisse être réutilisé par la suite.
 La principale difficulté rencontrée au début est de passer de
 l'apprentissage du langage de programmation \emph{python} à \emph{R}. Ce
 sont tous les deux des langages de programmation interprétés qui peuvent
-être utilisés dans le domaine du traitement de donné et de création
+être utilisés dans le domaine du traitement de donnée et de création
 d'application web. \emph{python} a été créé pour faire de la
 programmation informatique généraliste, il est utilisé dans de larges
 domaines par des informaticiens. A l'inverse, R est dédié aux analyses
@@ -866,7 +880,7 @@ couramment employé.
 \subsection{Shiny communication entre ui.R et
 server.R}\label{shiny-communication-entre-ui.r-et-server.r}
 
-Les application web gérées par shiny utilisent deux fonctions
+Les applications web gérées par shiny utilisent deux fonctions
 communiquant entre elles \textbf{ui} et le \textbf{server}.
 
 Le schéma de communication basique entre les deux scripts commence par
@@ -891,12 +905,22 @@ Les objectifs réalisés sont :
 
 \begin{itemize}
 \item
+  Apprendre les bases du langage R et différents packages R.
+\item
+  Maîtriser l'outil RStudio.
+\item
   Bouturer les coraux et relever leurs masses immergées.
 \item
-  Créer un tableau de donnée en ligne contenant les données nécessaires.
+  Créer un tableau de données en ligne contenant les données
+  nécessaires.
 \item
-  Créer une application web répondant aux besoins du service à l'aide du
-  paquet Shiny.
+  Créer une application web exploitant en continue les données du
+  tableau en ligne.
+\item
+  Réaliser un code simple et documenté.
+\item
+  Utiliser le service web Github afin de réaliser un travail
+  professionnel.
 \end{itemize}
 
 L'outil insight de Github permet de visualiser le travail des différents
@@ -909,23 +933,79 @@ pendant le stage (Fig. 4.14).
 \caption{Contributeur de l'application}
 \end{figure}
 
-\subsection{Conclusion}\label{conclusion}
+\chapter{Conclusion}\label{conclusion}
 
-L'application web répond aux attentes.
+Le point de départ de ce stage est l'application précédente effectuée
+par Raphaël Conotte. Pour comprendre son travail, il a fallu dans un
+premier temps apprendre le langage de programmation R et ses composants.
+Deuxièmement, il a fallu lire et comprendre son code ainsi que le jeu de
+données qu'il a utilisé. Dans le même temps, j'ai appris à multiplier du
+corail, les peser et créer mon propre jeu de données.
 
-Une documentation (bookdown) est intégrée à l'application.
+On m'a donné la possibilité de soit repartir du code précédent, soit de
+tout réécrire. C'est le second choix que j'ai pris, car le code de
+Raphaël étant encore aujourd'hui toujours trop complexe à mes yeux, je
+pense qu'il a voulu tester différentes manières de faire.
 
-Elle est disponible en ligne à l'adresse :
-\url{https://jack177.shinyapps.io/coralgrowth/}
+Le début de mon code était donc un fichier vide que j'ai rempli au fur
+et à mesure, en m'inspirant parfois du code de Raphaël. Je pense avoir
+rendu un code beaucoup plus simple à lire et mieux documenté.
+L'application que j'ai réalisée se démarque de celle de Raphaël. En plus
+de trier la base de données par projet, elle permet également de
+combiner les tris par condition et par l'état des boutures.
 
-Il est également possible de scanner le QR code.
+Contrairement à l'application précédente qui ne contenait que 6
+boutures, mon travail en compte 84. Dans le but de faciliter la
+sélection de celles-ci, le menu déroulant a été perfectionné.
+
+Le tableau de données présenté dans l'onglet ``Data table'' a été
+simplifié, mais il permet de faire un tri sur chacune des colonnes à
+l'aide d'un curseur de déplacement ``slider''.
+
+L'application est actuellement en ligne et est disponible à l'adresse
+suivante : \url{https://jack177.shinyapps.io/coralgrowth/}
+
+Une documentation au format \emph{bookdown} a été écrite pour les
+utilisateurs du laboratoire, mais aussi pour l'informaticien qui
+souhaiterait améliorer le code. En effet, le travail peut-être amélioré.
+On pourrait ajouter plusieurs jeux de données à partir d'une url,
+ajouter des visualisations différentes afin de permettre un autre point
+vue sur le jeu de donnés ou encore de placer mon code dans un package
+afin d'être utilisé par n'importe qui utilisant R.
+
+Le dernier onglet ``Help'' contient la documentation bookdown et le
+dépôt Github où se trouve la dernière version du code utilisée.
+
+Il est également possible de scanner le \emph{QR code} (Fig. 4.15) qui
+redirige vers l'application.
 
 \begin{figure}[h!]
 \begin{centering}
-\includegraphics[width=6cm]{../image/QRcode.png}
+\includegraphics[width=5cm]{../image/QRcode.png}
 \caption{QR code}
 \end{centering}
 \end{figure}
+
+D'un point de vue personnel, ce stage m'a permis de m'insérer dans une
+petite équipe où je me suis rapidement intégré. J'ai pu fréquenter un
+laboratoire de recherche et en apprendre beaucoup sur la vie marine et
+le milieu universitaire.
+
+Le travail que j'ai effectué était passionnant. Je me suis rendu compte
+des différentes possibilités que peut offrir l'informatique à la
+biologie ainsi que la valeur ajoutée que j'ai pu proposer.
+
+J'ai travaillé comme un professionnel sur un projet que j'ai vu se
+réaliser petit à petit, en utilisant des outils propres aux
+informaticiens comme Github. J'ai acquis des connaissances sur le
+traitement de données, découvert le langage de programmation \emph{R} et
+appris a rédiger en \emph{LaTeX}/\emph{R Markdown} ce rapport.
+
+Je souhaiterai poursuivre das cette voie en apprenant à traiter des
+données avec \emph{python} à l'aide des paquets \emph{Numpy} et
+\emph{Pandas} afin de le comparer à R et également apprendre le langage
+\emph{javascript} utilisé par le package \emph{shiny} qui rend les pages
+web dynamiques.
 
 \chapter{Note}\label{note}
 
@@ -1313,6 +1393,20 @@ La dernière version du code est disponible à l'adresse suivante :
 \NormalTok{\})}
 \end{Highlighting}
 \end{Shaded}
+
+\chapter*{Bibliographie}\label{bibliographie}
+\addcontentsline{toc}{chapter}{Bibliographie}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Veron20001}{}
+Veron, John Edward Norwood. 2000a. \emph{Corals of the world, Volume 1}.
+Edited by Mary Stafford-Smith.
+doi:\href{https://doi.org/10.1007/s00044-012-0037-7}{10.1007/s00044-012-0037-7}.
+
+\hypertarget{ref-Veron20003}{}
+---------. 2000b. \emph{Corals of the world, Volume 3}. Edited by Mary
+Stafford-Smith.
+doi:\href{https://doi.org/10.1007/s00044-012-0037-7}{10.1007/s00044-012-0037-7}.
 
 
 \end{document}

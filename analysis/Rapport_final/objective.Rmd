@@ -21,6 +21,8 @@ La phase de création d'outils comprend :
 
 + La réalisation d'une application web Shiny, surveillant la croissance (monitoring) des coraux de l'espèce *S. hystrix*.
 
+\null
+\newpage
 
 ## Outils utilisés
 

@@ -1,4 +1,5 @@
 ---
+bibliography: ../bibliography/bibliography_master_thesis.bib
 output:
   pdf_document:
     latex_engine: xelatex
@@ -8,19 +9,23 @@ header-includes: \usepackage {xcolor}
 # Introduction
 
 Les coraux sont des animaux de l’embranchement des cnidaires, tout comme les méduses. Les individus sont nommés « polypes » (Fig. 2.1).
-Au sein des cnidaires, 1609 espèces de coraux durs (scléractiniaire hermatypique) forment les récifs coralliens (Fig. 2.2). Les coraux durs vivent en symbiose avec une microalgue unicellulaire les zooxanthelles qui fournit l'énergie nécessaire à la formation de leur squelette carbonate de calcium (Fig. 2.3).
+Au sein des cnidaires, 1609 espèces de coraux durs (scléractiniaire hermatypique) forment les récifs coralliens (Fig. 2.2). La majorité des coraux scléractiniens vivent en symbiose avec des microalgues unicellulaires les zooxanthelles qui fournissent l'énergie nécessaire à la formation de leur squelette carbonate de calcium (Fig. 2.3)[@Veron20001].
 
-![Schéma d'un polype](../image/polype_schema.jpg){} 
+![Schéma d'un polype](../image/polype_schema.jpg){width=8cm} 
 
 
 ![Récif corallien](../image/recif2.jpg)
 
-![Relation symbiotique entre les zooxanthelles et les polypes](../image/symbiose.png)
+
+\begin{figure}[h!]
+\includegraphics[]{../image/zooxanthelles-symbiose.png}
+\caption{Relation symbiotique entre les zooxanthelles et les polypes}
+\end{figure}
 \newpage
 \null
 
 Les récifs coralliens fournissent d’importantes niches écologiques à de nombreux animaux qui en sont dépendants.  Il est donc crucial de les protéger.        
-En situation de stress le corail, peut expulser ses zooxanthelles, ce qui ne laisse paraître seulement la coloration blanche de son squelette. Ce blanchissement affaiblit considérablement le corail (Fig. 2.4). Divers facteurs peuvent stresser le corail : l’acidité, la salinité, la température, la pollution, etc..
+En situation de stress, le corail peut expulser ses zooxanthelles, ce qui ne laisse paraître seulement la coloration blanche de son squelette. Ce blanchissement affaiblit considérablement le corail (Fig. 2.4). Divers facteurs peuvent stresser le corail : l’acidité, la salinité, la température, la pollution, etc [@Veron20003].
 
 ![Etape du blanchissement du corail](../image/blanchissement.png)
 
@@ -28,7 +33,7 @@ Le service d’écologie numérique des milieux aquatiques étudie en mésocosme
 
 Le précédent stagiaire, Raphaël Conotte a développé une application en local à partir du langage R permettant le monitoring des coraux (Fig. 2.5, Fig. 2.6).
 
-Les objectifs du stage sont multiples. Premièrement, il va falloir apprendre le langage R et ses multiples packages. Deuxièmement, se baser sur le travail de Raphaël pour créer une version améliorée de celui-ci. Dernièrement, une mesure régulière des coraux sera effectuée tout au long du stage. Cela consiste à reproduire des échantillons de corails qui seront ensuite pesé deux à trois fois par semaine, ce travail se fait en parallèle avec la partie informatique.
+Les objectifs du stage sont multiples. Premièrement, il va falloir apprendre le langage R et ses multiples packages. Deuxièmement, se baser sur le travail de Raphaël pour créer une version améliorée de celui-ci. Dernièrement, une mesure régulière des coraux sera effectuée tout au long du stage. Cela consiste à reproduire des échantillons de coraux qui seront ensuite pesé deux à trois fois par semaine, ce travail se fait en parallèle avec la partie informatique.
 
 L'application créée pendant ce stage aura été complètement réécrite et simplifé. Le code de Raphaël étant beaucoup trop complexe pour un débutant dans R.  
 

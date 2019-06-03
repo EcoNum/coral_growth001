@@ -26,7 +26,7 @@ EcoNum : Service d'Écologie Numérique des Milieux Aquatiques.
 
 Symbiose : association biologique, durable et réciproquement profitable, entre deux organismes vivants.
 
-Monitoring : suveillance, contrôle.
+Monitoring : surveillance, contrôle.
 
 Scléractiniaire : ordre principal des coraux durs.
 
@@ -34,7 +34,7 @@ Script : suite de commandes permettant d'automatiser une tâche.
 
 *Seriatopora hystrix* Dana 1846 : espèce de scléractiniaires.
 
-UMons : université de Mons.
+UMONS : université de Mons.
 
 Zooxanthelle : algue unicellulaire pouvant vivre en symbiose avec le corail.
 

@@ -31,7 +31,7 @@ Le laboratoire d'EcoNum est situé sur le campus de la plaine de Nimy (A) (Fig. 
 ### Philippe Grosjean
 
 
-![Monsieur Philippe Grosjean, chef du service d'EcoNum.](../image/Grosjean2.jpg){width=4cm}
+![Monsieur Philippe Grosjean, chef du service d'EcoNum.](../image/Grosjean2.jpg){width=3cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/Grosjean2.jpg} -->
 <!-- \caption{Monsieur Philippe Grosjean, chef du service d'EcoNum.} -->
@@ -49,7 +49,7 @@ Il encadre 1 doctorant et 2 étudiants en masters.
 
 ### Guyliann Engels
 
-![Guyliann Engels, doctorant encadrant le stage.](../image/Guyliann.jpg){width=4cm}
+![Guyliann Engels, doctorant encadrant le stage.](../image/Guyliann.jpg){width=3cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/Guyliann.jpg} -->
 <!-- \caption{Guyliann Engels, doctorant encadrant le stage.} -->
@@ -62,7 +62,7 @@ Il encadre mon travail.
 
 ### Antoine Batigny
 
-![Technicien du service d'EcoNum.](../image/antoine2.jpg){width=4cm}
+![Technicien du service d'EcoNum.](../image/antoine2.jpg){width=3cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/antoine2.jpg} -->
 <!-- \caption{Technicien du service d'EcoNum.} -->
@@ -71,7 +71,7 @@ Il encadre mon travail.
 Antoine Batigny est le technicien du service. Il gère principalement les mésocosmes. 
 
 ### Rémy Dugauquier
-![Etudiant en master](../image/remy.jpg){width=4cm}
+![Etudiant en master](../image/remy.jpg){width=3cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/remy.jpg} -->
 <!-- \caption{Etudiant en master} -->
@@ -81,10 +81,10 @@ Rémy Dugauquier est en dernière année du master en biologie des organismes et
 
 
 ### Madeleine Gille
-![Etudiante en master](../image/madeleine.jpg){width=4cm}
+![Etudiante en master](../image/madeleine.jpg){width=3cm}
 <!-- \begin{figure}[h!] -->
 <!-- \includegraphics[width=4cm]{../image/madeleine.jpg} -->
 <!-- \caption{Etudiante en master} -->
 <!-- \end{figure} -->
 
-Madeleine Gille est étudiante en dernière année du master en biologie des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un stress salins (hyper et hyposalin) sur *Seriatopora hystrix* (Dana, 1815). 
+Madeleine Gille est étudiante en dernière année du master en biologie des organismes et écologie. Elle réalise son T.F.E. sur les effets d'un stress salin (hyper et hyposalin) sur *Seriatopora hystrix* (Dana, 1815). 
