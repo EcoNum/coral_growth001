@@ -17,6 +17,26 @@ shinyServer(function(input, output, session) {
   # Jordan :
   coral_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoBfvhztFgALk1fcljBbYP03D-fRIEy7mu1DrHKZ--BXYZWHFxUujac_-gFSteM99p7CFQILT_eXcC/pub?gid=0&single=true&output=csv"
 
+
+  skeleton_weight <- function(buoyant_weight, S, T, P = 0, rho_aragonite = 2930){
+
+    x <- seacarb::rho(S = S, T = T, P = P)
+    y <- buoyant_weight / (1 - (x / rho_aragonite))
+    attributes(y) <- NULL
+    y
+  }
+
+
+  growth_rate <- function(skw_t, skw_ini, date_t, date_ini = 0,
+                          method = c("exponential", "linear", "linear_std")) {
+    method <- match.arg(method)
+    switch(method,
+           exponential = log(skw_t/skw_ini) / (date_t - date_ini) * 100,
+           linear      = (skw_t - skw_ini) / (date_t - date_ini),
+           linear_std  = (skw_t - skw_ini) / skw_ini / (date_t - date_ini) * 100
+    )
+  }
+
   #Importation et format des colonnes
   read_csv(coral_url,
            col_types = cols( .default = col_character(),
