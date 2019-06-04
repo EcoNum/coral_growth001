@@ -6,6 +6,7 @@ library(dplyr)
 library(plotly)
 library(flow)
 library(shinyWidgets)
+library(coral.growth)
 
 ### ----------------------__Partie logique du serveur__----------------------
 shinyServer(function(input, output, session) {
@@ -29,40 +30,11 @@ shinyServer(function(input, output, session) {
            condition = factor(condition),
            species = factor(species),
            id = factor(id, levels = 1:length(unique(id))),
-           status = factor(status)
+           status = factor(status),
+           skw = skeleton_weight(buoyant_weight = weight, S = salinity,
+                                 T = temperature)
     ) -> df
 
-  ### Calcul du poids squelettique :
-  #a corriger : rho_aragonite
-  #P = Pression hydrostatique, elle vaut 0 a la surface
-  skeleton_weight <- function(S, T, P = 0,
-                              buoyant_weight,
-                              rho_aragonite = 2930){
-    rho_water <- seacarb::rho(S = S, T = T , P = P)
-    skl_wgt <- buoyant_weight / (1 - (rho_water / rho_aragonite))
-    skl_wgt <- round(skl_wgt, digits = 3)
-    return(skl_wgt)
-  }
-
-  # Ajout de la colonne du poids squelettique
-  df <- mutate(df,
-                  skw = skeleton_weight(S = salinity,
-                                        T = temperature,
-                                        buoyant_weight = weight))
-
-  # Nombre de ID different
-  nbr_id <- unique(df$id)
-
-  # Conditions
-  nbr_condition <- unique(df$condition)
-
-  # Projet
-  nbr_projet <- unique(df$project)
-
-  # Statut
-  nbr_status <- unique(df$status)
-
-  # Taux de croissance
   df %>.%
     group_by(., id) %>.%
     arrange(., date) %>.%
@@ -72,9 +44,26 @@ shinyServer(function(input, output, session) {
            delta_lag_date = dplyr::lag(delta_date),
            lag_skw = dplyr::lag(skw),
            ratio = round(((skw - lag_skw) / lag_skw / (delta_date - delta_lag_date))*100, digits = 3),
+           gr_expo = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+                                               date_t = delta_date, date_ini = delta_lag_date,
+                                               method = "exponential"),
+           gr_lin = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+                                              date_t = delta_date, date_ini = delta_lag_date,
+                                              method = "linear"),
+           gr_lin_std = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+                                                  date_t = delta_date, date_ini = delta_lag_date,
+                                                  method = "linear_std"),
            delta_date = round(delta_date, digits = 0)) %>.%
     ungroup(.) -> df
 
+  # Nombre de ID different
+  nbr_id <- unique(df$id)
+  # Conditions
+  nbr_condition <- unique(df$condition)
+  # Projet
+  nbr_projet <- unique(df$project)
+  # Statut
+  nbr_status <- unique(df$status)
 
   ### -----------__Fin traitement du tableau de données__ ----------- ###
 
@@ -120,7 +109,8 @@ shinyServer(function(input, output, session) {
 
     radioButtons(inputId = "s_choice_plot", label = "Yvar :",
                  choices = c("Buoyant mass", "Skeleton mass",
-                             "Growth rate"),
+                             "Exponential growth rate", "Linear growth rate",
+                             "Linear standard growth rate"),
                  selected = "Buoyant mass")
   })
 
@@ -181,10 +171,22 @@ shinyServer(function(input, output, session) {
       y_axis_name <- "Buoyant mass (g)"
     }
 
-    # Choix du taux de croissance
-    if ("Growth rate" %in% input$s_choice_plot) {
-      yvar = df$ratio
-      y_axis_name <- "Growth rate"
+    # choix du taux de croissance exponentiel
+    if ("Exponential growth rate" %in% input$s_choice_plot) {
+      yvar = df$gr_expo
+      y_axis_name <- "Exponential growth rate [%/d]"
+    }
+
+    # choix du taux de croissance exponentiel
+    if ("Linear growth rate" %in% input$s_choice_plot) {
+      yvar = df$gr_lin
+      y_axis_name <- "Linear growth rate [g/d]"
+    }
+
+    # choix du taux de croissance exponentiel
+    if ("Linear standard growth rate" %in% input$s_choice_plot) {
+      yvar = df$gr_lin_std
+      y_axis_name <- "Linear growth rate [%/d]"
     }
 
     # Choix par nombre de jour
@@ -221,9 +223,19 @@ shinyServer(function(input, output, session) {
     if ("Skeleton mass" %in% input$s_choice_plot) {
       formule <- "Skeleton mass (g)"
     }
-    if ("Growth rate" %in% input$s_choice_plot) {
-      formule <- "Growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
+
+    if ("Exponential growth rate" %in% input$s_choice_plot) {
+      formule <- "Exponential growth rate = ((log(skeleton_mass_n) - log(skeleton_mass_n-1))) / (time_n - time_n-1) * 100"
     }
+
+    if ("Linear growth rate" %in% input$s_choice_plot) {
+      formule <- "Linear growth rate = (skeleton_mass_n - skeleton_mass_n-1) / (time_n - time_n-1)"
+    }
+
+    if ("Linear standard growth rate" %in% input$s_choice_plot) {
+      formule <- "Linear standard growth rate = ( (skeleton_mass_n - skeleton_mass_n-1) / skeleton_mass_n-1 ) / (time_n - time_n-1) * 100"
+    }
+
 
 
     # Calculs boutures mortes
