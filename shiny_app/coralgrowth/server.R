@@ -6,7 +6,6 @@ library(dplyr)
 library(plotly)
 library(flow)
 library(shinyWidgets)
-library(coral.growth)
 
 ### ----------------------__Partie logique du serveur__----------------------
 shinyServer(function(input, output, session) {
