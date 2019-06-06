@@ -6,7 +6,7 @@ library(dplyr)
 library(plotly)
 library(flow)
 library(shinyWidgets)
-library(coral.growth)
+
 
 ### ----------------------__Partie logique du serveur__----------------------
 shinyServer(function(input, output, session) {
@@ -64,13 +64,13 @@ shinyServer(function(input, output, session) {
            delta_lag_date = dplyr::lag(delta_date),
            lag_skw = dplyr::lag(skw),
            ratio = round(((skw - lag_skw) / lag_skw / (delta_date - delta_lag_date))*100, digits = 3),
-           gr_expo = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+           gr_expo = growth_rate(skw_t = skw, skw_ini = lag_skw,
                                                date_t = delta_date, date_ini = delta_lag_date,
                                                method = "exponential"),
-           gr_lin = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+           gr_lin = growth_rate(skw_t = skw, skw_ini = lag_skw,
                                               date_t = delta_date, date_ini = delta_lag_date,
                                               method = "linear"),
-           gr_lin_std = coral.growth::growth_rate(skw_t = skw, skw_ini = lag_skw,
+           gr_lin_std = growth_rate(skw_t = skw, skw_ini = lag_skw,
                                                   date_t = delta_date, date_ini = delta_lag_date,
                                                   method = "linear_std"),
            delta_date = round(delta_date, digits = 0)) %>.%
